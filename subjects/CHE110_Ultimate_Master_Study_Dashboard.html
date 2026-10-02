@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHE110: Environmental Studies — Master Visual Study Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #061412;
+            --bg-secondary: #0c2420;
+            --bg-card: rgba(12, 36, 32, 0.75);
+            --bg-card-hover: rgba(20, 56, 50, 0.85);
+            --text-primary: #f0fdf4;
+            --text-secondary: #86efac;
+            --text-muted: #4ade80;
+            --accent-emerald: #10b981;
+            --accent-teal: #14b8a6;
+            --accent-cyan: #06b6d4;
+            --accent-lime: #84cc16;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --border-color: rgba(74, 222, 128, 0.15);
+            --border-glow: rgba(16, 185, 129, 0.35);
+            --glass-blur: blur(16px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; line-height: 1.6; }
+
+        .header-section {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(20, 184, 166, 0.22));
+            border-bottom: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+
+        .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+        .main-title { font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem; background: linear-gradient(90deg, #6ee7b7, #34d399, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #a7f3d0; font-size: 0.95rem; margin-top: 0.25rem; }
+
+        .btn-action { background: linear-gradient(135deg, var(--accent-emerald), var(--accent-teal)); color: #022c22; border: none; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: all 0.2s ease; }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4); }
+
+        .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }
+        .nav-tabs { display: flex; gap: 0.75rem; overflow-x: auto; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 2rem; }
+        .nav-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: #a7f3d0; padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: 600; font-size: 0.875rem; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+        .nav-tab.active, .nav-tab:hover { background: rgba(16, 185, 129, 0.25); border-color: var(--accent-emerald); color: #6ee7b7; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+
+        .card { background: var(--bg-card); backdrop-filter: var(--glass-blur); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; transition: all 0.25s ease; position: relative; overflow: hidden; }
+        .card:hover { border-color: var(--border-glow); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); }
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .card-title { font-size: 1.25rem; font-weight: 700; color: #6ee7b7; }
+
+        .video-card { display: flex; flex-direction: column; justify-content: space-between; }
+        .video-btn { background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s; }
+        .video-btn:hover { background: #ef4444; color: #fff; }
+
+        .chapter-box { background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--accent-emerald); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 1rem; }
+        .chapter-title { font-weight: 700; color: #34d399; margin-bottom: 0.25rem; font-size: 0.95rem; }
+        .chapter-concept { font-size: 0.85rem; color: #d1fae5; margin-bottom: 0.25rem; }
+        .chapter-takeaway { font-size: 0.82rem; color: #6ee7b7; font-weight: 600; }
+
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { background: rgba(16, 185, 129, 0.1); color: #6ee7b7; font-weight: 700; }
+
+        .diagram-box { background: rgba(2, 44, 34, 0.65); border: 1px dashed var(--accent-emerald); border-radius: 0.5rem; padding: 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #a7f3d0; white-space: pre; overflow-x: auto; margin: 1rem 0; line-height: 1.45; }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="header-container">
+            <div>
+                <span class="badge">CHE110 • Environmental Studies • 100th Percentile Suite</span>
+                <h1 class="main-title">Ecology, Natural Resources, Pollution & Environmental Laws</h1>
+                <p class="subtitle">Complete Master Study Guide, Textbooks Chapter Context, Flowcharts & High-Yield Exam Triggers</p>
+            </div>
+            <div>
+                <a href="CHE110_Ultimate_Master_Study_Guide_and_Video_Hub.pdf" class="btn-action" target="_blank">📄 Download PDF Docket</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('textbooks')">📚 Textbooks & Deep Chapter Context</button>
+            <button class="nav-tab" onclick="showTab('videos')">📺 Curated Video Hub</button>
+            <button class="nav-tab" onclick="showTab('unit1')">🌱 Unit I: Sustainability & 4 Spheres</button>
+            <button class="nav-tab" onclick="showTab('unit2')">🌾 Unit II: Resources & Ecosystems</button>
+            <button class="nav-tab" onclick="showTab('unit3')">🐾 Unit III: Biodiversity & Conservation</button>
+            <button class="nav-tab" onclick="showTab('unit4')">🏭 Unit IV: Pollution & Waste Management</button>
+            <button class="nav-tab" onclick="showTab('unit5')">🌪️ Unit V: Disaster Management</button>
+            <button class="nav-tab" onclick="showTab('unit6')">👥 Unit VI: Laws & Environmental Movements</button>
+            <button class="nav-tab" onclick="showTab('exam')">⚡ High-Yield Exam Hacks</button>
+        </div>
+
+        <!-- TAB: TEXTBOOKS -->
+        <div id="tab-textbooks" class="tab-content">
+            <div class="card">
+                <h2 class="card-title" style="margin-bottom: 1rem;">📖 Standard Reference Textbooks with Deep Chapter Context</h2>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Perspectives in Environmental Studies (7th Ed) — Anubha Kaushik & C. P. Kaushik (New Age)</div>
+                    <div class="chapter-concept"><strong>Ch 1 & 2 (Environment & Sustainability):</strong> 4 Spheres (Atmosphere, Hydrosphere, Lithosphere, Biosphere), Multidisciplinary scope, Brundtland Commission 1987, 3 Pillars of Sustainability, Carrying Capacity, and 17 UN SDGs.</div>
+                    <div class="chapter-concept"><strong>Ch 3 (Natural Resources):</strong> Groundwater over-extraction, Deforestation, Mining conflicts, Dams vs tribal displacement, Renewable vs non-renewable energy transitions.</div>
+                    <div class="chapter-concept"><strong>Ch 4 (Ecosystem Dynamics):</strong> Biotic/Abiotic structure, 10% Lindeman's Rule, Food chains/webs, Ecological Pyramids (Energy is always upright, inverted aquatic biomass), Ecological Succession (Hydrosere vs Xerosere).</div>
+                    <div class="chapter-takeaway">🎯 <strong>Exam Focus:</strong> Draw Ecosystem Energy Flow (10% rule), 3 Pillars Venn diagram, and explain Primary vs Secondary succession stages.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Textbook of Environmental Studies for Undergraduate Courses (3rd Ed) — Erach Bharucha (UGC / Orient BlackSwan)</div>
+                    <div class="chapter-concept"><strong>Ch 4 (Biodiversity & Conservation):</strong> 3 Levels (Genetic, Species, Ecosystem), 4 Ecosystem Services, Norman Myers Hotspot criteria (>=1500 endemic plants, >=70% habitat loss), 4 Indian Hotspots (Himalaya, Western Ghats, Indo-Burma, Sundaland), HIPPO Threats, IUCN Red List, In-situ (National Parks, Sanctuaries, Biosphere Reserves, Sacred Groves) vs Ex-situ (Botanical Gardens, Seed Banks, Cryopreservation).</div>
+                    <div class="chapter-takeaway">🎯 <strong>Exam Focus:</strong> Draw In-situ vs Ex-situ Classification Tree, list Hotspot criteria, and describe 4 Indian Hotspots.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Text Book of Environmental Studies (2nd Ed) — D. Dave & S. S. Katewa (Cengage Learning)</div>
+                    <div class="chapter-concept"><strong>Ch 5 (Pollution & Waste Management):</strong> Air Pollution (Primary vs Secondary, Photochemical vs Classical Smog, ESP / Scrubbers), Water Pollution (BOD vs COD math, Eutrophication sequence, Minamata / Itai-Itai diseases), Noise & Radiation, Emerging Pollutants (Microplastics, PFAS, E-waste), Ozone Chapman cycle & Montreal Protocol 1987, Acid Rain, 4Rs Solid Waste Management hierarchy, Bhopal Gas Tragedy (MIC).</div>
+                    <div class="chapter-takeaway">🎯 <strong>Exam Focus:</strong> Draw Eutrophication lifecycle, compare Classical vs Photochemical smog, and explain Ozone catalytic destruction.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: VIDEOS -->
+        <div id="tab-videos" class="tab-content" style="display:none;">
+            <div class="grid-3">
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit I • Sustainability</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Sustainable Development Goals</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">CrashCourse breakdown of Brundtland definition, Carrying Capacity, and the 17 UN SDGs (2030 Agenda).</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=CrashCourse+Sustainable+Development+Goals" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit II • Ecosystems</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Ecosystem Energy Flow & 10% Law</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">Amoeba Sisters animated explanation of Food Chains, Food Webs, and Lindeman's 10% Energy Transfer Law.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Amoeba+Sisters+Ecological+Succession+Energy+Flow" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit II • Pyramids</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Ecological Pyramids</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">Visual breakdown of Pyramids of Numbers, Biomass, and Energy (Upright vs Inverted aquatic biomass).</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Ecological+Pyramids+Number+Biomass+Energy+Explained" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit III • Hotspots</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Biodiversity Hotspots of India</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">StudyIQ IAS geographical breakdown of the 4 Indian Hotspots (Himalaya, Western Ghats, Indo-Burma, Sundaland).</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=StudyIQ+Biodiversity+Hotspots+in+India" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit III • Conservation</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">In-situ vs Ex-situ Conservation</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">Amit Sengupta guide on National Parks, Wildlife Sanctuaries, Biosphere Reserves, Botanical Gardens & Seed Banks.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Amit+Sengupta+In+situ+and+Ex+situ+Conservation" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit IV • Pollution</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Smog & Water Pollution (BOD/COD)</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">Detailed walkthrough of Classical vs Photochemical Smog, Eutrophication sequence, and BOD/COD testing.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Photochemical+Smog+vs+Classical+Smog+StudyIQ" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit V • Disasters</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Disaster Management & NDMA</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">StudyIQ IAS analysis of NDMA, SDMA, DDMA, NDRF, and the Pre-During-Post disaster lifecycle.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=National+Disaster+Management+Authority+NDMA+India+StudyIQ" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit VI • Movements</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Environmental Movements in India</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">Historical analysis of Bishnoi (1730), Chipko (1973), Appiko, Silent Valley, and Narmada Bachao Andolan.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Environmental+Movements+in+India+Chipko+Narmada+StudyIQ" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit VI • Legislation</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Important Environmental Acts</h3>
+                        <p style="color:#d1fae5; font-size:0.85rem; margin-top:0.5rem;">Complete legal blueprint of Wildlife Act 1972, Water 1974, Forest 1980, Air 1981, EPA 1986, and NGT 2010.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Important+Environmental+Acts+in+India+EPA+1986+StudyIQ" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT I -->
+        <div id="tab-unit1" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">🌐 The 4 Intersecting Spheres of Earth</h3>
+                    <div class="diagram-box">                          ENVIRONMENTAL ECOSPHERE
+                                     │
+     ┌──────────────────┬────────────┴───────────┬──────────────────┐
+     ▼                  ▼                        ▼                  ▼
+[ ATMOSPHERE ]    [ HYDROSPHERE ]         [ LITHOSPHERE ]     [ BIOSPHERE ]
+Gaseous envelope  All water bodies        Solid earth crust,  Global zone of
+(N2 78%, O2 21%,  (Oceans 97%, Ice 2%,    soil, rocks,        all living flora,
+ Ar 0.9%, CO2 0.04%Freshwater <1%)        minerals            fauna & microbes</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">⚖️ 3 Pillars of Sustainable Development</h3>
+                    <div class="diagram-box">                        [ ENVIRONMENTAL INTEGRITY ]
+                         (Ecological balance, Clean air)
+                                       / \
+                                      /   \
+                                     /  E  \
+                                    /   Q   \
+                                   /    U    \
+                                  /  B  I  V  \
+                                 /   E  T  I   \
+                                /    A  A  A    \
+                               /     R  B  B     \
+                              /      A  L  L      \
+                             /       B  E  E       \
+                            /        L              \
+                           /         E               \
++-------------------------+---+                     +---+-------------------------+
+|      SOCIAL EQUITY          |◄───────────────────►|     ECONOMIC VIABILITY      |
+| (Human rights, Public health|   SUSTAINABLE APEX  | (Green business, Fair work) |
++-----------------------------+                     +-----------------------------+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT II -->
+        <div id="tab-unit2" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">⚡ Lindeman's 10% Energy Transfer Law</h3>
+                    <div class="diagram-box">SUNLIGHT (1,000,000 J Total Solar Incident Radiation)
+   │ (~1% captured by chlorophyll in photosynthesis)
+   ▼
+[ PRODUCERS: Grass / Phytoplankton ] (10,000 J)
+   │ (10% transferred; 90% lost as heat/respiration)
+   ▼
+[ PRIMARY CONSUMERS: Herbivores ] (1,000 J)
+   │ (10% transferred; 90% lost as heat)
+   ▼
+[ SECONDARY CONSUMERS: Carnivores ] (100 J)
+   │ (10% transferred; 90% lost as heat)
+   ▼
+[ TERTIARY CONSUMERS: Apex Predators ] (10 J)</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">🌱 Ecological Succession Stages</h3>
+                    <div class="diagram-box">[ PIONEER COMMUNITY ]
+(Lichens & Mosses on bare rock; Phytoplankton in water)
+            │
+            ▼
+[ SERAL COMMUNITY STAGES ]
+(Herbs ──► Shrubs ──► Softwood trees ──► Mixed species)
+            │
+            ▼
+[ CLIMAX COMMUNITY ]
+(Stable, diverse, self-sustaining Forest in climatic equilibrium)
+
+• Hydrosere: Phytoplankton -> Submerged -> Floating -> Reed-swamp -> Marsh -> Forest
+• Xerosere: Crustose Lichen -> Foliose Lichen -> Moss -> Herb -> Shrub -> Forest</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT III -->
+        <div id="tab-unit3" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">🛡️ Biodiversity Conservation Strategies: In-Situ vs Ex-Situ</h3>
+                <div class="diagram-box">                               BIODIVERSITY CONSERVATION
+                                           │
+         ┌─────────────────────────────────┴─────────────────────────────────┐
+         ▼                                                                   ▼
+[ IN-SITU (ON-SITE) CONSERVATION ]                          [ EX-SITU (OFF-SITE) CONSERVATION ]
+Protection within natural wild habitat                      Protection in human-managed facilities
+• NATIONAL PARKS (Strict protection, zero human activity)   • BOTANICAL GARDENS (Live plant collections)
+• WILDLIFE SANCTUARIES (Limited grazing/forestry allowed)   • ZOOLOGICAL PARKS / ZOOS (Captive breeding)
+• BIOSPHERE RESERVES (Core, Buffer & Transition zones)      • SEED & GENE BANKS (Cryogenic storage)
+• SACRED GROVES (Community-protected forest patches)        • CRYOPRESERVATION (-196°C Liquid Nitrogen)</div>
+            </div>
+
+            <div class="card" style="margin-top:1.5rem;">
+                <h3 class="card-title">🗺️ The 4 Biodiversity Hotspots in India</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hotspot Name</th>
+                            <th>Geographical Coverage</th>
+                            <th>Key Endemic Species</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>1. Western Ghats & Sri Lanka</strong></td><td>Along west coast (Maharashtra, Goa, Karnataka, Kerala, TN)</td><td>Lion-tailed Macaque, Nilgiri Tahr, Malabar Gliding Frog</td></tr>
+                        <tr><td><strong>2. Himalaya</strong></td><td>Entire Indian Himalayan belt (North & Northeast)</td><td>Snow Leopard, Red Panda, Himalayan Musk Deer</td></tr>
+                        <tr><td><strong>3. Indo-Burma</strong></td><td>Northeastern India (South of Brahmaputra), Andaman Islands</td><td>Hoolock Gibbon, Sangai Deer, Great Hornbill</td></tr>
+                        <tr><td><strong>4. Sundaland</strong></td><td>Nicobar group of Islands (extending into SE Asia)</td><td>Nicobar Megapode, Leatherback Turtle, Saltwater Crocodile</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT IV -->
+        <div id="tab-unit4" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">🌊 Eutrophication Sequence in Water Bodies</h3>
+                    <div class="diagram-box">Agricultural Fertilizer Runoff (Nitrates & Phosphates) & Untreated Sewage
+                                   │
+                                   ▼
+         ALGAL BLOOM (Explosive proliferation of surface green algae)
+                                   │
+                                   ▼
+       Algae block sunlight from reaching submerged aquatic plants
+                                   │
+                                   ▼
+        Submerged plants die due to total lack of photosynthesis
+                                   │
+                                   ▼
+    Decomposers consume dead biomass, exhausting Dissolved Oxygen (DO)
+                                   │
+                                   ▼
+      ANAEROBIC STATE ──► Massive Fish Kill & Ecosystem Dead Zone</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">🏭 Smog Comparison & Ozone Depletion</h3>
+                    <div class="diagram-box">CLASSICAL (LONDON) SMOG:
+• Cool, humid winter mornings | Reducing nature | Smoke + Fog + SO2
+
+PHOTOCHEMICAL (LOS ANGELES) SMOG:
+• Warm, sunny afternoons | Oxidizing nature | NOx + VOCs + Sunlight -> O3 + PAN
+
+OZONE CATALYTIC DESTRUCTION (Stratosphere):
+• CFC + UV -> Cl• (Free Chlorine Radical)
+• Cl• + O3 -> ClO• + O2
+• ClO• + O• -> Cl• + O2
+* 1 Chlorine radical destroys >100,000 Ozone molecules (Montreal Protocol 1987)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT V -->
+        <div id="tab-unit5" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">🌪️ Disaster Management Lifecycle & Institutional Framework</h3>
+                <div class="diagram-box">                               DISASTER MANAGEMENT CYCLE
+                                           │
+         ┌─────────────────────────────────┴─────────────────────────────────┐
+         ▼                                                                   ▼
+[ PRE-DISASTER RISK REDUCTION ]                             [ POST-DISASTER RESPONSE & RECOVERY ]
+1. PREVENTION & MITIGATION                                  1. EMERGENCY RESPONSE
+   • Hazard mapping & building codes                           • Search & rescue (NDRF), First aid
+2. PREPAREDNESS                                             2. RELIEF & REHABILITATION
+   • Early warning radars & mock drills                        • Medical relief, epidemic prevention
+3. EVACUATION PLANNING                                      3. RECONSTRUCTION
+   • Cyclone shelters & escape routes                          • "Build Back Better" resilient infra</div>
+
+                <div class="diagram-box" style="margin-top:1rem;">3-TIER GOVERNANCE IN INDIA (Disaster Management Act 2005):
+• NATIONAL: NDMA (Headed by PRIME MINISTER) -> NDRF (Executive Rescue Force)
+• STATE:    SDMA (Headed by CHIEF MINISTER) -> SDRF
+• DISTRICT: DDMA (Headed by DISTRICT MAGISTRATE / COLLECTOR) -> Ground Execution</div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT VI -->
+        <div id="tab-unit6" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">📜 Environmental Legislation Architecture in India</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Statutory Act & Year</th>
+                            <th>Primary Focus & Regulatory Mandate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Wildlife Protection Act, 1972</strong></td><td>6 Schedules of protection; bans hunting; created National Parks & Sanctuaries.</td></tr>
+                        <tr><td><strong>Water Pollution Act, 1974</strong></td><td>Created Central (CPCB) and State (SPCB) Pollution Control Boards to regulate effluents.</td></tr>
+                        <tr><td><strong>Forest Conservation Act, 1980</strong></td><td>Prohibits diversion of forest land for non-forest purposes without Central Govt nod.</td></tr>
+                        <tr><td><strong>Air Pollution Act, 1981</strong></td><td>Regulates industrial emissions; amended in 1987 to include <strong>Noise</strong> as an air pollutant.</td></tr>
+                        <tr><td><strong>Environment Protection Act, 1986</strong></td><td><strong>Umbrella Legislation</strong> post-Bhopal Gas Tragedy empowering Central Govt to set standards.</td></tr>
+                        <tr><td><strong>National Green Tribunal Act, 2010</strong></td><td>Established fast-track environmental court (NGT) with a 6-month dispute resolution mandate.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card" style="margin-top:1.5rem;">
+                <h3 class="card-title">🌳 Historic Environmental Movements in India</h3>
+                <div class="diagram-box">1. BISHNOI MOVEMENT (1730, Rajasthan): Amrita Devi & 363 Bishnois sacrificed lives for Khejri trees.
+2. CHIPKO MOVEMENT (1973, Chamoli, UK): Sunderlal Bahuguna, Chandi Prasad Bhatt, Gaura Devi hugged trees.
+3. SILENT VALLEY (1978, Kerala): KSSP saved pristine tropical rainforest from hydroelectric dam.
+4. JUNGLE BACHAO (1982, Bihar/Jharkhand): Adivasis protested replacing Sal forest with commercial Teak.
+5. APPIKO MOVEMENT (1983, Karnataka): Pandurang Hegde led southern tree-hugging movement in Western Ghats.
+6. NARMADA BACHAO ANDOLAN (1985+, Gujarat/MP): Medha Patkar & Baba Amte protested Sardar Sarovar Dam.
+7. TEHRI DAM CONFLICT (Uttarakhand): Protest against high seismic risk & submergence of historic Tehri town.</div>
+            </div>
+        </div>
+
+        <!-- TAB: EXAM -->
+        <div id="tab-exam" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">⚡ 4-Tier 100-Percentile Answer Presentation Formula</h3>
+                <div class="diagram-box">+--------------------------------------------------------------------+
+| 1. FORMAL DEFINITION (1-2 crisp lines with key technical terms)    |
+| 2. LABELED ARCHITECTURAL DIAGRAM / FLOWCHART (Neat boxed drawing)  |
+| 3. COMPARATIVE MATRIX / BULLET POINTS (Bold keywords for scanning) |
+| 4. STATUTORY ACT / CASE STUDY / FORMULA (Guarantees full marks)    |
++--------------------------------------------------------------------+</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Must-Know Exam Question</th>
+                            <th>Mandatory Diagram to Draw</th>
+                            <th>Scoring Trigger Keywords</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Eutrophication Sequence</td><td>Step-by-step nutrient to DO crash flow</td><td>Nitrates/Phosphates, Algal Bloom, Submerged decay, DO crash, Dead Zone.</td></tr>
+                        <tr><td>In-situ vs Ex-situ Conservation</td><td>Classification tree with examples</td><td>National Parks, Biosphere Reserves, Botanical Gardens, Cryopreservation.</td></tr>
+                        <tr><td>Ecological Pyramids</td><td>Upright energy vs inverted aquatic biomass</td><td>10% Lindeman's rule, 2nd Law Thermodynamics, Standing crop vs turnover.</td></tr>
+                        <tr><td>Smog Comparison</td><td>Classical vs Photochemical smog boxes</td><td>Reducing vs Oxidizing, SO2 vs NOx + VOCs + Sunlight -> Ozone + PAN.</td></tr>
+                        <tr><td>Ozone Depletion Mechanism</td><td>CFC UV radical breakdown cycle</td><td>Cl radical catalyst, 100,000 O3 destroyed, Montreal Protocol 1987.</td></tr>
+                        <tr><td>Disaster Management Cycle</td><td>Circular lifecycle (Pre -> During -> Post)</td><td>Mitigation, Preparedness, Response, Recovery, NDMA (PM) -> SDMA -> DDMA.</td></tr>
+                        <tr><td>Major Environmental Movements</td><td>Chronological timeline with leaders</td><td>Bishnoi (Amrita Devi), Chipko (Bahuguna), Appiko (Hegde), NBA (Patkar).</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

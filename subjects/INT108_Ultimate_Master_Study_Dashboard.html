@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INT108: Python Programming — 100-Percentile Master Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0d14;
+            --bg-secondary: #131722;
+            --bg-card: rgba(19, 23, 34, 0.85);
+            --bg-card-hover: rgba(29, 35, 51, 0.95);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-emerald: #10b981;
+            --accent-cyan: #06b6d4;
+            --accent-amber: #f59e0b;
+            --accent-purple: #8b5cf6;
+            --border-color: rgba(16, 185, 129, 0.2);
+            --border-glow: rgba(16, 185, 129, 0.45);
+            --glass-blur: blur(16px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; line-height: 1.6; }
+
+        .header-section {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.25));
+            border-bottom: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+
+        .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(16, 185, 129, 0.25); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
+        .main-title { font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem; background: linear-gradient(90deg, #6ee7b7, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: #a7f3d0; font-size: 0.95rem; margin-top: 0.25rem; }
+
+        .btn-action { background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan)); color: #022c22; border: none; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: all 0.2s ease; }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4); }
+
+        .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }
+        .nav-tabs { display: flex; gap: 0.6rem; overflow-x: auto; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 2rem; }
+        .nav-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: #cbd5e1; padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: 600; font-size: 0.85rem; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+        .nav-tab.active, .nav-tab:hover { background: rgba(16, 185, 129, 0.25); border-color: var(--accent-emerald); color: #6ee7b7; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+
+        .card { background: var(--bg-card); backdrop-filter: var(--glass-blur); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; transition: all 0.25s ease; margin-bottom: 1.5rem; }
+        .card:hover { border-color: var(--border-glow); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); }
+        .card-title { font-size: 1.25rem; font-weight: 700; color: #6ee7b7; margin-bottom: 0.75rem; }
+
+        .video-card { display: flex; flex-direction: column; justify-content: space-between; }
+        .video-btn { background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s; }
+        .video-btn:hover { background: #ef4444; color: #fff; }
+
+        .chapter-box { background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--accent-emerald); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 1rem; }
+        .chapter-title { font-weight: 700; color: #6ee7b7; margin-bottom: 0.25rem; font-size: 0.95rem; }
+        .chapter-concept { font-size: 0.875rem; color: #e2e8f0; margin-bottom: 0.25rem; }
+
+        .alert-box { background: rgba(16, 185, 129, 0.12); border-left: 3px solid #10b981; padding: 0.85rem; border-radius: 0 0.5rem 0.5rem 0; margin: 0.75rem 0; font-size: 0.85rem; color: #a7f3d0; }
+        .danger-box { background: rgba(239, 68, 68, 0.12); border-left: 3px solid #ef4444; padding: 0.85rem; border-radius: 0 0.5rem 0.5rem 0; margin: 0.75rem 0; font-size: 0.85rem; color: #fca5a5; }
+
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { background: rgba(16, 185, 129, 0.12); color: #6ee7b7; font-weight: 700; }
+
+        .diagram-box { background: #05070d; border: 1px dashed var(--accent-emerald); border-radius: 0.5rem; padding: 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #a7f3d0; white-space: pre; overflow-x: auto; margin: 1rem 0; line-height: 1.45; }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="header-container">
+            <div>
+                <span class="badge">INT108 • 100-Percentile Master Suite</span>
+                <h1 class="main-title">Python Programming & Problem Solving</h1>
+                <p class="subtitle">Complete Theory & Lab Matrix, 15 University Practicals, Visual Architecture & Top 75 Viva Bank</p>
+            </div>
+            <div>
+                <a href="INT108_Ultimate_Master_Study_Guide_and_Video_Hub.pdf" class="btn-action" target="_blank">📄 Download PDF Docket</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('textbooks')">📚 Textbooks & Matrix</button>
+            <button class="nav-tab" onclick="showTab('videos')">📺 YouTube Video Hub</button>
+            <button class="nav-tab" onclick="showTab('units')">🧩 Units I - VI Deep Theory</button>
+            <button class="nav-tab" onclick="showTab('practicals')">🧰 All 15 Practicals Code</button>
+            <button class="nav-tab" onclick="showTab('viva')">🎯 Top 75 Master Viva Voce</button>
+        </div>
+
+        <!-- TAB: TEXTBOOKS & MATRIX -->
+        <div id="tab-textbooks" class="tab-content">
+            <div class="card">
+                <h3 class="card-title">📚 Gold-Standard Textbooks & Deep-Dive Chapter Context</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Unit / Subject Area</th>
+                            <th>Recommended Standard Textbook</th>
+                            <th>Chapters, Core Concepts & Key Takeaways</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Units I & II: Python Env & Flow</strong></td>
+                            <td><strong>Kenneth A. Lambert</strong> (Cengage)</td>
+                            <td><strong>Ch 1, 2 & 3:</strong> PVM compilation model, bytecode .pyc, dynamic typing, variable naming, integer precision, division // vs /, PEMDAS precedence (2**3**2=512), short-circuiting, while/for loops with else block, random module.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unit III: Sequences & Data Structs</strong></td>
+                            <td><strong>Reema Thareja</strong> (Oxford)</td>
+                            <td><strong>Ch 5, 6 & 7:</strong> String slicing s[start:stop:step], s[::-1] reversal, list mutability & in-place methods, list comprehensions, shallow vs deep copy, tuple immutability, dict hashing O(1), sparse matrices representation using coordinate keys.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Units IV & V: Functions & OOP</strong></td>
+                            <td><strong>Reema Thareja</strong> / <strong>Lambert</strong></td>
+                            <td><strong>Ch 8, 10 & 11:</strong> Pass-by-object-reference, LEGB scoping rule (global vs nonlocal), *args, **kwargs, mutable default argument trap, recursion call stack, OOP 4 pillars, classes, __init__, self, Name Mangling (_Class__priv), C3 MRO & super(), dunder operator overloading, __slots__.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Unit VI: File I/O, Pickle, Regex</strong></td>
+                            <td><strong>Kenneth A. Lambert</strong> (Cengage)</td>
+                            <td><strong>Ch 9 & Regex:</strong> File modes (r, w, a, r+, wb), context manager with open(), object serialization via pickle.dump()/load(), security hazards of unpickling, try-except-else-finally lifecycle, re module tokens & findall() pattern matching.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB: VIDEOS -->
+        <div id="tab-videos" class="tab-content" style="display:none;">
+            <div class="grid-3">
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Units 1-2 • Basics</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Python Setup & Flow Control</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer comprehensive tutorials on environment setup, types, operators, and loops with else clauses.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Tutorial+Beginners" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit 3 • Data Structs</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Lists, Dicts & Slicing</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer breakdown of list comprehensions, dictionary hashing, and shallow vs deep copy.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Lists+Tuples+and+Dictionaries" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Units 4-5 • OOP & Func</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Functions, Scope & OOP</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer & Telusko masterclasses on LEGB scope, closures, decorators, C3 MRO, and dunder magic methods.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+OOP+Tutorials" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit 6 • Files & Regex</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">File I/O, Pickle & Regex</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer tutorials on with open() context managers, binary pickling, and regex pattern scraping.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Regular+Expressions" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Practicals • Lab</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">All 15 Lab Practicals</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Gate Smashers & Jenny's Lectures complete code walkthrough of all 15 university lab experiments.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Python+Programming+Lab+Practicals+Gate+Smashers" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Viva • Interview</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Top 75 Viva Voce Bank</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Gate Smashers top external examiner viva questions, tricky syntax pitfalls, and output predictions.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Python+Programming+Viva+Voce+Questions+Gate+Smashers" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNITS THEORY -->
+        <div id="tab-units" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">🧩 Unit-by-Unit Deep Theoretical Invariants & Memory Models</h3>
+                <div class="diagram-box">CPYTHON COMPILATION & EXECUTION PIPELINE:
+Source Code (.py) ──► AST ──► Bytecode (.pyc) ──► Python Virtual Machine (PVM) ──► Native CPU
+
+MEMORY MANAGEMENT & GC:
+• Reference Counting (ob_refcnt == 0 -> deallocated instantly)
+• Generational Cyclic GC (Gen 0, Gen 1, Gen 2) for reference cycles
+• GIL (Global Interpreter Lock): Restricts CPython bytecode execution to 1 thread
+
+LEGB SCOPE LOOKUP:
+Local (L) ──► Enclosing (E) ──► Global (G) ──► Built-in (B)
+
+PASS-BY-OBJECT-REFERENCE (CALL-BY-SHARING):
+• Immutable (int, str, tuple): Rebinding inside function creates new local pointer
+• Mutable (list, dict): In-place mutation directly alters the shared heap object
+
+MULTIPLE INHERITANCE C3 LINEARIZATION (MRO):
+L(C) = C + merge(L(P1), L(P2), ..., P1 P2 ...)
+
+EXCEPTION HANDLING LIFECYCLE:
+try: risky_code()
+except SpecificError as e: handle_error()
+else: runs_only_if_no_error_occurred()
+finally: always_executes_guaranteed_cleanup()</div>
+            </div>
+        </div>
+
+        <!-- TAB: PRACTICALS -->
+        <div id="tab-practicals" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">🧰 All 15 University Laboratory Practicals (Complete Code)</h3>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 1: Arithmetic Operations (+, -, *, /, //, %)</div>
+                    <div class="chapter-concept">Calculates addition, subtraction, multiplication, true division (/), floor division (//), and modulus (%).</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 2: Perfect Number Checker</div>
+                    <div class="chapter-concept">Checks if sum of proper divisors equals the number (e.g., 6 = 1+2+3, 28 = 1+2+4+7+14).</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 3: Armstrong Number Checker</div>
+                    <div class="chapter-concept">Checks if sum of digits each raised to power of total digits equals number (e.g., 153 = 1^3 + 5^3 + 3^3).</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 4 & 7: Factorial (Iterative & Recursive)</div>
+                    <div class="chapter-concept">Computes n! iteratively using a for loop and recursively with base condition n <= 1.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 5 & 6: Fibonacci Series & Palindrome String</div>
+                    <div class="chapter-concept">Generates N Fibonacci terms and verifies palindrome symmetry using two-pointer loops.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 8, 9, 10 & 15: Text File Operations</div>
+                    <div class="chapter-concept">Reading line by line, removing lines containing 'a', counting vowels/consonants, and printing words separated by '#'.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 11: Binary Student Search via Pickling</div>
+                    <div class="chapter-concept">Serializes student records to a .dat binary file using pickle.dump() and searches by Roll Number using pickle.load().</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Exp 12, 13 & 14: Dice Sim, Stack using List & Phishing Email Regex</div>
+                    <div class="chapter-concept">Simulates 1-6 dice rolls with random.randint(), implements LIFO Stack with push/pop, and extracts phishing keywords using re.findall().</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: VIVA -->
+        <div id="tab-viva" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">🎯 Top 15 High-Yield Examiner Viva Voce Q&A</h3>
+                <div class="chapter-box">
+                    <div class="chapter-title">1. Is Python interpreted or compiled?</div>
+                    <div class="chapter-concept">Both. Source code (.py) is compiled to bytecode (.pyc), which is then interpreted by the Python Virtual Machine (PVM).</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">2. What is the difference between 'is' and '=='?</div>
+                    <div class="chapter-concept">'==' checks value equality (content), whereas 'is' checks memory identity (id(a) == id(b)).</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">3. What is the LEGB Rule?</div>
+                    <div class="chapter-concept">The variable scope lookup order: Local -> Enclosing -> Global -> Built-in.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">4. Differentiate between shallow copy and deep copy.</div>
+                    <div class="chapter-concept">Shallow copy creates a new container with references to original child items; deep copy recursively duplicates all nested objects.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">5. What is the Mutable Default Argument Trap?</div>
+                    <div class="chapter-concept">Default arguments like [] are created once at definition time, persisting state across multiple calls. Fix with arg=None.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">6. What is Name Mangling in Python OOP?</div>
+                    <div class="chapter-concept">Prefixing attributes with double underscore __var transforms it to _ClassName__var to prevent collision in subclasses.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">7. Why should you always use 'with open() as f:'?</div>
+                    <div class="chapter-concept">It utilizes the Context Manager protocol (__enter__ and __exit__), guaranteeing deterministic file descriptor closing even on errors.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">8. What is Pickling and Unpickling?</div>
+                    <div class="chapter-concept">Pickling (pickle.dump) serializes Python objects to binary; Unpickling (pickle.load) restores objects from binary.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">9. What does the loop 'else' clause do?</div>
+                    <div class="chapter-concept">Executes if and only if the loop terminates normally without hitting a 'break' statement.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">10. What is the result of 2 ** 3 ** 2?</div>
+                    <div class="chapter-concept">512 (Exponentiation is evaluated RIGHT to LEFT: 3**2 = 9, then 2**9 = 512).</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">11. What is the Global Interpreter Lock (GIL)?</div>
+                    <div class="chapter-concept">A mutex in CPython that restricts bytecode execution to one native thread at a time, ensuring thread-safe reference count management.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">12. How does Python's Garbage Collection work?</div>
+                    <div class="chapter-concept">Primary mechanism is Reference Counting; secondary is Generational Cyclic GC across 3 generations for reference cycles.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">13. What is C3 Linearization MRO?</div>
+                    <div class="chapter-concept">The deterministic algorithm Python uses to resolve base class inheritance orders in multiple inheritance hierarchies.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">14. What are __slots__?</div>
+                    <div class="chapter-concept">Defines a fixed tuple of attribute names, eliminating instance.__dict__ to save memory and accelerate attribute access.</div>
+                </div>
+                <div class="chapter-box">
+                    <div class="chapter-title">15. Why is unpickling untrusted data dangerous?</div>
+                    <div class="chapter-concept">Deserialization via pickle.load() can execute arbitrary malicious code if the payload overrides __reduce__().</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

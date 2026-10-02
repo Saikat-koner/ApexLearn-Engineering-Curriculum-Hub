@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE326: Full-Stack Web Technologies — Master Study Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #131b2e;
+            --bg-card: rgba(19, 27, 46, 0.75);
+            --bg-card-hover: rgba(30, 41, 69, 0.85);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-cyan: #38bdf8;
+            --accent-blue: #3b82f6;
+            --accent-indigo: #6366f1;
+            --accent-purple: #a855f7;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(56, 189, 248, 0.3);
+            --glass-blur: blur(16px);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-primary); color: var(--text-primary); min-height: 100vh; line-height: 1.6; }
+
+        .header-section {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.2));
+            border-bottom: 1px solid var(--border-color);
+            padding: 2.5rem 2rem;
+            position: relative;
+        }
+
+        .header-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+        .badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(56, 189, 248, 0.2); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.4); }
+        .main-title { font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem; background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.25rem; }
+
+        .btn-action { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue)); color: #ffffff; border: none; padding: 0.75rem 1.5rem; border-radius: 0.75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: all 0.2s ease; }
+        .btn-action:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4); }
+
+        .container { max-width: 1400px; margin: 2rem auto; padding: 0 1.5rem; }
+        .nav-tabs { display: flex; gap: 0.75rem; overflow-x: auto; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 2rem; }
+        .nav-tab { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-secondary); padding: 0.65rem 1.25rem; border-radius: 0.65rem; font-weight: 600; font-size: 0.875rem; cursor: pointer; white-space: nowrap; transition: all 0.2s ease; }
+        .nav-tab.active, .nav-tab:hover { background: rgba(56, 189, 248, 0.2); border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+
+        .card { background: var(--bg-card); backdrop-filter: var(--glass-blur); border: 1px solid var(--border-color); border-radius: 1rem; padding: 1.5rem; transition: all 0.25s ease; position: relative; overflow: hidden; }
+        .card:hover { border-color: var(--border-glow); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); }
+        .card-title { font-size: 1.25rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.75rem; }
+
+        .video-card { display: flex; flex-direction: column; justify-content: space-between; }
+        .video-btn { background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.4); color: #fca5a5; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s; }
+        .video-btn:hover { background: #ef4444; color: #fff; }
+
+        .chapter-box { background: rgba(255, 255, 255, 0.03); border-left: 3px solid var(--accent-cyan); padding: 1rem; border-radius: 0 0.5rem 0.5rem 0; margin-bottom: 1rem; }
+        .chapter-title { font-weight: 700; color: #38bdf8; margin-bottom: 0.25rem; font-size: 0.95rem; }
+        .chapter-concept { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.25rem; }
+        .chapter-takeaway { font-size: 0.82rem; color: #7dd3fc; font-weight: 600; }
+
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.875rem; }
+        th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { background: rgba(56, 189, 248, 0.1); color: #38bdf8; font-weight: 700; }
+
+        .diagram-box { background: #000000; border: 1px dashed var(--accent-cyan); border-radius: 0.5rem; padding: 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: #7dd3fc; white-space: pre; overflow-x: auto; margin: 1rem 0; line-height: 1.45; }
+    </style>
+</head>
+<body>
+
+    <header class="header-section">
+        <div class="header-container">
+            <div>
+                <span class="badge">CSE326 • Web Technologies • 100th Percentile Suite</span>
+                <h1 class="main-title">HTML5, CSS3, JavaScript, DOM & Web APIs</h1>
+                <p class="subtitle">Complete Master Study Guide, Textbooks Deep-Dive, Flowcharts & High-Yield Exam Formulas</p>
+            </div>
+            <div>
+                <a href="CSE326_Ultimate_Master_Study_Guide_and_Video_Hub.pdf" class="btn-action" target="_blank">📄 Download PDF Docket</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('textbooks')">📚 Textbooks & Deep Chapter Context</button>
+            <button class="nav-tab" onclick="showTab('videos')">📺 Curated Video Hub</button>
+            <button class="nav-tab" onclick="showTab('unit12')">🌐 Unit I & II: HTML5 & Forms</button>
+            <button class="nav-tab" onclick="showTab('unit3')">🎨 Unit III: CSS3, Box Model & Flex/Grid</button>
+            <button class="nav-tab" onclick="showTab('unit4')">⚙️ Unit IV: JavaScript Fundamentals</button>
+            <button class="nav-tab" onclick="showTab('unit5')">⚡ Unit V: DOM, Events & Web APIs</button>
+            <button class="nav-tab" onclick="showTab('unit6')">🚀 Unit VI: Deployment & GitHub Pages</button>
+            <button class="nav-tab" onclick="showTab('exam')">⚡ High-Yield Exam Hacks</button>
+        </div>
+
+        <!-- TAB: TEXTBOOKS -->
+        <div id="tab-textbooks" class="tab-content">
+            <div class="card">
+                <h2 class="card-title" style="margin-bottom: 1rem;">📖 Standard Reference Textbooks with Deep Chapter Context</h2>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Mastering HTML, CSS & JavaScript Web Publishing — Laura Lemay, Rafe Colburn, Jennifer Kyrnin (BPB)</div>
+                    <div class="chapter-concept"><strong>Ch 1 & 2 (Client-Server & HTML5 Structure):</strong> HTTP request-response cycle, MIME types, DOCTYPE declarations, head metadata, vector SVG vs raster images, semantic structuring (header, nav, main, article, section, aside, footer).</div>
+                    <div class="chapter-concept"><strong>Ch 5 & 6 (Forms & Accessibility):</strong> HTML5 input types, form validation attributes (pattern, required), ARIA roles, semantic data tables (thead, tbody, tfoot, colspan, rowspan).</div>
+                    <div class="chapter-takeaway">🎯 <strong>Exam Focus:</strong> Draw Client-Server HTTP cycle, HTML5 page structure tree, and write accessible forms with regex.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">HTML5 Black Book (Covers CSS3, JavaScript, XML, AJAX, jQuery) — DT Editorial Services (Wiley)</div>
+                    <div class="chapter-concept"><strong>Ch 7, 8 & 9 (CSS Engine & Selectors):</strong> CSS Specificity formula (a,b,c,d), Combinators, Pseudo-classes (:hover, :focus, :nth-child()), Pseudo-elements (::before, ::after).</div>
+                    <div class="chapter-concept"><strong>Ch 10 & 11 (Box Model, Flexbox & Grid):</strong> Standard vs border-box model math, Positioning (static, relative, absolute, fixed, sticky), 1D Flexbox axis alignments, 2D CSS Grid (repeat, minmax, auto-fit), CSS Variables, Keyframes.</div>
+                    <div class="chapter-takeaway">🎯 <strong>Exam Focus:</strong> Calculate Specificity math tuples, draw the CSS Box Model, and contrast Flexbox vs Grid with axis diagrams.</div>
+                </div>
+
+                <div class="chapter-box">
+                    <div class="chapter-title">Eloquent JavaScript (4th Ed) — Marijn Haverbeke / MDN Web Docs</div>
+                    <div class="chapter-concept"><strong>Ch 2, 3 & 4 (JS Engine & Scopes):</strong> Execution Context, Call Stack, Scoping (var vs let/const), Hoisting, Closures, Higher-Order functions (map, filter, reduce), Object destructuring.</div>
+                    <div class="chapter-concept"><strong>Ch 14, 15 & 18 (DOM & Browser APIs):</strong> DOM Tree, Event Bubbling vs Capturing, Event Delegation, Regex validation, localStorage vs sessionStorage vs Cookies, Fetch API with async/await, JSON handling.</div>
+                    <div class="chapter-takeaway">🎯 <strong>Exam Focus:</strong> Draw JS Event Loop / Call Stack, demonstrate Event Delegation, and write async Fetch API error-handled code.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: VIDEOS -->
+        <div id="tab-videos" class="tab-content" style="display:none;">
+            <div class="grid-3">
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit I & II • HTML5</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">HTML5 & Forms Masterclass</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Dave Gray complete beginner to advanced walkthrough of semantic HTML5, input types, and accessibility.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Dave+Gray+HTML+Full+Course+for+Beginners" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit III • CSS Specificity</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">CSS Specificity & Box Model</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Kevin Powell gold-standard guide on Specificity calculation (a,b,c,d) and border-box sizing resets.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Kevin+Powell+CSS+Specificity+and+Box+Model" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit III • Flexbox</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Flexbox Complete Guide</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Kevin Powell / Fireship visual breakdown of Main Axis vs Cross Axis, justify-content, and responsive navbars.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Kevin+Powell+Flexbox+CSS+Guide" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit III • CSS Grid</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">2D CSS Grid Layouts</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Web Dev Simplified visual breakdown of 2D Grid layouts, repeat(auto-fit, minmax(280px, 1fr)), and grid-template-areas.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Web+Dev+Simplified+CSS+Grid+Tutorial" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit IV • JavaScript Core</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Namaste JavaScript</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Akshay Saini legendary deep-dive into Execution Context, Call Stack, Hoisting, Scope Chain, and Closures.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Namaste+JavaScript+Akshay+Saini+Season+1" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit IV • Functional JS</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">map, filter & reduce</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Akshay Saini & Traversy Media guide on Higher-Order array methods and practical data transformations.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Akshay+Saini+map+filter+reduce+JavaScript" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit V • DOM & Events</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">DOM Manipulation & Events</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Traversy Media complete crash course on querySelector, Event Bubbling, and Event Delegation.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Traversy+Media+JavaScript+DOM+Crash+Course" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit V • Async & APIs</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">Fetch API & Async/Await</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Web Dev Simplified practical walkthrough of HTTP GET/POST, Promises, async/await, and JSON parsing.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Web+Dev+Simplified+Fetch+API+JavaScript" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+
+                <div class="card video-card">
+                    <div>
+                        <span class="badge">Unit VI • CI/CD</span>
+                        <h3 class="card-title" style="margin-top:0.5rem;">GitHub Pages Deployment</h3>
+                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Traversy Media end-to-end tutorial on hosting static web applications for free on GitHub Pages.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Deploy+Website+to+GitHub+Pages+Traversy+Media" target="_blank" class="video-btn">▶ Watch on YouTube</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT I & II -->
+        <div id="tab-unit12" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">🌐 Client-Server & DOM Rendering Pipeline</h3>
+                    <div class="diagram-box">[ BROWSER CLIENT ] ──► HTTP GET Request ──► [ WEB SERVER ]
+[ BROWSER CLIENT ] ◄── HTTP 200 OK HTML ◄── [ WEB SERVER ]
+          │
+          ▼
+HTML Parsing ──► DOM Tree ──┐
+                            ├─► RENDER TREE ──► LAYOUT (Reflow) ──► PAINT
+CSS Parsing  ──► CSSOM Tree ┘</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">📑 Semantic HTML5 Page Architecture</h3>
+                    <div class="diagram-box">+-------------------------------------------------------------+
+| &lt;header&gt; (Site branding &amp; &lt;nav&gt; Global Links)               |
++-------------------------------------------------------------+
+| &lt;main&gt; (Primary content)                                    |
+|  +-------------------------------------+  +---------------+ |
+|  | &lt;section&gt; (Thematic group)          |  | &lt;aside&gt;       | |
+|  |  &lt;article&gt; (Reusable self-contained)|  | (Sidebar, Ads)| |
+|  +-------------------------------------+  +---------------+ |
++-------------------------------------------------------------+
+| &lt;footer&gt; (Copyright, Legal, Social Links)                   |
++-------------------------------------------------------------+</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT III -->
+        <div id="tab-unit3" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">🎯 Specificity Formula: (a, b, c, d)</h3>
+                    <div class="diagram-box">a: Inline Style (style="...")             [Weight: 1000]
+b: ID Selector (#main-nav)                [Weight: 100]
+c: Class, Attribute, Pseudo-class (.btn)  [Weight: 10]
+d: Element, Pseudo-element (div, ::after) [Weight: 1]
+
+Examples:
+• #header .menu-link:hover -> (0, 1, 2, 0) = Score 120
+• .nav .nav-item           -> (0, 0, 2, 0) = Score 20
+• div p                    -> (0, 0, 0, 2) = Score 2</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">📦 CSS Box Model (Standard vs border-box)</h3>
+                    <div class="diagram-box">+-----------------------------------------------------+
+| MARGIN (Transparent outer space)                    |
+|  +-----------------------------------------------+  |
+|  | BORDER (Visible perimeter)                    |  |
+|  |  +-----------------------------------------+  |  |
+|  |  | PADDING (Inner breathing room)          |  |  |
+|  |  |  +-----------------------------------+  |  |  |
+|  |  |  | CONTENT (Width x Height)          |  |  |  |
+|  |  |  +-----------------------------------+  |  |  |
+|  |  +-----------------------------------------+  |  |
+|  +-----------------------------------------------+  |
++-----------------------------------------------------+
+* Universal Reset: *, *::before, *::after { box-sizing: border-box; }</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">📐 1D Flexbox vs 2D CSS Grid Layouts</h3>
+                <div class="diagram-box">FLEXBOX (1D Axis Layout):
+• Main Axis: justify-content (flex-start | center | space-between)
+• Cross Axis: align-items (flex-start | center | stretch)
+
+CSS GRID (2D Simultaneous Row & Column Layout):
+• Container: display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+• Gap: gap: 1.5rem;</div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT IV -->
+        <div id="tab-unit4" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">🧠 JS Execution Context & Memory Phase</h3>
+                    <div class="diagram-box">                    EXECUTION CONTEXT
+                           │
+    ┌──────────────────────┴──────────────────────┐
+    ▼                                             ▼
+[ MEMORY CREATION PHASE ]             [ CODE EXECUTION PHASE ]
+• Hoisting: var -> undefined          • Synchronous line-by-line
+• let/const -> Temporal Dead Zone     • Value assignment
+• Functions -> Full copy in memory    • Function Call -> New Context</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">🔄 var vs let vs const</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>var</th>
+                                <th>let / const</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Scope</strong></td><td>Function / Global</td><td><strong>Block Scope</strong> { ... }</td></tr>
+                            <tr><td><strong>Hoisting</strong></td><td>undefined</td><td><strong>Temporal Dead Zone (TDZ)</strong></td></tr>
+                            <tr><td><strong>Re-declare</strong></td><td>Allowed</td><td>❌ Syntax Error</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT V -->
+        <div id="tab-unit5" class="tab-content" style="display:none;">
+            <div class="grid-2">
+                <div class="card">
+                    <h3 class="card-title">⚡ DOM Event Propagation & Delegation</h3>
+                    <div class="diagram-box">1. CAPTURING PHASE (Window ──► Document ──► &lt;body&gt; ──► Target)
+2. TARGET PHASE (Fires on clicked element)
+3. BUBBLING PHASE (Target ──► &lt;body&gt; ──► Document ──► Window)
+
+EVENT DELEGATION (Single listener on parent):
+document.querySelector('#parent').addEventListener('click', (e) => {
+    if (e.target.matches('.child-btn')) {
+        handleAction(e.target.dataset.id);
+    }
+});</div>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">💾 Web Storage API (localStorage vs Cookies)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Storage Type</th>
+                                <th>Capacity</th>
+                                <th>Expiry</th>
+                                <th>Server Transmission</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>localStorage</strong></td><td>~5MB</td><td>Never (Manual clear)</td><td>No (Client only)</td></tr>
+                            <tr><td><strong>sessionStorage</strong></td><td>~5MB</td><td>On Tab Close</td><td>No (Client only)</td></tr>
+                            <tr><td><strong>Cookies</strong></td><td>~4KB</td><td>Configurable</td><td>Sent with every HTTP request</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT VI -->
+        <div id="tab-unit6" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">🚀 GitHub Pages CI/CD Deployment Flowchart</h3>
+                <div class="diagram-box">[ LOCAL REPOSITORY ]
+git add . ──► git commit -m "feat: Ready for production"
+       │
+       ▼
+git push origin main
+       │
+       ▼
+[ GITHUB CLOUD REPO ] ──► GitHub Actions / Pages Engine ──► [ LIVE HTTPS URL ]
+                                                           (username.github.io/repo)</div>
+            </div>
+        </div>
+
+        <!-- TAB: EXAM -->
+        <div id="tab-exam" class="tab-content" style="display:none;">
+            <div class="card">
+                <h3 class="card-title">⚡ 4-Tier 100-Percentile Answer Presentation Formula</h3>
+                <div class="diagram-box">+--------------------------------------------------------------------+
+| 1. FORMAL DEFINITION (1-2 crisp lines with key technical terms)    |
+| 2. LABELED ARCHITECTURAL DIAGRAM / DOM TREE (Neat boxed ASCII)     |
+| 3. COMPARATIVE TABLE / SYNTAX BREAKDOWN (Bold keywords)            |
+| 4. PRODUCTION-READY CODE SNIPPET (Demonstrates practical mastery)  |
++--------------------------------------------------------------------+</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Must-Know Exam Question</th>
+                            <th>Mandatory Diagram to Draw</th>
+                            <th>Scoring Trigger Keywords</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CSS Box Model Math</td><td>Nested Margin -> Border -> Padding -> Content</td><td>content-box vs border-box, universal reset (*).</td></tr>
+                        <tr><td>CSS Specificity</td><td>4-tier pyramid (a,b,c,d)</td><td>Inline (1000), ID (100), Class/Pseudo-class (10), Element (1).</td></tr>
+                        <tr><td>Flexbox vs CSS Grid</td><td>1D Axis vs 2D Matrix diagrams</td><td>Main/Cross axis, justify-content, repeat(auto-fit, minmax).</td></tr>
+                        <tr><td>JS Execution Context</td><td>Memory Phase vs Code Phase boxes</td><td>Hoisting, Temporal Dead Zone, Call Stack, Closures.</td></tr>
+                        <tr><td>Event Propagation</td><td>Capturing -> Target -> Bubbling diagram</td><td>Event Delegation, event.target.matches(), addEventListener.</td></tr>
+                        <tr><td>Fetch API & Async JS</td><td>Promise lifecycle / try-catch flow</td><td>async/await, response.ok, response.json(), error handling.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).style.display = 'block';
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ApexLearn: Engineering Student Curriculum Portal | 100-Percentile Hub</title>
+
+  <!-- SEO & Social Sharing Metadata -->
+  <meta name="description" content="Universal 100-Percentile Engineering Curriculum Portal covering CSE111, CHE110, CSE326, ECE120, INT108, MTH165, PHY175 with 89 Curated Video Masterclasses, 72 Viva Voce Flashcards, SGPA Calculator & Multilingual Support.">
+  <meta name="keywords" content="Engineering Curriculum, CSE111, CHE110, CSE326, ECE120, INT108, MTH165, PHY175, Viva Voce Flashcards, SGPA Calculator, Study Notes, Multilingual">
+  <meta name="author" content="Saikat Koner (Black Hat Coders 108)">
+  <meta name="theme-color" content="#0284c7">
+
+  <!-- Open Graph / WhatsApp / LinkedIn / Telegram Preview Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ApexLearn: Engineering Student Curriculum Portal">
+  <meta property="og:description" content="100-Percentile Master Engineering Hub with 89 Curated Video Tutorials, 72 3D Viva Flashcards, SGPA Calculator & Multilingual Support.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=630&fit=crop">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ApexLearn: Engineering Student Curriculum Portal">
+  <meta name="twitter:description" content="100-Percentile Master Engineering Hub with 89 Curated Video Tutorials, 72 3D Viva Flashcards, SGPA Calculator & Multilingual Support.">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-icon">🎓</div>
+        <div class="logo-text">
+          <h1 data-i18n="brand_title">ApexLearn Portal</h1>
+          <span data-i18n="brand_subtitle">100-Percentile Engineering Curriculum Hub</span>
+        </div>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Comprehensive Indian & Global Language Selector -->
+        <select id="langSelect" class="lang-select-box" title="Switch Language">
+          <optgroup label="🇮🇳 Major Indian Languages (भारतीय भाषाएं)">
+            <option value="hi">🇮🇳 हिन्दी (Hindi)</option>
+            <option value="bn">🇮🇳 বাংলা (Bengali)</option>
+            <option value="ta">🇮🇳 தமிழ் (Tamil)</option>
+            <option value="te">🇮🇳 తెలుగు (Telugu)</option>
+            <option value="mr">🇮🇳 मराठी (Marathi)</option>
+            <option value="gu">🇮🇳 ગુજરાતી (Gujarati)</option>
+            <option value="kn">🇮🇳 ಕನ್ನಡ (Kannada)</option>
+            <option value="ml">🇮🇳 മലയാളം (Malayalam)</option>
+            <option value="pa">🇮🇳 ਪੰਜਾਬੀ (Punjabi)</option>
+            <option value="or">🇮🇳 ଓଡ଼ିଆ (Odia)</option>
+            <option value="as">🇮🇳 অসমীয়া (Assamese)</option>
+            <option value="ur">🇮🇳 اردو (Urdu)</option>
+            <option value="sa">🇮🇳 संस्कृतम् (Sanskrit)</option>
+          </optgroup>
+          <optgroup label="🌐 Global Languages">
+            <option value="en" selected>🌐 English (EN)</option>
+            <option value="es">🇪🇸 Español (Spanish)</option>
+            <option value="fr">🇫🇷 Français (French)</option>
+            <option value="de">🇩🇪 Deutsch (German)</option>
+            <option value="ja">🇯🇵 日本語 (Japanese)</option>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-primary" onclick="openAddSubjectModal()">
+          <span>➕</span> <span data-i18n="add_subject">Add Subject</span>
+        </button>
+        <button class="btn btn-secondary" onclick="exportSubjectsJSON()">
+          <span>📥</span> <span data-i18n="export_json">Export JSON</span>
+        </button>
+        <button class="btn btn-secondary" onclick="triggerImportJSON()">
+          <span>📤</span> <span data-i18n="import_json">Import JSON</span>
+        </button>
+        <input type="file" id="jsonFileInput" style="display: none;" accept=".json" onchange="handleJSONFileImport(event)">
+
+        <button id="themeToggleBtn" class="btn btn-icon" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          ☀️ Light Mode
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Interactive Utility Toolbar -->
+  <div class="utility-toolbar">
+    <div class="utility-container">
+      <button class="tool-btn" onclick="openPomodoroModal()">
+        <span data-i18n="tools_pomodoro">⏱️ Pomodoro Timer</span>
+      </button>
+      <button class="tool-btn" onclick="openFlashcardModal()">
+        <span data-i18n="tools_flashcards">🎴 Viva Flashcards</span>
+      </button>
+      <button class="tool-btn" onclick="openGpaModal()">
+        <span data-i18n="tools_gpa">📊 GPA Calculator</span>
+      </button>
+      <button class="tool-btn" onclick="openFormulaModal()">
+        <span data-i18n="tools_formulas">⚡ Formula Bank</span>
+      </button>
+      <button class="tool-btn" onclick="openNotesModal()">
+        <span data-i18n="tools_notes">📓 Study Notes</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span data-i18n="hero_badge">✨ Complete 100-Percentile Academic Resource Ecosystem</span>
+      </div>
+      <h2 data-i18n="hero_title">Engineered for 100-Percentile Academic Excellence</h2>
+      <p data-i18n="hero_subtitle">
+        Unified student repository featuring interactive study dashboards, standard textbook mappings, visual architecture flowcharts, curated YouTube hubs, and comprehensive Viva Voce question banks.
+      </p>
+
+      <!-- Live Stats Counters -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div id="statTotalSubjects" class="stat-value">7</div>
+          <div class="stat-label" data-i18n="stat_subjects">Active Subjects</div>
+        </div>
+        <div class="stat-card">
+          <div id="statTotalCredits" class="stat-value">19</div>
+          <div class="stat-label" data-i18n="stat_credits">Total Credits</div>
+        </div>
+        <div class="stat-card">
+          <div id="statTotalVideos" class="stat-value">28+</div>
+          <div class="stat-label" data-i18n="stat_videos">Video Tutorials</div>
+        </div>
+        <div class="stat-card">
+          <div id="statTotalViva" class="stat-value">350+</div>
+          <div class="stat-label" data-i18n="stat_viva">Viva Voce Q&As</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter and Search Controls -->
+  <section class="filter-section">
+    <div class="search-bar-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" class="search-input" data-i18n-placeholder="search_placeholder" placeholder="Search by course code, title, topic, or department (e.g. 'CSE111', 'Hall Effect', 'Matrices', 'Python', 'Thevenin')...">
+    </div>
+
+    <div class="filter-pills">
+      <button class="pill active" data-dept="all" data-i18n="all_departments">All Departments</button>
+      <button class="pill" data-dept="Computer Science" data-i18n="dept_cse">💻 Computer Science (CSE/INT)</button>
+      <button class="pill" data-dept="Electronics" data-i18n="dept_ece">⚡ Electronics (ECE)</button>
+      <button class="pill" data-dept="Mathematics" data-i18n="dept_mth">📐 Mathematics (MTH)</button>
+      <button class="pill" data-dept="Physics" data-i18n="dept_phy">🔬 Physics (PHY)</button>
+      <button class="pill" data-dept="Chemistry" data-i18n="dept_che">🌱 Environmental / Chemistry (CHE)</button>
+    </div>
+  </section>
+
+  <!-- Main Subjects Grid -->
+  <main class="main-content">
+    <div id="subjectsGrid" class="subjects-grid">
+      <!-- Dynamically Rendered by js/app.js -->
+    </div>
+  </main>
+
+  <!-- Subject Detail Hub Drawer (Multi-Tabbed Interactive Dashboard) -->
+  <div id="subjectDrawer" class="drawer-overlay" onclick="if(event.target === this) closeSubjectDrawer()">
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <h3 id="drawerTitle" style="color: var(--text-bright); font-size: 1.25rem;">Course Detail Hub</h3>
+        <button class="btn btn-icon" onclick="closeSubjectDrawer()">✕</button>
+      </div>
+
+      <!-- Drawer Sub-Navigation Tabs -->
+      <div class="drawer-tabs-bar">
+        <button class="drawer-tab-btn active" onclick="switchDrawerTab('tabStrategy')">🗺️ Strategy Matrix</button>
+        <button class="drawer-tab-btn" onclick="switchDrawerTab('tabFlowcharts')">🎨 Visual Flowcharts</button>
+        <button class="drawer-tab-btn" onclick="switchDrawerTab('tabScoring')">🏆 4-Tier Scoring</button>
+        <button class="drawer-tab-btn" onclick="switchDrawerTab('tabSyllabus')">📖 Syllabus & Topics</button>
+        <button class="drawer-tab-btn" onclick="switchDrawerTab('tabTextbooks')">📚 Textbooks</button>
+        <button class="drawer-tab-btn" onclick="switchDrawerTab('tabVideos')">📺 Video Hub</button>
+        <button class="drawer-tab-btn" onclick="switchDrawerTab('tabViva')">🎯 Viva Bank</button>
+      </div>
+
+      <div id="drawerBody" class="drawer-body">
+        <!-- Dynamically rendered tab panes -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Subject Modal -->
+  <div id="addSubjectModal" class="modal-overlay" onclick="if(event.target === this) closeAddSubjectModal()">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 data-i18n="modal_add_title">➕ Add New Curriculum Subject</h3>
+        <button class="btn btn-icon" onclick="closeAddSubjectModal()">✕</button>
+      </div>
+      <form id="addSubjectForm" onsubmit="handleAddSubject(event)">
+        <div class="modal-body">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label data-i18n="course_code">Course Code</label>
+              <input type="text" id="newSubCode" class="form-control" placeholder="e.g. CSE205" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="course_title">Course Title</label>
+              <input type="text" id="newSubTitle" class="form-control" placeholder="e.g. Data Structures & Algorithms" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label data-i18n="department">Department</label>
+              <input type="text" id="newSubDept" class="form-control" placeholder="e.g. Computer Science" required>
+            </div>
+            <div class="form-group">
+              <label data-i18n="semester">Semester</label>
+              <input type="number" id="newSubSem" class="form-control" value="1" min="1" max="8" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>Credits</label>
+              <input type="number" id="newSubCredits" class="form-control" value="4" min="1" max="6" required>
+            </div>
+            <div class="form-group">
+              <label>Icon Emoji & Theme Color</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="newSubIcon" class="form-control" value="📘" style="width: 60px; text-align: center;">
+                <input type="color" id="newSubTheme" value="#0ea5e9" style="height: 38px; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; flex: 1;">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Course Description / Overview</label>
+            <textarea id="newSubDesc" class="form-control" rows="2" placeholder="Brief 1-2 sentence overview of the subject..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Syllabus Units & Topics (One unit per line: Title | Topic 1, Topic 2, Topic 3)</label>
+            <textarea id="newSubUnits" class="form-control" rows="4" placeholder="Unit I: Core Fundamentals | Basic Concepts, Standard Laws, Formulas&#10;Unit II: Advanced Principles | Analysis, Implementations, Case Studies"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" onclick="closeAddSubjectModal()" data-i18n="cancel">Cancel</button>
+          <button type="submit" class="btn btn-primary" data-i18n="save_subject">Save & Add Subject</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Pomodoro Timer Modal -->
+  <div id="pomodoroModal" class="modal-overlay" onclick="if(event.target === this) closePomodoroModal()">
+    <div class="modal-box" style="max-width: 480px; text-align: center;">
+      <div class="modal-header">
+        <h3>⏱️ Focus Pomodoro Timer</h3>
+        <button class="btn btn-icon" onclick="closePomodoroModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="pomo-modes">
+          <button class="pomo-mode-btn active" onclick="setPomoMode('work')">Study (25m)</button>
+          <button class="pomo-mode-btn" onclick="setPomoMode('shortBreak')">Short Break (5m)</button>
+          <button class="pomo-mode-btn" onclick="setPomoMode('longBreak')">Long Break (15m)</button>
+        </div>
+        <div id="pomoTimeDisplay" style="font-size: 4.5rem; font-weight: 900; font-family: monospace; color: var(--primary); margin: 1rem 0;">25:00</div>
+        <p id="pomoStatusText" style="color: var(--text-muted); font-size: 0.9rem;">Deep Focus Study Session</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1.5rem;">
+          <button id="pomoStartBtn" class="btn btn-primary" onclick="togglePomoTimer()" style="min-width: 120px;">▶ Start</button>
+          <button class="btn btn-secondary" onclick="resetPomoTimer()">🔄 Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3D Viva Voce Flashcard Mastery Quiz Simulator Modal -->
+  <div id="flashcardModal" class="modal-overlay" onclick="if(event.target === this) closeFlashcardModal()">
+    <div class="modal-box" style="max-width: 680px;">
+      <!-- Header -->
+      <div class="modal-header">
+        <div>
+          <h3 style="margin-bottom: 0.2rem;">🎴 3D Viva Voce Flashcard Mastery</h3>
+          <span id="fcProgressText" style="font-size: 0.8rem; color: var(--text-muted);">Card 1 of 12</span>
+        </div>
+        <button class="btn btn-icon" onclick="closeFlashcardModal()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Controls Bar -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+          <div style="display: flex; gap: 0.5rem; flex: 1; min-width: 260px;">
+            <select id="fcSubjectSelect" class="form-control" onchange="loadFlashcardsForSubject(this.value)">
+              <option value="all">🌟 All Subjects Mixed</option>
+            </select>
+            <button class="btn btn-secondary" onclick="shuffleFlashcards()" title="Shuffle Flashcard Deck">🔀 Shuffle</button>
+          </div>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            Mastery Score: <strong id="fcScoreDisplay" style="color: #34d399;">0 pts</strong>
+          </div>
+        </div>
+
+        <!-- Visual Progress Bar -->
+        <div class="fc-progress-track">
+          <div id="fcProgressBar" class="fc-progress-fill" style="width: 0%;"></div>
+        </div>
+
+        <!-- Active Flashcard View -->
+        <div id="fcCardActiveArea">
+          <div class="flashcard-wrapper" onclick="flipFlashcard()">
+            <div id="flashcardInner" class="flashcard-inner">
+              <!-- Front Side (Question) -->
+              <div class="flashcard-front">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <span id="fcSubjectTag" class="badge-pill" style="margin: 0;">CSE111</span>
+                  <span id="fcCardStatusBadge" class="fc-status-pill">❓ Unanswered</span>
+                </div>
+                <h3 id="fcQuestionText" style="font-size: 1.25rem; font-weight: 700; line-height: 1.45; color: var(--text-bright);">
+                  Click to Reveal Model Answer
+                </h3>
+                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem; display: flex; align-items: center; justify-content: center; gap: 0.35rem;">
+                  <span>👆 Click / Tap Card to Flip</span>
+                </div>
+              </div>
+
+              <!-- Back Side (Answer) -->
+              <div class="flashcard-back">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <span class="badge-pill" style="background: rgba(52, 211, 153, 0.2); color: #34d399; margin: 0;">Grade 'O' Standard Answer</span>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Self-Assess Below</span>
+                </div>
+                <p id="fcAnswerText" style="font-size: 1rem; line-height: 1.6; color: #f8fafc;">
+                  Model Grade 'O' explanation here.
+                </p>
+                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1.25rem; text-align: center;">
+                  (Click card to flip back)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Self-Assessment Rating Controls -->
+          <div style="margin-top: 1rem; background: var(--bg-card); padding: 0.75rem 1rem; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 0.6rem;">
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+              Did you know this question? (Rate to update score & advance):
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <button class="btn btn-outline" style="border-color: #ef4444; color: #ef4444;" onclick="rateCurrentCard(false)">
+                ❌ Needs Practice (0 pts)
+              </button>
+              <button class="btn btn-primary" style="background: #10b981; border-color: #10b981;" onclick="rateCurrentCard(true)">
+                ✅ Mastered (+10 pts)
+              </button>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem;">
+            <button class="btn btn-secondary btn-sm" onclick="prevFlashcard()">◀ Previous</button>
+            <span id="fcCardCountIndicator" style="font-size: 0.8rem; color: var(--text-muted);">Card 1 / 12</span>
+            <button class="btn btn-secondary btn-sm" onclick="nextFlashcard()">Next ▶</button>
+          </div>
+        </div>
+
+        <!-- End of Deck Completion View (Shown when deck finishes) -->
+        <div id="fcCompletionView" style="display: none; padding: 2rem 1rem; text-align: center;">
+          <div style="font-size: 3.5rem; margin-bottom: 0.5rem;">🏆</div>
+          <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--text-bright); margin-bottom: 0.5rem;">Flashcard Deck Completed!</h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+            You have reviewed all cards in this subject study set.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.75rem;">
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Cards Mastered</div>
+              <div id="fcFinalMastered" style="font-size: 1.75rem; font-weight: 800; color: #10b981;">0</div>
+            </div>
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Needs Review</div>
+              <div id="fcFinalMissed" style="font-size: 1.75rem; font-weight: 800; color: #ef4444;">0</div>
+            </div>
+            <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Mastery Score</div>
+              <div id="fcFinalScore" style="font-size: 1.75rem; font-weight: 800; color: var(--primary);">0 pts</div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="restartCurrentDeck()">🔄 Restart Deck</button>
+            <button id="fcReviewMissedBtn" class="btn btn-secondary" onclick="practiceMissedCards()">🔁 Practice Missed Cards</button>
+            <button class="btn btn-secondary" onclick="shuffleFlashcards()">🔀 Shuffle & Retry</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- SGPA / CGPA Target Calculator Modal -->
+  <div id="gpaModal" class="modal-overlay" onclick="if(event.target === this) closeGpaModal()">
+    <div class="modal-box" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3>📊 SGPA / CGPA Target Calculator</h3>
+        <button class="btn btn-icon" onclick="closeGpaModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+          Estimate your semester SGPA based on official 10-point relative grading (O=10, A+=9, A=8, B+=7, B=6, C=5, D=4, F=0).
+        </p>
+        <div id="gpaCoursesList" style="max-height: 280px; overflow-y: auto; margin-bottom: 1rem;">
+          <!-- Populated by JS -->
+        </div>
+        <div style="background: var(--bg-card); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Projected Semester SGPA</div>
+            <div id="calculatedGpaDisplay" style="font-size: 2.5rem; font-weight: 900; color: #34d399;">10.00</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.85rem; color: var(--text-muted);">Standing Honors</div>
+            <div id="gpaHonorsText" style="font-size: 1.1rem; font-weight: 700; color: var(--primary);">Grade 'O' (Outstanding)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formula & Invariant Bank Modal -->
+  <div id="formulaModal" class="modal-overlay" onclick="if(event.target === this) closeFormulaModal()">
+    <div class="modal-box" style="max-width: 750px;">
+      <div class="modal-header">
+        <h3>⚡ Master Formula & Invariant Bank</h3>
+        <button class="btn btn-icon" onclick="closeFormulaModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <input type="text" id="formulaSearchInput" class="form-control" placeholder="Search formulas by name or subject (e.g. 'Hall', 'King', 'Thevenin', 'chmod')..." oninput="filterFormulas(this.value)" style="margin-bottom: 1rem;">
+        <div id="formulasList" style="max-height: 380px; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem;">
+          <!-- Dynamically populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Study Notes Scratchpad Modal -->
+  <div id="notesModal" class="modal-overlay" onclick="if(event.target === this) closeNotesModal()">
+    <div class="modal-box" style="max-width: 700px;">
+      <div class="modal-header">
+        <h3>📓 Local Study Notes Scratchpad</h3>
+        <button class="btn btn-icon" onclick="closeNotesModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+          Your notes auto-save to browser local storage. Useful for quick formula jotting, viva notes, and revision checklists.
+        </p>
+        <textarea id="studyNotesTextarea" class="form-control" rows="10" placeholder="Type your personal exam notes, formulas, and revision reminders here..." oninput="saveStudyNotes()"></textarea>
+      </div>
+      <div class="modal-footer" style="justify-content: space-between;">
+        <span id="notesSavedIndicator" style="font-size: 0.8rem; color: #34d399;">✓ Saved to Local Storage</span>
+        <button class="btn btn-secondary" onclick="exportNotesFile()">💾 Download Notes (.txt)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modern Attractive Markdown In-Portal Reader Modal -->
+  <div id="markdownReaderModal" class="modal-overlay" onclick="if(event.target === this) closeMarkdownReader()">
+    <div class="modal-box md-viewer-box">
+      <!-- Top Navigation & Controls Bar -->
+      <div class="md-viewer-header">
+        <div class="md-viewer-title-wrap">
+          <span id="mdViewerBadge" class="badge-pill" style="background: var(--primary); color: #fff;">CSE111</span>
+          <h3 id="mdReaderTitle">Course Study Dossier</h3>
+          <span id="mdReadingStats" class="md-stats-badge">📖 Loading...</span>
+        </div>
+        <div class="md-viewer-actions">
+          <div class="md-search-wrap">
+            <input type="text" id="mdSearchInput" placeholder="🔍 Search in doc..." oninput="searchInsideMarkdown(this.value)">
+            <span id="mdSearchCount" class="md-search-count"></span>
+          </div>
+          <div class="md-font-controls">
+            <button class="btn-sm-icon" onclick="adjustMdFontSize(-1)" title="Decrease Font Size">A-</button>
+            <button class="btn-sm-icon" onclick="adjustMdFontSize(1)" title="Increase Font Size">A+</button>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="copyCurrentMarkdown()" title="Copy Markdown to Clipboard">📋 Copy</button>
+          <a id="mdDownloadBtn" href="#" download class="btn btn-secondary btn-sm" title="Download Markdown (.md) File">💾 .md</a>
+          <a id="mdPdfDownloadBtn" href="#" download class="btn btn-primary btn-sm" title="Download Official PDF Dossier">📄 PDF</a>
+          <button class="btn btn-icon" onclick="closeMarkdownReader()">✕</button>
+        </div>
+      </div>
+
+      <!-- Main Body: Sticky Table of Contents Sidebar + Rich Content Pane -->
+      <div class="md-viewer-body">
+        <aside id="mdTocSidebar" class="md-toc-sidebar">
+          <div class="md-toc-header">📑 Table of Contents</div>
+          <nav id="mdTocNav" class="md-toc-nav">
+            <!-- Dynamically populated TOC links -->
+          </nav>
+        </aside>
+        <main id="mdReaderContent" class="md-content-pane">
+          <!-- Rendered rich markdown with syntax highlighting, tables, callouts -->
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p data-i18n="footer_text">
+        🎓 ApexLearn Engineering Portal © 2026. Designed for 100-Percentile Grade 'O' Academic Success.
+      </p>
+      <div class="footer-links">
+        <a href="#top">⬆ Back to Top</a>
+        <a href="#" onclick="openGpaModal(); return false;">Target GPA Calculator</a>
+        <a href="#" onclick="openFlashcardModal(); return false;">3D Flashcards</a>
+        <a href="#" onclick="openFormulaModal(); return false;">Formula Bank</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data-subjects.js"></script>
+  <script src="js/data-markdown.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/interactive-tools.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- In-Portal HTML Dashboard Viewer Modal -->
+  <div id="htmlViewerModal" class="modal-overlay" onclick="if(event.target === this) closeHtmlViewerModal()">
+    <div class="modal-box" style="max-width: 95vw; width: 1400px; height: 92vh; display: flex; flex-direction: column; padding: 0; overflow: hidden;">
+      <div class="modal-header" style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); margin-bottom: 0;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <h3 id="htmlViewerTitle" style="font-size: 1.15rem; color: var(--text-bright); margin: 0;">In-Portal Subject Dashboard</h3>
+          <span id="htmlViewerBadge" class="badge-pill">Interactive Dashboard</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <a id="htmlViewerNewTabBtn" href="#" target="_blank" class="btn btn-secondary btn-sm" title="Open in New Tab">
+            ↗️ Open Full Tab
+          </a>
+          <button class="btn btn-icon" onclick="closeHtmlViewerModal()" title="Close Viewer">✕</button>
+        </div>
+      </div>
+      <div class="modal-body" style="flex: 1; padding: 0; position: relative; background: #0b1120;">
+        <iframe id="htmlViewerFrame" src="about:blank" style="width: 100%; height: 100%; border: none; display: block;" title="Subject Dashboard"></iframe>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

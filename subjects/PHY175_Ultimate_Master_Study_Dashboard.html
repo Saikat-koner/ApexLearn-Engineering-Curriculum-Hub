@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHY175: Physics for Engineers & Electronics Master Dashboard</title>
+  <style>
+    :root {
+      --bg-primary: #090d16;
+      --bg-secondary: #131b2e;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --accent-indigo: #6366f1;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --border-color: #334155;
+      --code-bg: #030712;
+    }
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --accent-cyan: #0891b2;
+      --accent-blue: #2563eb;
+      --accent-indigo: #4f46e5;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --border-color: #cbd5e1;
+      --code-bg: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    body { background-color: var(--bg-primary); color: var(--text-primary); transition: background-color 0.3s, color 0.3s; line-height: 1.6; }
+    header { background: linear-gradient(135deg, #0e2a47 0%, #090d16 100%); border-bottom: 1px solid var(--border-color); padding: 2rem 1.5rem; text-align: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(8px); }
+    .header-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .title-group h1 { font-size: 1.8rem; font-weight: 800; background: linear-gradient(to right, var(--accent-cyan), var(--accent-indigo)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .title-group p { color: var(--text-secondary); font-size: 0.95rem; margin-top: 0.25rem; }
+    .theme-toggle { background: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 9999px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+    .container { max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; }
+    .nav-tabs { display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border-color); margin-bottom: 2rem; scrollbar-width: thin; }
+    .tab-btn { background: var(--bg-secondary); color: var(--text-secondary); border: 1px solid var(--border-color); padding: 0.6rem 1.2rem; border-radius: 0.5rem; cursor: pointer; white-space: nowrap; font-weight: 600; transition: all 0.2s; }
+    .tab-btn.active { background: var(--accent-cyan); color: #ffffff; border-color: var(--accent-cyan); box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+    .card h2 { color: var(--accent-cyan); font-size: 1.4rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+    .card h3 { color: var(--accent-indigo); font-size: 1.15rem; margin: 1.25rem 0 0.5rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+    th, td { border: 1px solid var(--border-color); padding: 0.75rem 1rem; text-align: left; }
+    th { background: var(--bg-card); color: var(--accent-cyan); font-weight: 700; }
+    tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    pre { background: var(--code-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.88rem; color: #38bdf8; margin: 1rem 0; }
+    .btn { display: inline-block; background: var(--accent-cyan); color: #ffffff; padding: 0.5rem 1rem; border-radius: 0.375rem; text-decoration: none; font-weight: 600; margin-top: 0.5rem; transition: opacity 0.2s; border: none; cursor: pointer; }
+    .btn:hover { opacity: 0.9; }
+    .btn-yt { background: #dc2626; color: #ffffff; }
+    .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 700; background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); margin-right: 0.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .video-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1.25rem; margin-bottom: 1rem; }
+    .video-card h4 { color: var(--accent-emerald); font-size: 1.05rem; margin-bottom: 0.35rem; }
+    .video-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="title-group">
+        <h1>PHY175: Engineering Physics & Electronics Master Dashboard</h1>
+        <p>100-Percentile Comprehensive Study Guide, Video Master Hub & Technical Blueprint</p>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="showTab('overview')">📌 Master Overview & Textbooks</button>
+      <button class="tab-btn" onclick="showTab('videos')">📺 Video Master Hub</button>
+      <button class="tab-btn" onclick="showTab('unit1')">🔬 Unit I: Solid State Physics</button>
+      <button class="tab-btn" onclick="showTab('unit2')">⚡ Unit II: Electricity & Devices</button>
+      <button class="tab-btn" onclick="showTab('unit3')">🔢 Unit III: Number Systems & Logic</button>
+      <button class="tab-btn" onclick="showTab('unit4')">🎛️ Unit IV: Combinational Circuits</button>
+      <button class="tab-btn" onclick="showTab('unit5')">🔄 Unit V: Sequential Circuits</button>
+      <button class="tab-btn" onclick="showTab('unit6')">🤖 Unit VI: Arduino & Sensors</button>
+      <button class="tab-btn" onclick="showTab('viva')">🎯 Top 50 Viva Voce</button>
+      <button class="tab-btn" onclick="showTab('strategy')">🏆 100-Percentile Strategy</button>
+    </div>
+
+    <!-- TAB 1: OVERVIEW -->
+    <div id="overview" class="tab-content active">
+      <div class="card">
+        <h2>📚 Gold-Standard Textbooks & References</h2>
+        <table>
+          <thead>
+            <tr><th>Unit</th><th>Subject Area</th><th>Standard Textbook</th><th>Core Exam Takeaways</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unit I</strong></td>
+              <td>Solid State Physics & Energy Bands</td>
+              <td><strong>V.K. Mehta</strong> / <strong>S.O. Pillai</strong></td>
+              <td>Fermi-Dirac distribution, Hall effect full derivation (VH = BI/net), Effective mass, Solar cell Fill Factor & efficiency.</td>
+            </tr>
+            <tr>
+              <td><strong>Unit II</strong></td>
+              <td>Electricity, Diodes, BJT & Hardware</td>
+              <td><strong>Robert L. Boylestad</strong></td>
+              <td>Voltage/Current division, Rectifier efficiency (40.6% vs 81.2%), BJT CE modes, CMOS inverter, Optical fiber NA, CPU vs GPU.</td>
+            </tr>
+            <tr>
+              <td><strong>Unit III</strong></td>
+              <td>Number Systems & Logic Gates</td>
+              <td><strong>Thomas L. Floyd</strong> / <strong>M. Morris Mano</strong></td>
+              <td>2's complement arithmetic with overflow, Binary-Gray conversion, Universal NAND/NOR synthesis, 4-variable K-Maps with Don't Cares.</td>
+            </tr>
+            <tr>
+              <td><strong>Unit IV</strong></td>
+              <td>Combinational Logic Circuits</td>
+              <td><strong>Thomas L. Floyd</strong></td>
+              <td>Half/Full Adders (2 HAs + OR), Subtractors, MUX function generators, Decoders, Priority Encoders, 2-bit Magnitude Comparators.</td>
+            </tr>
+            <tr>
+              <td><strong>Unit V</strong></td>
+              <td>Sequential Logic Circuits</td>
+              <td><strong>Thomas L. Floyd</strong> / <strong>R.P. Jain</strong></td>
+              <td>Latches vs Flip-Flops (SR, JK, D, T), Master-Slave JK race-around fix, Conversion tables, Shift registers, Mod-N ripple counters.</td>
+            </tr>
+            <tr>
+              <td><strong>Unit VI</strong></td>
+              <td>Arduino Microcontroller & Sensors</td>
+              <td><strong>Richard Blum</strong> / <strong>Tero Karvinen</strong></td>
+              <td>ATmega328P architecture, 10-bit ADC resolution (4.88 mV), Ultrasonic HC-SR04 timing formula, LDR voltage divider, DHT11 40-bit protocol.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 2: VIDEOS -->
+    <div id="videos" class="tab-content">
+      <div class="card">
+        <h2>📺 Video Master Hub: Handpicked Tutorials & Deep Explanations</h2>
+        <div class="grid-2">
+          <div class="video-card">
+            <span class="badge">Unit I: Physics</span>
+            <h4>Hall Effect Derivation & Carrier Calculations</h4>
+            <p><strong>Channel:</strong> Dr. Gajendra Purohit / NPTEL | <strong>Focus:</strong> Lorentz force balance, Hall voltage VH = BI/(net), carrier concentration, and mobility.</p>
+            <a href="https://www.youtube.com/results?search_query=Hall+Effect+Derivation+Engineering+Physics+Dr+Gajendra+Purohit" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit I: Physics</span>
+            <h4>Fermi-Dirac Distribution & Band Theory</h4>
+            <p><strong>Channel:</strong> Gate Smashers | <strong>Focus:</strong> f(E) step function at 0K, Fermi level shift in doped semiconductors, Direct vs Indirect bandgap.</p>
+            <a href="https://www.youtube.com/results?search_query=Fermi+Dirac+Distribution+Band+Theory+of+Solids+Gate+Smashers" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit II: Diodes</span>
+            <h4>PN Junction Characteristics & Rectifiers</h4>
+            <p><strong>Channel:</strong> All About Electronics | <strong>Focus:</strong> Diode equation, Half-wave vs Full-wave Bridge rectifiers, ripple factor, and PIV.</p>
+            <a href="https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics+Rectifiers" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit II: Transistors</span>
+            <h4>BJT CE Configuration & CMOS Inverter</h4>
+            <p><strong>Channel:</strong> Neso Academy | <strong>Focus:</strong> Transistor active/cutoff/saturation modes, α and β relations, and CMOS zero static power operation.</p>
+            <a href="https://www.youtube.com/results?search_query=BJT+Working+Principle+CE+Configuration+CMOS+Inverter+Neso+Academy" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit III: Digital Logic</span>
+            <h4>2's Complement Arithmetic & 4-Var K-Maps</h4>
+            <p><strong>Channel:</strong> Neso Academy | <strong>Focus:</strong> Binary subtraction, overflow rules, Gray codes, and 4-variable K-Map minimization with Don't Care 'X'.</p>
+            <a href="https://www.youtube.com/results?search_query=Neso+Academy+K+Map+Minimization+4+Variables+Dont+Care" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit IV: Combinational</span>
+            <h4>Full Adder, MUX & 2-Bit Magnitude Comparator</h4>
+            <p><strong>Channel:</strong> Neso Academy | <strong>Focus:</strong> Full adder circuit via 2 HAs + OR, 4:1 MUX logic generator, and comparator boolean equations.</p>
+            <a href="https://www.youtube.com/results?search_query=Neso+Academy+Half+Adder+Full+Adder+Subtractor+Logic+Circuit" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit V: Sequential</span>
+            <h4>Master-Slave JK Flip-Flop & Race-Around Fix</h4>
+            <p><strong>Channel:</strong> Neso Academy | <strong>Focus:</strong> Level-triggered JK toggle race, Master-Slave isolation, and systematic conversion table procedures.</p>
+            <a href="https://www.youtube.com/results?search_query=Neso+Academy+SR+JK+D+T+Flip+Flop+Master+Slave+Race+Around" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+
+          <div class="video-card">
+            <span class="badge">Unit VI: Embedded</span>
+            <h4>Arduino UNO Pinout & Sensor Interfacing</h4>
+            <p><strong>Channel:</strong> How To Mechatronics | <strong>Focus:</strong> ATmega328P architecture, 10-bit ADC, HC-SR04 ultrasonic timing formula, LDR, and DHT11.</p>
+            <a href="https://www.youtube.com/results?search_query=Arduino+Sensors+Interfacing+HC-SR04+LDR+DHT11+How+To+Mechatronics" target="_blank" class="btn btn-yt">▶ Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: UNIT I -->
+    <div id="unit1" class="tab-content">
+      <div class="card">
+        <h2>🔬 Unit I: Solid State Physics, Energy Bands & Hall Effect</h2>
+        <h3>1. Hall Effect Derivation & Force Balance</h3>
+        <pre><code>Force Balance:       e · E_H = e · v_d · B  ===>  E_H = v_d · B
+Current Density:     J = n · e · v_d = I / (w · t) ===> v_d = I / (n · e · w · t)
+Hall Voltage:        V_H = E_H · w = (B · I) / (n · e · t)
+Hall Coefficient:    R_H = 1 / (n · e)  ===>  V_H = (R_H · B · I) / t
+Carrier Mobility:    μ = σ · R_H</code></pre>
+        <h3>2. Fermi-Dirac Distribution Function</h3>
+        <pre><code>f(E) = 1 / [ 1 + exp((E - E_F) / (k_B · T)) ]
+• At T = 0 K: f(E) = 1 (E < E_F), f(E) = 0 (E > E_F)
+• At T > 0 K: At E = E_F, f(E_F) = 0.5 (50% probability of occupancy)</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 4: UNIT II -->
+    <div id="unit2" class="tab-content">
+      <div class="card">
+        <h2>⚡ Unit II: Fundamentals of Electricity & Devices</h2>
+        <h3>1. Circuit Laws & Rectifier Formulas</h3>
+        <pre><code>• Voltage Division: V₁ = V_in · [ R₁ / (R₁ + R₂) ]
+• Current Division: I₁ = I_total · [ R₂ / (R₁ + R₂) ]
+• Half-Wave Rectifier: Efficiency η = 40.6%, Ripple Factor γ = 1.21, PIV = V_m
+• Full-Wave Bridge:    Efficiency η = 81.2%, Ripple Factor γ = 0.482, PIV = V_m</code></pre>
+        <h3>2. Optical Fiber Numerical Aperture (NA)</h3>
+        <pre><code>• Numerical Aperture:  NA = sin(θ_a) = √(n₁² - n₂²) = n₁ √(2Δ)
+• Acceptance Angle:    θ_a = arcsin(NA)
+• Fractional Change:   Δ = (n₁ - n₂) / n₁</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 5: UNIT III -->
+    <div id="unit3" class="tab-content">
+      <div class="card">
+        <h2>🔢 Unit III: Number Systems & Logic Gates</h2>
+        <h3>1. Gray Code Conversions</h3>
+        <pre><code>• Binary to Gray: G_n = B_n, G_i = B_(i+1) ⊕ B_i
+• Gray to Binary: B_n = G_n, B_i = B_(i+1) ⊕ G_i</code></pre>
+        <h3>2. Universal Gate Synthesis (NAND Only)</h3>
+        <pre><code>• NOT:  A' = (A · A)'                         [1 NAND]
+• AND:  A · B = ((A · B)')'                   [2 NANDs]
+• OR:   A + B = (A' · B')'                    [3 NANDs]
+• XOR:  A ⊕ B = ((A · (AB)')' · (B · (AB)')')' [4 NANDs]</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 6: UNIT IV -->
+    <div id="unit4" class="tab-content">
+      <div class="card">
+        <h2>🎛️ Unit IV: Combinational Logic Circuits</h2>
+        <h3>1. Full Adder Boolean Equations</h3>
+        <pre><code>• Sum:        S = A ⊕ B ⊕ C_in
+• Carry Out:  C_out = A·B + C_in·(A ⊕ B)
+Implemented with exactly 2 Half Adders and 1 OR Gate.</code></pre>
+        <h3>2. 2-Bit Magnitude Comparator Equations</h3>
+        <pre><code>Let x₁ = (A₁ ⊕ B₁)', x₀ = (A₀ ⊕ B₀)':
+• (A = B) = x₁ · x₀
+• (A > B) = A₁·B₁' + x₁·A₀·B₀'
+• (A < B) = A₁'·B₁ + x₁·A₀'·B₀</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 7: UNIT V -->
+    <div id="unit5" class="tab-content">
+      <div class="card">
+        <h2>🔄 Unit V: Sequential Logic Circuits</h2>
+        <h3>1. Flip-Flop Characteristic Equations</h3>
+        <pre><code>• SR Flip-Flop: Q_next = S + R'·Q        (Forbidden state: S=1, R=1)
+• JK Flip-Flop: Q_next = J·Q' + K'·Q     (Toggle at J=1, K=1)
+• D Flip-Flop:  Q_next = D               (Data / Delay storage)
+• T Flip-Flop:  Q_next = T ⊕ Q           (Toggle / Frequency Divider)</code></pre>
+        <h3>2. Master-Slave JK Race-Around Resolution</h3>
+        <pre><code>• Master FF: Enabled on Clock HIGH (CLK = 1), samples J and K inputs.
+• Slave FF:  Enabled on Clock LOW (CLK' = 1), transfers Master state to Q.
+• Isolates inputs from outputs, completely eliminating race-around toggling.</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 8: UNIT VI -->
+    <div id="unit6" class="tab-content">
+      <div class="card">
+        <h2>🤖 Unit VI: Arduino Microcontroller & Sensors</h2>
+        <h3>1. Arduino UNO Hardware Specs</h3>
+        <pre><code>• Microcontroller: ATmega328P (16 MHz Clock, 32KB Flash, 2KB SRAM)
+• Digital Pins:    14 Pins (PWM on ~3, 5, 6, 9, 10, 11)
+• Analog Inputs:   6 Pins (A0-A5), 10-bit ADC (Resolution = 5V / 1023 = 4.887 mV)</code></pre>
+        <h3>2. Ultrasonic Sensor Distance Formula</h3>
+        <pre><code>Distance d = (Speed of Sound × Time T) / 2
+Distance d = (0.034 cm/μs × T μs) / 2 = (T / 58) cm</code></pre>
+      </div>
+    </div>
+
+    <!-- TAB 9: VIVA VOCE -->
+    <div id="viva" class="tab-content">
+      <div class="card">
+        <h2>🎯 Top 50 Master Viva Voce Questions & Answers</h2>
+        <table>
+          <thead>
+            <tr><th>#</th><th>Viva Voce Question</th><th>Exact High-Yield Answer</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>What is the Hall Effect?</td><td>Generation of a transverse electric potential (Hall voltage V_H) across a current-carrying conductor in a perpendicular magnetic field due to Lorentz force deflection.</td></tr>
+            <tr><td>2</td><td>Why does CMOS consume zero static power?</td><td>Because PMOS and NMOS are complementary; one transistor is always OFF for any stable logic state, cutting off the DC path from V_DD to GND.</td></tr>
+            <tr><td>3</td><td>What is the race-around condition in JK flip-flops?</td><td>When J=1, K=1 and clock pulse width t_p >= t_pd, causing output to toggle repeatedly and unpredictably during clock HIGH state.</td></tr>
+            <tr><td>4</td><td>State the Full Adder carry equation.</td><td>C_out = A·B + C_in·(A ⊕ B).</td></tr>
+            <tr><td>5</td><td>What is the ADC resolution of Arduino UNO?</td><td>10-bit resolution = 5V / 1023 ≈ 4.887 mV/step.</td></tr>
+            <tr><td>6</td><td>Define Numerical Aperture of an optical fiber.</td><td>Light gathering capacity: NA = sin(θ_a) = √(n₁² - n₂²).</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TAB 10: STRATEGY -->
+    <div id="strategy" class="tab-content">
+      <div class="card">
+        <h2>🏆 100-Percentile 4-Tier Exam Scoring Strategy</h2>
+        <table>
+          <thead><tr><th>Tier</th><th>Action Protocol</th><th>Scoring Target</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Tier 1: Formula Defense</strong></td><td>Write standard general equations with physical constant definitions before numerical substitution.</td><td>Guaranteed 40% step marks.</td></tr>
+            <tr><td><strong>Tier 2: Visual Schematics</strong></td><td>Draw labeled 3D Hall effect slabs and clear gate-level circuit schematics.</td><td>Secures examiner confidence.</td></tr>
+            <tr><td><strong>Tier 3: Invariant Checks</strong></td><td>Verify K-Map grouping with Don't Cares and check flip-flop excitation tables.</td><td>Eliminates 100% calculation errors.</td></tr>
+            <tr><td><strong>Tier 4: Answer Boxing</strong></td><td>Box final answers clearly with SI units (m³/C, cm, mV).</td><td>Secures 100/100 Marks (Grade 'O').</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      event.target.classList.add('active');
+    }
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+    }
+  </script>
+</body>
+</html>
