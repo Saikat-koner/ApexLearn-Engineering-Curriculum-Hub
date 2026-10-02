@@ -1,9 +1,9 @@
 # 🎓 ApexLearn: Engineering Student Curriculum Portal & Master Study Hub
 
-[![Grade](https://img.shields.io/badge/Academic%20Target-Grade%20'O'%20(100th%20Percentile)-10b981?style=for-the-badge&logo=target)](https://github.com/Saikat-K/ApexLearn-Engineering-Curriculum-Hub)
-[![Credits](https://img.shields.io/badge/Total%20Credits-19%20Semester%20Credits-0ea5e9?style=for-the-badge)](https://github.com/Saikat-K/ApexLearn-Engineering-Curriculum-Hub)
-[![Offline](https://img.shields.io/badge/Offline%20First-100%25%20Zero%20CORS%20Barrier-f59e0b?style=for-the-badge&logo=offline)](https://github.com/Saikat-K/ApexLearn-Engineering-Curriculum-Hub)
-[![Languages](https://img.shields.io/badge/Languages-13%20Indian%20+%205%20Global-8b5cf6?style=for-the-badge)](https://github.com/Saikat-K/ApexLearn-Engineering-Curriculum-Hub)
+[![Grade](https://img.shields.io/badge/Academic%20Target-Grade%20'O'%20(100th%20Percentile)-10b981?style=for-the-badge&logo=target)](https://github.com/Saikat-koner/ApexLearn-Engineering-Curriculum-Hub)
+[![Credits](https://img.shields.io/badge/Total%20Credits-19%20Semester%20Credits-0ea5e9?style=for-the-badge)](https://github.com/Saikat-koner/ApexLearn-Engineering-Curriculum-Hub)
+[![Offline](https://img.shields.io/badge/Offline%20First-100%25%20Zero%20CORS%20Barrier-f59e0b?style=for-the-badge&logo=offline)](https://github.com/Saikat-koner/ApexLearn-Engineering-Curriculum-Hub)
+[![Languages](https://img.shields.io/badge/Languages-13%20Indian%20+%205%20Global-8b5cf6?style=for-the-badge)](https://github.com/Saikat-koner/ApexLearn-Engineering-Curriculum-Hub)
 
 > **ApexLearn Portal** is a high-performance, responsive engineering curriculum hub engineered for undergraduate students. Covering all 7 core first-year university engineering courses, it combines visual architecture flowcharts, 4-tier examination scoring rubrics, 89 handpicked video masterclasses, 72 3D Viva Voce flashcards, and an in-portal Markdown study reader.
 
