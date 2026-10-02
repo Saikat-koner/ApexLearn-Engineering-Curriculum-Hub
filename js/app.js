@@ -480,39 +480,94 @@ function renderDrawerTabContent() {
       ${textbooksHtml}
     `;
   } else if (activeDrawerTabName === 'tabVideos') {
-    // Video Master Hub
+    // Video Master Hub with Timeline, Duration & Completion Tracking
+    let watchedSet = new Set();
+    try {
+      const stored = localStorage.getItem(`apex_watched_vids_${sub.code}`);
+      if (stored) watchedSet = new Set(JSON.parse(stored));
+    } catch (e) {}
+
+    const totalVids = sub.videos ? sub.videos.length : 0;
+    const watchedCount = watchedSet.size;
+    const completionPercent = totalVids > 0 ? Math.round((watchedCount / totalVids) * 100) : 0;
+
+    // Calculate total duration in hours/mins
+    let totalMinutes = 0;
+    if (sub.videos) {
+      sub.videos.forEach(v => {
+        const match = (v.duration || '').match(/(\d+)/);
+        if (match) totalMinutes += parseInt(match[1], 10);
+        else totalMinutes += 25;
+      });
+    }
+    const totalHours = Math.floor(totalMinutes / 60);
+    const remMins = totalMinutes % 60;
+    const totalDurationStr = totalHours > 0 ? `${totalHours}h ${remMins}m` : `${remMins}m`;
+
     let videosHtml = '';
     if (sub.videos && sub.videos.length > 0) {
-      videosHtml = sub.videos.map((v, vidx) => `
-        <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 1.15rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 0.85rem; box-shadow: var(--shadow-sm); transition: transform 0.2s, border-color 0.2s;" onmouseenter="this.style.borderColor='var(--primary)'" onmouseleave="this.style.borderColor='var(--border)'">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.4rem; flex-wrap: wrap;">
-            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
-              <span class="badge-pill" style="font-size: 0.72rem; background: var(--primary-glow); color: var(--primary);">${v.unit || 'Core Video'}</span>
-              <strong style="color: var(--text-bright); font-size: 1rem;">${v.title}</strong>
+      videosHtml = sub.videos.map((v, vidx) => {
+        const isWatched = watchedSet.has(v.url || v.title);
+        const cardClass = isWatched ? 'video-card-item watched' : 'video-card-item';
+        return `
+          <div class="${cardClass}" id="vid_card_${sub.code}_${vidx}">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;" title="Toggle Completion">
+                  <input type="checkbox" class="video-watch-checkbox" ${isWatched ? 'checked' : ''} onchange="toggleVideoCompleted('${sub.code}', '${v.url || v.title}', this, 'vid_card_${sub.code}_${vidx}')">
+                  <span style="font-size: 0.75rem; color: ${isWatched ? '#10b981' : 'var(--text-muted)'}; font-weight: 700;">${isWatched ? '✓ Completed' : 'Mark Done'}</span>
+                </label>
+                <span class="video-timeline-badge">📅 ${v.timeline || 'Semester Roadmap'}</span>
+                <span class="video-duration-badge">⏱️ ${v.duration || '~25 mins'}</span>
+                <span class="video-priority-badge">${v.priority || '⭐ Core Topic'}</span>
+              </div>
+              <a href="${v.url}" target="_blank" class="btn btn-primary btn-sm" style="background: #dc2626; border-color: #dc2626; color: white; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700;" title="Open YouTube Tutorial">
+                <span>▶ Watch Video</span>
+              </a>
             </div>
-            <a href="${v.url}" target="_blank" class="btn btn-primary btn-sm" style="background: #dc2626; border-color: #dc2626; color: white; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700;" title="Open YouTube Tutorial">
-              <span>▶ Watch Video</span>
-            </a>
+
+            <div style="margin-bottom: 0.4rem;">
+              <strong style="color: var(--text-bright); font-size: 1.05rem; display: block; margin-bottom: 0.2rem;">${v.title}</strong>
+              <div style="font-size: 0.82rem; color: var(--text-muted);">
+                📺 <strong>Creator / Channel:</strong> <span style="color: var(--text-secondary);">${v.channel || 'Curated Faculty'}</span> • <strong>Syllabus Unit:</strong> <span style="color: var(--primary);">${v.unit || 'Core Unit'}</span>
+              </div>
+            </div>
+
+            ${v.focus ? `<p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.55; margin: 0; background: rgba(255,255,255,0.02); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); border-left: 3px solid var(--primary);">${v.focus}</p>` : ''}
           </div>
-          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.35rem;">
-            📺 <strong>Channel / Creator:</strong> <span style="color: var(--text-secondary);">${v.channel || 'Curated Channel'}</span>
-          </div>
-          ${v.focus ? `<p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin: 0; background: rgba(255,255,255,0.02); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); border-left: 3px solid var(--primary);">${v.focus}</p>` : ''}
-        </div>
-      `).join('');
+        `;
+      }).join('');
     } else {
       videosHtml = `<p style="color: var(--text-muted); padding: 1.5rem; text-align: center;">Curated video tutorials available in master study hub.</p>`;
     }
 
     contentHtml = `
       ${topActionsHtml}
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
-        <h4 style="color: var(--primary); margin: 0;">📺 Curated Video Master Hub (${sub.videos ? sub.videos.length : 0} Tutorials)</h4>
-        <span class="badge-pill" style="background: rgba(220, 38, 38, 0.15); color: #f87171; border-color: rgba(220, 38, 38, 0.3);">100% High-Yield Syllabus Coverage</span>
+
+      <!-- Video Course Completion Overview Banner -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow-sm);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+          <div>
+            <h4 style="color: var(--primary); margin: 0 0 0.25rem;">📺 Curated Video Master Hub (${totalVids} Core Tutorials)</h4>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Total Estimated Video Study Load: <strong style="color: #fbbf24;">~${totalDurationStr}</strong> • 14-Week Semester Sprint Plan</span>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Course Video Progress</div>
+            <strong id="vidProgressHeader_${sub.code}" style="font-size: 1.15rem; color: #10b981;">${watchedCount} / ${totalVids} Watched (${completionPercent}%)</strong>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 9999px; overflow: hidden;">
+          <div id="vidProgressBar_${sub.code}" style="width: ${completionPercent}%; height: 100%; background: linear-gradient(90deg, var(--primary), #10b981); border-radius: 9999px; transition: width 0.3s ease;"></div>
+        </div>
       </div>
-      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem;">
-        Complete library of handpicked YouTube engineering tutorials, numerical derivations, and animated walkthroughs for ${sub.code}.
-      </p>
+
+      <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Follow the semester roadmap below. Tick the checkboxes as you complete each video lecture:</span>
+        <button class="btn btn-secondary btn-sm" onclick="resetVideoProgress('${sub.code}')" style="font-size: 0.75rem;">🔄 Reset Video Tracker</button>
+      </div>
+
       ${videosHtml}
     `;
   } else if (activeDrawerTabName === 'tabViva') {

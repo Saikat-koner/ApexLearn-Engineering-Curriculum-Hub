@@ -132,92 +132,156 @@
             </div>
         </div>
 
-        <!-- TAB: VIDEOS -->
+                <!-- TAB: VIDEOS -->
         <div id="tab-videos" class="tab-content" style="display:none;">
-            <div class="grid-3">
-                <div class="card video-card">
+            <div style="background: rgba(14,165,233,0.08); border: 1px solid rgba(14,165,233,0.25); border-radius: 0.75rem; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
                     <div>
-                        <span class="badge">Units 1-2 • Basics</span>
-                        <h3 class="card-title" style="margin-top:0.5rem;">Python Setup & Flow Control</h3>
-                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer comprehensive tutorials on environment setup, types, operators, and loops with else clauses.</p>
+                        <h3 style="color: #38bdf8; margin: 0 0 0.35rem;">📺 Python Programming & Problem Solving — Video Masterclass Hub</h3>
+                        <span style="font-size: 0.88rem; color: #94a3b8;">Total Study Load: <strong style="color: #fbbf24;">8 Video Tutorials (~4h 58m)</strong> • Calibrated 14-Week Semester Plan</span>
                     </div>
-                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Tutorial+Beginners" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
-                </div>
-
-                <div class="card video-card">
-                    <div>
-                        <span class="badge">Unit 3 • Data Structs</span>
-                        <h3 class="card-title" style="margin-top:0.5rem;">Lists, Dicts & Slicing</h3>
-                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer breakdown of list comprehensions, dictionary hashing, and shallow vs deep copy.</p>
-                    </div>
-                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Lists+Tuples+and+Dictionaries" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
-                </div>
-
-                <div class="card video-card">
-                    <div>
-                        <span class="badge">Units 4-5 • OOP & Func</span>
-                        <h3 class="card-title" style="margin-top:0.5rem;">Functions, Scope & OOP</h3>
-                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer & Telusko masterclasses on LEGB scope, closures, decorators, C3 MRO, and dunder magic methods.</p>
-                    </div>
-                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+OOP+Tutorials" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
-                </div>
-
-                <div class="card video-card">
-                    <div>
-                        <span class="badge">Unit 6 • Files & Regex</span>
-                        <h3 class="card-title" style="margin-top:0.5rem;">File I/O, Pickle & Regex</h3>
-                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Corey Schafer tutorials on with open() context managers, binary pickling, and regex pattern scraping.</p>
-                    </div>
-                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Regular+Expressions" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
-                </div>
-
-                <div class="card video-card">
-                    <div>
-                        <span class="badge">Practicals • Lab</span>
-                        <h3 class="card-title" style="margin-top:0.5rem;">All 15 Lab Practicals</h3>
-                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Gate Smashers & Jenny's Lectures complete code walkthrough of all 15 university lab experiments.</p>
-                    </div>
-                    <a href="https://www.youtube.com/results?search_query=Python+Programming+Lab+Practicals+Gate+Smashers" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
-                </div>
-
-                <div class="card video-card">
-                    <div>
-                        <span class="badge">Viva • Interview</span>
-                        <h3 class="card-title" style="margin-top:0.5rem;">Top 75 Viva Voce Bank</h3>
-                        <p style="color:#cbd5e1; font-size:0.85rem; margin-top:0.5rem;">Gate Smashers top external examiner viva questions, tricky syntax pitfalls, and output predictions.</p>
-                    </div>
-                    <a href="https://www.youtube.com/results?search_query=Python+Programming+Viva+Voce+Questions+Gate+Smashers" target="_blank" class="video-btn">▶ Watch Video Lectures</a>
+                    <span class="badge" style="background: rgba(16,185,129,0.2); color: #34d399; font-size: 0.85rem; padding: 0.4rem 0.85rem; border: 1px solid rgba(16,185,129,0.4);">
+                        🎯 100-Percentile Grade 'O' Syllabus Mapping
+                    </span>
                 </div>
             </div>
-        </div>
-
-        <!-- TAB: UNITS THEORY -->
-        <div id="tab-units" class="tab-content" style="display:none;">
-            <div class="card">
-                <h3 class="card-title">🧩 Unit-by-Unit Deep Theoretical Invariants & Memory Models</h3>
-                <div class="diagram-box">CPYTHON COMPILATION & EXECUTION PIPELINE:
-Source Code (.py) ──► AST ──► Bytecode (.pyc) ──► Python Virtual Machine (PVM) ──► Native CPU
-
-MEMORY MANAGEMENT & GC:
-• Reference Counting (ob_refcnt == 0 -> deallocated instantly)
-• Generational Cyclic GC (Gen 0, Gen 1, Gen 2) for reference cycles
-• GIL (Global Interpreter Lock): Restricts CPython bytecode execution to 1 thread
-
-LEGB SCOPE LOOKUP:
-Local (L) ──► Enclosing (E) ──► Global (G) ──► Built-in (B)
-
-PASS-BY-OBJECT-REFERENCE (CALL-BY-SHARING):
-• Immutable (int, str, tuple): Rebinding inside function creates new local pointer
-• Mutable (list, dict): In-place mutation directly alters the shared heap object
-
-MULTIPLE INHERITANCE C3 LINEARIZATION (MRO):
-L(C) = C + merge(L(P1), L(P2), ..., P1 P2 ...)
-
-EXCEPTION HANDLING LIFECYCLE:
-try: risky_code()
-except SpecificError as e: handle_error()
-else: runs_only_if_no_error_occurred()
-finally: always_executes_guaranteed_cleanup()</div>
+            <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 1–2 • PVM & Control Flow</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 35 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">⭐ High-Yield Core Topic</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Corey Schafer Python Programming Tutorial</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Corey Schafer / Telusko</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Unit I & II: Python Setup & Flow Control</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">Python environment setup, PVM model, conditionals, `while`/`for` loops, loop `else` clauses.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Tutorial+Beginners" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 3–4 • Lists & Mutability</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 40 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">🔥 Mandatory Exam Question</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Corey Schafer Python Lists Tuples and Dictionaries</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Corey Schafer / Chai aur Code</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Unit III: Strings, Lists, Tuples & Dicts</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">Slicing tricks, list comprehensions, dictionary hashing, and shallow vs deep copying.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Lists+Tuples+and+Dictionaries" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 5–6 • Functions & Scopes</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 35 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">🔥 Mandatory Exam Question</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Telusko Python Functions and Recursion</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Telusko (Navin Reddy)</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Unit IV: Functions, LEGB Scope & Recursion</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">`*args`, `kwargs`, LEGB variable scoping, closures, decorators, and call stack visualization for recursive algorithms.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Telusko+Python+Functions+Arguments+Recursion" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 8–9 • Python OOP & MRO</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 45 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">🔥 Mandatory Exam Question</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Corey Schafer Python OOP Tutorials</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Corey Schafer / FreeCodeCamp</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Unit V: Object-Oriented Programming (OOP)</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">Classes, instances, inheritance, method overriding, `super()`, MRO C3 linearization, and magic/dunder methods.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+OOP+Tutorials" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 10 • File I/O & Pickling</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 30 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">⭐ High-Yield Core Topic</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Corey Schafer Python File Objects Reading and Writing</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Telusko / Corey Schafer</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Unit VI: File Handling & Object Pickling</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">`with open()` context managers, binary files, serialization using `pickle.dump()` and `pickle.load()`.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+File+Objects+Reading+Writing" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 11 • Exceptions & Regex</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 28 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">⭐ High-Yield Core Topic</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Corey Schafer Python Regular Expressions Regex</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Corey Schafer / Tech With Tim</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Unit VI: Exception Handling & Regex</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">`try-except-else-finally` execution blocks, regex tokenization, pattern extraction with `re.findall()`.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Corey+Schafer+Python+Regular+Expressions" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 12 • 15 Lab Programs</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 50 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">⚡ Full Lab Practical Guide</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Python Programming Lab Practicals Gate Smashers</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Gate Smashers / Jenny's Lectures</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Complete 15 Lab Practicals Walkthrough</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">Step-by-step code demonstrations of all 15 university practical lab programs.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Python+Programming+Lab+Practicals+Gate+Smashers" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
+                <div class="card video-card" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; background: rgba(15,23,42,0.6);">
+                    <div>
+                        <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem;">
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(14,165,233,0.15); color: #38bdf8;">📅 Week 13 • Top 75 Viva Q&A</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(245,158,11,0.15); color: #fbbf24;">⏱️ 35 mins</span>
+                            <span class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: rgba(239,68,68,0.15); color: #f87171;">🏆 Grade 'O' Viva Prep</span>
+                        </div>
+                        <h3 class="card-title" style="margin-top: 0.25rem; font-size: 1.05rem; color: #f8fafc;">Python Programming Viva Voce Questions Gate Smashers</h3>
+                        <div style="font-size: 0.8rem; color: #94a3b8; margin: 0.35rem 0 0.5rem;">
+                            📺 <strong>Creator:</strong> <span style="color: #cbd5e1;">Gate Smashers / Knowledge Gate</span> • <strong>Unit:</strong> <span style="color: #38bdf8;">Master Viva Voce Preparation</span>
+                        </div>
+                        <p style="color: #cbd5e1; font-size: 0.84rem; line-height: 1.5; background: rgba(0,0,0,0.25); padding: 0.6rem 0.75rem; border-radius: 0.4rem; border-left: 3px solid #0284c7;">Top 75 external examiner interview questions, tricky syntax pitfalls, and output predictions.</p>
+                    </div>
+                    <a href="https://www.youtube.com/results?search_query=Python+Programming+Viva+Voce+Questions+Gate+Smashers" target="_blank" class="video-btn" style="background: #dc2626; color: white; border: none; padding: 0.6rem 1rem; border-radius: 0.5rem; text-decoration: none; font-weight: 700; font-size: 0.85rem; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1rem; transition: 0.2s;">
+                        ▶ Watch Video Tutorial
+                    </a>
+                </div>
             </div>
         </div>
 

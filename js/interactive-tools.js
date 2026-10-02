@@ -1013,3 +1013,64 @@ function escapeHtml(text) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
+
+
+
+// ==============================================================================
+// 8. VIDEO MASTER HUB COMPLETION TRACKER ENGINE
+// ==============================================================================
+function toggleVideoCompleted(subCode, vidId, checkboxEl, cardElId) {
+  let watchedSet = new Set();
+  const storageKey = `apex_watched_vids_${subCode}`;
+  try {
+    const stored = localStorage.getItem(storageKey);
+    if (stored) watchedSet = new Set(JSON.parse(stored));
+  } catch (e) {}
+
+  if (checkboxEl.checked) {
+    watchedSet.add(vidId);
+  } else {
+    watchedSet.delete(vidId);
+  }
+
+  localStorage.setItem(storageKey, JSON.stringify(Array.from(watchedSet)));
+
+  // Update card visual state
+  const cardEl = document.getElementById(cardElId);
+  if (cardEl) {
+    if (checkboxEl.checked) {
+      cardEl.classList.add('watched');
+    } else {
+      cardEl.classList.remove('watched');
+    }
+  }
+
+  // Update checkbox label
+  const labelSpan = checkboxEl.parentElement.querySelector('span');
+  if (labelSpan) {
+    labelSpan.textContent = checkboxEl.checked ? '✓ Completed' : 'Mark Done';
+    labelSpan.style.color = checkboxEl.checked ? '#10b981' : 'var(--text-muted)';
+  }
+
+  // Update subject video progress header & bar
+  const sub = typeof allSubjects !== 'undefined' ? allSubjects.find(s => s.code === subCode || s.id.toLowerCase() === subCode.toLowerCase()) : null;
+  const totalVids = sub && sub.videos ? sub.videos.length : 1;
+  const count = watchedSet.size;
+  const percent = Math.min(100, Math.round((count / totalVids) * 100));
+
+  const progressHeader = document.getElementById(`vidProgressHeader_${subCode}`);
+  const progressBar = document.getElementById(`vidProgressBar_${subCode}`);
+
+  if (progressHeader) progressHeader.textContent = `${count} / ${totalVids} Watched (${percent}%)`;
+  if (progressBar) progressBar.style.width = `${percent}%`;
+}
+
+function resetVideoProgress(subCode) {
+  if (confirm(`Reset all watched video progress for ${subCode}?`)) {
+    localStorage.removeItem(`apex_watched_vids_${subCode}`);
+    if (typeof openSubjectDrawer === 'function') {
+      const sub = typeof allSubjects !== 'undefined' ? allSubjects.find(s => s.code === subCode || s.id.toLowerCase() === subCode.toLowerCase()) : null;
+      if (sub) openSubjectDrawer(sub.id);
+    }
+  }
+}

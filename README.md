@@ -22,10 +22,13 @@
 
 ---
 
-### 2. 📺 Curated Video Master Hub (89 Handpicked Tutorials)
-- Fully curated library of **89 high-yield YouTube video masterclasses** directly mapped to university examination topics.
-- Featuring lectures from *Dr. Gajendra Purohit, Gate Smashers, 3Blue1Brown, CS50 Harvard, All About Electronics, Kevin Powell, Corey Schafer, NetworkChuck, and Kunal Kushwaha*.
-- Displays unit badges, creator attribution, and concise exam focus takeaways.
+### 2. 📺 Curated Video Master Hub with Pacing Timeline & Completion Tracker (89 Tutorials)
+- **89 High-Yield YouTube Video Masterclasses** calibrated to university examination topics and faculty lecture syllabi.
+- **📅 14-Week Semester Study Timeline Roadmaps:** Direct scheduling tags (e.g. `Week 1–2 Foundation`, `Week 5–6 Mid-Term Sprint`, `Week 12–14 End-Term Sprint`) on every tutorial.
+- **⏱️ Estimated Video Watch & Study Durations:** Granular pacing estimates (e.g. `⏱️ 22 mins`, `⏱️ 35 mins`) and total subject study load calculations (e.g. `~5h 45m total load`).
+- **🔥 Exam Priority & Weight Badges:** Clear distinction between `🔥 Mandatory Exam Question`, `⭐ High-Yield Core Topic`, `⚡ Practical Mastery`, and `🏆 100-Percentile Grade 'O' Booster`.
+- **✅ Interactive Completion Tracker:** Persistent `localStorage`-backed checkbox tracking (`apex_watched_vids_*`) with live percentage completion bars and 1-click progress resets.
+- **Top Creators:** *Dr. Gajendra Purohit, Gate Smashers, 3Blue1Brown, CS50 Harvard, All About Electronics, Kevin Powell, Corey Schafer, NetworkChuck, and Kunal Kushwaha*.
 
 ---
 

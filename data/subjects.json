@@ -160,91 +160,130 @@
         "title": "CS50 Computational Thinking",
         "channel": "CS50 (Harvard)",
         "focus": "Decomposition, Pattern Recognition, Abstraction, Algorithm Design.",
-        "url": "https://www.youtube.com/results?search_query=CS50+Computational+Thinking"
+        "url": "https://www.youtube.com/results?search_query=CS50+Computational+Thinking",
+        "duration": "20 mins",
+        "timeline": "Week 1 \u2022 Orientation",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit I: OS Types & Kernel Modes",
         "title": "Gate Smashers Types of OS",
         "channel": "Gate Smashers",
         "focus": "Batch, Time-sharing, RTOS (Hard vs Soft), and Distributed OS.",
-        "url": "https://www.youtube.com/results?search_query=Gate+Smashers+Types+of+Operating+System"
+        "url": "https://www.youtube.com/results?search_query=Gate+Smashers+Types+of+Operating+System",
+        "duration": "25 mins",
+        "timeline": "Week 2 \u2022 Unit I Foundation",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit I: Linux CLI & Hierarchy",
         "title": "freeCodeCamp Linux for Beginners",
         "channel": "freeCodeCamp / NetworkChuck",
         "focus": "Linux root `/` hierarchy, `chmod 755`, `grep -rn`, `mkdir -p`, `ps aux`.",
-        "url": "https://www.youtube.com/results?search_query=freeCodeCamp+Linux+Command+Line+for+Beginners"
+        "url": "https://www.youtube.com/results?search_query=freeCodeCamp+Linux+Command+Line+for+Beginners",
+        "duration": "35 mins",
+        "timeline": "Week 2 \u2022 Lab & CLI",
+        "priority": "\u26a1 Practical Mastery"
       },
       {
         "unit": "Unit I: Network Devices & Topologies",
         "title": "PowerCert Network Devices Hub Switch Router",
         "channel": "PowerCert Animated Videos",
         "focus": "Animated walkthrough of Layer 1 Hubs, Layer 2 Switches, Layer 3 Routers, Gateways.",
-        "url": "https://www.youtube.com/results?search_query=PowerCert+Network+Devices+Hub+Switch+Router"
+        "url": "https://www.youtube.com/results?search_query=PowerCert+Network+Devices+Hub+Switch+Router",
+        "duration": "22 mins",
+        "timeline": "Week 3 \u2022 Unit I Networks",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit I: Hypervisors Type-1 vs Type-2",
         "title": "NetworkChuck Hypervisor Type 1 and Type 2",
         "channel": "NetworkChuck",
         "focus": "Bare-Metal (ESXi) vs Hosted (VirtualBox) with clear architectural visuals.",
-        "url": "https://www.youtube.com/results?search_query=NetworkChuck+Hypervisor+Type+1+Type+2"
+        "url": "https://www.youtube.com/results?search_query=NetworkChuck+Hypervisor+Type+1+Type+2",
+        "duration": "18 mins",
+        "timeline": "Week 3 \u2022 Unit I Cloud",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit I: Cloud Models (IaaS, PaaS, SaaS)",
         "title": "Fireship Cloud Computing in 100 Seconds",
         "channel": "Fireship",
         "focus": "Fast, intuitive breakdown of SPI tiers and Cloud Deployment Models.",
-        "url": "https://www.youtube.com/results?search_query=Fireship+Cloud+Computing+in+100+Seconds"
+        "url": "https://www.youtube.com/results?search_query=Fireship+Cloud+Computing+in+100+Seconds",
+        "duration": "10 mins",
+        "timeline": "Week 4 \u2022 Unit I Cloud SPI",
+        "priority": "\u26a1 Fast Concept Booster"
       },
       {
         "unit": "Unit II: Git & GitHub Masterclass",
         "title": "Kunal Kushwaha Git and GitHub",
         "channel": "Kunal Kushwaha",
         "focus": "Practical end-to-end walkthrough of Git 4 stages, branch merging, pull requests.",
-        "url": "https://www.youtube.com/results?search_query=Kunal+Kushwaha+Git+GitHub+Tutorial"
+        "url": "https://www.youtube.com/results?search_query=Kunal+Kushwaha+Git+GitHub+Tutorial",
+        "duration": "45 mins",
+        "timeline": "Week 5 \u2022 Mid-Term Lab Core",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit II: Malware Taxonomy & Cyber Threats",
         "title": "Simplilearn Cyber Security Full Course",
         "channel": "Simplilearn / John Hammond",
         "focus": "Viruses, Worms, Trojans, Ransomware, Rootkits, Spyware, Botnets, and MFA.",
-        "url": "https://www.youtube.com/results?search_query=Cyber+Security+Full+Course+Simplilearn"
+        "url": "https://www.youtube.com/results?search_query=Cyber+Security+Full+Course+Simplilearn",
+        "duration": "30 mins",
+        "timeline": "Week 6 \u2022 Mid-Term Security",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: Machine Learning Paradigms",
         "title": "StatQuest Machine Learning Basics",
         "channel": "StatQuest (Josh Starmer)",
         "focus": "Visual, jargon-free breakdown of Supervised vs Unsupervised vs Reinforcement Learning.",
-        "url": "https://www.youtube.com/results?search_query=StatQuest+Machine+Learning+Basics"
+        "url": "https://www.youtube.com/results?search_query=StatQuest+Machine+Learning+Basics",
+        "duration": "20 mins",
+        "timeline": "Week 8 \u2022 Unit IV AI/ML",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: Neural Networks & Deep Learning",
         "title": "3Blue1Brown Neural Networks",
         "channel": "3Blue1Brown",
         "focus": "Weights, biases, activation functions, and deep representations.",
-        "url": "https://www.youtube.com/results?search_query=3Blue1Brown+Neural+Networks"
+        "url": "https://www.youtube.com/results?search_query=3Blue1Brown+Neural+Networks",
+        "duration": "25 mins",
+        "timeline": "Week 9 \u2022 Unit IV Deep Tech",
+        "priority": "\u26a1 Visual 3D Intuition"
       },
       {
         "unit": "Unit IV: Generative AI vs Agentic AI",
         "title": "Fireship AI Agents in 100 Seconds",
         "channel": "Fireship / Andrew Ng",
         "focus": "Why Agentic AI (perception-tool-action loop) differs from static GenAI.",
-        "url": "https://www.youtube.com/results?search_query=Fireship+AI+Agents+in+100+Seconds"
+        "url": "https://www.youtube.com/results?search_query=Fireship+AI+Agents+in+100+Seconds",
+        "duration": "12 mins",
+        "timeline": "Week 10 \u2022 Unit IV Agentic AI",
+        "priority": "\ud83c\udfc6 100-Percentile Booster"
       },
       {
         "unit": "Unit IV: Prompt Engineering Masterclass",
         "title": "ChatGPT Prompt Engineering DeepLearning.AI",
         "channel": "DeepLearning.AI (Andrew Ng)",
         "focus": "Zero-shot, Few-shot, Chain-of-Thought (CoT), System Personas.",
-        "url": "https://www.youtube.com/results?search_query=ChatGPT+Prompt+Engineering+for+Developers+Andrew+Ng"
+        "url": "https://www.youtube.com/results?search_query=ChatGPT+Prompt+Engineering+for+Developers+Andrew+Ng",
+        "duration": "28 mins",
+        "timeline": "Week 11 \u2022 Unit IV Prompting",
+        "priority": "\u26a1 Practical Industry Skill"
       },
       {
         "unit": "Unit V & VI: ATS Resume & STAR Method",
         "title": "Kunal Kushwaha Resume Review",
         "channel": "Kunal Kushwaha / Jeff Su",
         "focus": "1-page ATS-beating resume design, STAR bullet formula with quantified metrics.",
-        "url": "https://www.youtube.com/results?search_query=Kunal+Kushwaha+Resume+Review"
+        "url": "https://www.youtube.com/results?search_query=Kunal+Kushwaha+Resume+Review",
+        "duration": "25 mins",
+        "timeline": "Week 13 \u2022 Unit V & VI Career",
+        "priority": "\ud83c\udfc6 Placement & Portfolio"
       }
     ],
     "vivaQuestions": [
@@ -418,77 +457,110 @@
         "title": "CrashCourse Sustainable Development Goals",
         "channel": "UN Sustainable Development / CrashCourse",
         "focus": "17 SDGs breakdown, Brundtland definition, Carrying capacity.",
-        "url": "https://www.youtube.com/results?search_query=CrashCourse+Sustainable+Development+Goals"
+        "url": "https://www.youtube.com/results?search_query=CrashCourse+Sustainable+Development+Goals",
+        "duration": "15 mins",
+        "timeline": "Week 1 \u2022 Unit I Foundation",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit I: 4 Spheres of Earth",
         "title": "National Geographic Spheres of the Earth",
         "channel": "National Geographic / Amoeba Sisters",
         "focus": "Atmosphere, Hydrosphere, Lithosphere, Biosphere interactions.",
-        "url": "https://www.youtube.com/results?search_query=National+Geographic+Spheres+of+the+Earth"
+        "url": "https://www.youtube.com/results?search_query=National+Geographic+Spheres+of+the+Earth",
+        "duration": "18 mins",
+        "timeline": "Week 2 \u2022 Unit I Ecology",
+        "priority": "\u26a1 Visual Earth Systems"
       },
       {
         "unit": "Unit II: Ecosystem Structure & Energy Flow",
         "title": "Amoeba Sisters Ecological Succession and Energy Flow",
         "channel": "Khan Academy / Amoeba Sisters",
         "focus": "10% Lindeman's Rule, Food Chains vs Webs, Hydrosere vs Xerosere.",
-        "url": "https://www.youtube.com/results?search_query=Amoeba+Sisters+Ecological+Succession+Energy+Flow"
+        "url": "https://www.youtube.com/results?search_query=Amoeba+Sisters+Ecological+Succession+Energy+Flow",
+        "duration": "22 mins",
+        "timeline": "Week 3 \u2022 Unit II Ecosystems",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit II: Ecological Pyramids",
         "title": "Ecological Pyramids Biomass Energy Number",
         "channel": "Unacademy NEET / Gate Smashers",
         "focus": "Why Energy Pyramids are always upright; inverted aquatic biomass.",
-        "url": "https://www.youtube.com/results?search_query=Ecological+Pyramids+Number+Biomass+Energy+Explained"
+        "url": "https://www.youtube.com/results?search_query=Ecological+Pyramids+Number+Biomass+Energy+Explained",
+        "duration": "20 mins",
+        "timeline": "Week 4 \u2022 Unit II Pyramids",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit III: Biodiversity Hotspots & IUCN",
         "title": "StudyIQ Biodiversity Hotspots in India",
         "channel": "StudyIQ IAS",
         "focus": "4 Indian Hotspots (Western Ghats, Himalayas, etc.), IUCN Red List.",
-        "url": "https://www.youtube.com/results?search_query=StudyIQ+Biodiversity+Hotspots+in+India"
+        "url": "https://www.youtube.com/results?search_query=StudyIQ+Biodiversity+Hotspots+in+India",
+        "duration": "25 mins",
+        "timeline": "Week 5 \u2022 Mid-Term Biodiversity",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit III: In-situ vs Ex-situ Conservation",
         "title": "Amit Sengupta In situ and Ex situ Conservation",
         "channel": "Amit Sengupta",
         "focus": "National Parks vs Sanctuaries vs Biosphere Reserves vs Seed Banks.",
-        "url": "https://www.youtube.com/results?search_query=Amit+Sengupta+In+situ+and+Ex+situ+Conservation"
+        "url": "https://www.youtube.com/results?search_query=Amit+Sengupta+In+situ+and+Ex+situ+Conservation",
+        "duration": "18 mins",
+        "timeline": "Week 6 \u2022 Mid-Term Conservation",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: Air & Water Pollution, Smog",
         "title": "Photochemical Smog vs Classical Smog StudyIQ",
         "channel": "CrashCourse Ecology / StudyIQ",
         "focus": "Primary/Secondary pollutants, Eutrophication, BOD/COD.",
-        "url": "https://www.youtube.com/results?search_query=Photochemical+Smog+vs+Classical+Smog+StudyIQ"
+        "url": "https://www.youtube.com/results?search_query=Photochemical+Smog+vs+Classical+Smog+StudyIQ",
+        "duration": "30 mins",
+        "timeline": "Week 8 \u2022 Unit IV Pollution",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Ozone Depletion & Montreal Protocol",
         "title": "TED Ed Ozone Layer Depletion",
         "channel": "TED-Ed / SciShow",
         "focus": "CFC catalytic chlorine cycle, Polar Stratospheric Clouds.",
-        "url": "https://www.youtube.com/results?search_query=TED+Ed+Ozone+Layer+Depletion"
+        "url": "https://www.youtube.com/results?search_query=TED+Ed+Ozone+Layer+Depletion",
+        "duration": "16 mins",
+        "timeline": "Week 9 \u2022 Unit IV Ozone Layer",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: Disaster Management Framework",
         "title": "National Disaster Management Authority NDMA India",
         "channel": "StudyIQ IAS",
         "focus": "NDMA, SDMA, DDMA structure, Disaster Lifecycle.",
-        "url": "https://www.youtube.com/results?search_query=National+Disaster+Management+Authority+NDMA+India+StudyIQ"
+        "url": "https://www.youtube.com/results?search_query=National+Disaster+Management+Authority+NDMA+India+StudyIQ",
+        "duration": "20 mins",
+        "timeline": "Week 11 \u2022 Unit V Disaster Mgmt",
+        "priority": "\u26a1 Policy & Framework"
       },
       {
         "unit": "Unit VI: Environmental Movements in India",
         "title": "Environmental Movements in India Chipko Appiko Narmada StudyIQ",
         "channel": "StudyIQ IAS / Drishti IAS",
         "focus": "Bishnoi (1730), Chipko (1973), Appiko, Silent Valley, NBA.",
-        "url": "https://www.youtube.com/results?search_query=Environmental+Movements+in+India+Chipko+Narmada+StudyIQ"
+        "url": "https://www.youtube.com/results?search_query=Environmental+Movements+in+India+Chipko+Narmada+StudyIQ",
+        "duration": "22 mins",
+        "timeline": "Week 12 \u2022 Unit VI Movements",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit VI: Major Environmental Acts in India",
         "title": "Important Environmental Acts in India EPA 1986 StudyIQ",
         "channel": "StudyIQ IAS",
         "focus": "Wildlife Act 1972, Water 1974, Forest 1980, Air 1981, EPA 1986, NGT 2010.",
-        "url": "https://www.youtube.com/results?search_query=Important+Environmental+Acts+in+India+EPA+1986+StudyIQ"
+        "url": "https://www.youtube.com/results?search_query=Important+Environmental+Acts+in+India+EPA+1986+StudyIQ",
+        "duration": "28 mins",
+        "timeline": "Week 13 \u2022 Unit VI Legislation",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       }
     ],
     "vivaQuestions": [
@@ -657,70 +729,100 @@
         "title": "Dave Gray HTML Full Course for Beginners",
         "channel": "Dave Gray / freeCodeCamp",
         "focus": "Semantic elements, accessible form controls, input attributes, and SEO.",
-        "url": "https://www.youtube.com/results?search_query=Dave+Gray+HTML+Full+Course+for+Beginners"
+        "url": "https://www.youtube.com/results?search_query=Dave+Gray+HTML+Full+Course+for+Beginners",
+        "duration": "40 mins",
+        "timeline": "Week 1\u20132 \u2022 HTML5 Semantics",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit III: CSS Box Model & Specificity",
         "title": "Kevin Powell CSS Specificity and Box Model",
         "channel": "Kevin Powell",
         "focus": "Specificity calculation $(a,b,c,d)$, `box-sizing: border-box`, margins.",
-        "url": "https://www.youtube.com/results?search_query=Kevin+Powell+CSS+Specificity+and+Box+Model"
+        "url": "https://www.youtube.com/results?search_query=Kevin+Powell+CSS+Specificity+and+Box+Model",
+        "duration": "25 mins",
+        "timeline": "Week 3 \u2022 CSS Specificity",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit III: Flexbox in 20 Minutes",
         "title": "Kevin Powell Flexbox CSS Guide",
         "channel": "Kevin Powell / Fireship",
         "focus": "Main axis vs Cross axis, `justify-content`, `align-items`, responsive navbars.",
-        "url": "https://www.youtube.com/results?search_query=Kevin+Powell+Flexbox+CSS+Guide"
+        "url": "https://www.youtube.com/results?search_query=Kevin+Powell+Flexbox+CSS+Guide",
+        "duration": "20 mins",
+        "timeline": "Week 4 \u2022 Flexbox 1D Layouts",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit III: CSS Grid Masterclass",
         "title": "Web Dev Simplified CSS Grid Tutorial",
         "channel": "Kevin Powell / Web Dev Simplified",
         "focus": "2D layouts, `grid-template-columns`, `auto-fit` vs `auto-fill`, `minmax()`.",
-        "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+CSS+Grid+Tutorial"
+        "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+CSS+Grid+Tutorial",
+        "duration": "30 mins",
+        "timeline": "Week 5 \u2022 CSS Grid 2D Macro",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: JS Fundamentals & Scope",
         "title": "Namaste JavaScript Akshay Saini Season 1",
         "channel": "Namaste JavaScript (Akshay Saini)",
         "focus": "Execution context, call stack, hoisting, closures, lexical scope.",
-        "url": "https://www.youtube.com/results?search_query=Namaste+JavaScript+Akshay+Saini+Season+1"
+        "url": "https://www.youtube.com/results?search_query=Namaste+JavaScript+Akshay+Saini+Season+1",
+        "duration": "45 mins",
+        "timeline": "Week 7 \u2022 JS Execution & Scope",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Higher Order Functions",
         "title": "Akshay Saini map filter reduce",
         "channel": "Akshay Saini / Traversy Media",
         "focus": "Deep-dive into `.map()`, `.filter()`, and `.reduce()` with array transformations.",
-        "url": "https://www.youtube.com/results?search_query=Akshay+Saini+map+filter+reduce+JavaScript"
+        "url": "https://www.youtube.com/results?search_query=Akshay+Saini+map+filter+reduce+JavaScript",
+        "duration": "25 mins",
+        "timeline": "Week 8 \u2022 Functional JS",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: DOM Manipulation & Events",
         "title": "Traversy Media JavaScript DOM Crash Course",
         "channel": "Traversy Media / Dave Gray",
         "focus": "`querySelector`, `addEventListener`, Event Bubbling, Delegation.",
-        "url": "https://www.youtube.com/results?search_query=Traversy+Media+JavaScript+DOM+Crash+Course"
+        "url": "https://www.youtube.com/results?search_query=Traversy+Media+JavaScript+DOM+Crash+Course",
+        "duration": "35 mins",
+        "timeline": "Week 9 \u2022 DOM & Event Bubbling",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit V: Fetch API, Async/Await & JSON",
         "title": "Web Dev Simplified Fetch API JavaScript",
         "channel": "Web Dev Simplified / Fireship",
         "focus": "`fetch()`, Promises, `async/await`, HTTP GET/POST, JSON parsing.",
-        "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+Fetch+API+JavaScript"
+        "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+Fetch+API+JavaScript",
+        "duration": "28 mins",
+        "timeline": "Week 10 \u2022 Async/Await & APIs",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: Web Storage API (LocalStorage)",
         "title": "Web Dev Simplified LocalStorage and SessionStorage",
         "channel": "dcode / Web Dev Simplified",
         "focus": "`localStorage.setItem()`, `getItem()`, `clear()`, `JSON.stringify()`.",
-        "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+LocalStorage+and+SessionStorage"
+        "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+LocalStorage+and+SessionStorage",
+        "duration": "18 mins",
+        "timeline": "Week 11 \u2022 Web Storage API",
+        "priority": "\u26a1 Practical Web Mastery"
       },
       {
         "unit": "Unit VI: GitHub Pages Deployment",
         "title": "Deploy Website to GitHub Pages Traversy Media",
         "channel": "Kevin Powell / Traversy Media",
         "focus": "Git repository init, commit, branch, and live GitHub Pages hosting.",
-        "url": "https://www.youtube.com/results?search_query=Deploy+Website+to+GitHub+Pages+Traversy+Media"
+        "url": "https://www.youtube.com/results?search_query=Deploy+Website+to+GitHub+Pages+Traversy+Media",
+        "duration": "20 mins",
+        "timeline": "Week 13 \u2022 GitHub Deployment",
+        "priority": "\ud83c\udfc6 Project Hosting Mastery"
       }
     ],
     "vivaQuestions": [
@@ -901,70 +1003,100 @@
         "title": "Neso Academy Network Theory KVL KCL Thevenin",
         "channel": "Neso Academy / Gate Smashers",
         "focus": "Node Voltage Analysis, Mesh Current Analysis, Thevenin & Norton equivalent derivations with solved numericals.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Network+Theory+KVL+KCL"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Network+Theory+KVL+KCL",
+        "duration": "35 mins",
+        "timeline": "Week 1\u20132 \u2022 DC Theorems",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "AC Circuits & Phasors",
         "title": "All About Electronics AC Circuit Analysis Phasors",
         "channel": "All About Electronics",
         "focus": "RMS, Average, Form factor, Impedance triangle ($R-L-C$ series/parallel resonance).",
-        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+AC+Circuit+Analysis+Phasors"
+        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+AC+Circuit+Analysis+Phasors",
+        "duration": "30 mins",
+        "timeline": "Week 3\u20134 \u2022 AC Phasors & RLC",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "PN Junction Diodes & V-I Curve",
         "title": "All About Electronics PN Junction Diode V-I Characteristics",
         "channel": "All About Electronics / Neso Academy",
         "focus": "Barrier potential derivation, forward/reverse bias, dynamic resistance, Zener diode breakdown.",
-        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics"
+        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics",
+        "duration": "28 mins",
+        "timeline": "Week 5 \u2022 Diodes & V-I Curve",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Half-Wave & Full-Wave Rectifiers",
         "title": "All About Electronics Half Wave and Full Wave Rectifier",
         "channel": "All About Electronics",
         "focus": "Circuit diagrams, derivation of efficiency ($\\eta$), Ripple factor ($\\gamma$), and PIV ratings.",
-        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+Half+Wave+and+Full+Wave+Rectifier"
+        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+Half+Wave+and+Full+Wave+Rectifier",
+        "duration": "32 mins",
+        "timeline": "Week 6 \u2022 Rectifier Efficiency",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "BJT Configurations & Biasing",
         "title": "Neso Academy BJT Transistor Characteristics and Biasing",
         "channel": "Neso Academy",
         "focus": "CE/CB input/output curves, DC load line, Q-point stability, Voltage Divider Biasing.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+BJT+Transistor+Biasing"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+BJT+Transistor+Biasing",
+        "duration": "30 mins",
+        "timeline": "Week 8 \u2022 BJT Transistors",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Logic Gates & Universal NAND/NOR",
         "title": "Neso Academy Logic Gates and Universal Gates Realization",
         "channel": "Neso Academy",
         "focus": "Truth tables, De Morgan's theorems, implementing NOT, AND, OR, XOR, XNOR using NAND/NOR only.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Logic+Gates+Universal+Gates"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Logic+Gates+Universal+Gates",
+        "duration": "25 mins",
+        "timeline": "Week 9 \u2022 Universal Logic Gates",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Adders, Subtractors & K-Maps",
         "title": "Gate Smashers Half Adder and Full Adder",
         "channel": "Gate Smashers / Neso Academy",
         "focus": "2, 3, 4-variable K-maps, Half/Full adder logic diagrams, Ripple carry adders.",
-        "url": "https://www.youtube.com/results?search_query=Gate+Smashers+Half+Adder+and+Full+Adder"
+        "url": "https://www.youtube.com/results?search_query=Gate+Smashers+Half+Adder+and+Full+Adder",
+        "duration": "28 mins",
+        "timeline": "Week 10 \u2022 Adders & K-Maps",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Breadboard Lab Practicals (Exp 1-5)",
         "title": "All About Electronics Breadboard Multimeter Diode Practical",
         "channel": "All About Electronics",
         "focus": "Physical hardware wiring, DMM voltage/current measurement, IC 74xx testing on trainer kit.",
-        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+Breadboard+Practical+Experiments"
+        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+Breadboard+Practical+Experiments",
+        "duration": "25 mins",
+        "timeline": "Week 11 \u2022 Breadboard Hardware",
+        "priority": "\u26a1 Lab Practical Guide"
       },
       {
         "unit": "Arduino Uno + IR Sensor Interfacing",
         "title": "Arduino Uno IR Sensor Interfacing Circuit Digest",
         "channel": "Circuit Digest",
         "focus": "Complete wiring, active-LOW `digitalRead()` logic, Serial monitor debugging, buzzer alerts.",
-        "url": "https://www.youtube.com/results?search_query=Arduino+Uno+IR+Sensor+Interfacing+Circuit+Digest"
+        "url": "https://www.youtube.com/results?search_query=Arduino+Uno+IR+Sensor+Interfacing+Circuit+Digest",
+        "duration": "22 mins",
+        "timeline": "Week 12 \u2022 Arduino Sensor I/O",
+        "priority": "\u26a1 IoT Lab Practical"
       },
       {
         "unit": "Master Viva Voce Preparation",
         "title": "Digital Electronics & Basic Electrical Viva Questions Gate Smashers",
         "channel": "Gate Smashers",
         "focus": "50+ examiner questions, troubleshooting breadboard errors, IC pinout traps.",
-        "url": "https://www.youtube.com/results?search_query=Digital+Electronics+Viva+Questions+Gate+Smashers"
+        "url": "https://www.youtube.com/results?search_query=Digital+Electronics+Viva+Questions+Gate+Smashers",
+        "duration": "30 mins",
+        "timeline": "Week 13 \u2022 Master Viva Voce",
+        "priority": "\ud83c\udfc6 100-Percentile Viva"
       }
     ],
     "vivaQuestions": [
@@ -1130,56 +1262,80 @@
         "title": "Corey Schafer Python Programming Tutorial",
         "channel": "Corey Schafer / Telusko",
         "focus": "Python environment setup, PVM model, conditionals, `while`/`for` loops, loop `else` clauses.",
-        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Tutorial+Beginners"
+        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Tutorial+Beginners",
+        "duration": "35 mins",
+        "timeline": "Week 1\u20132 \u2022 PVM & Control Flow",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit III: Strings, Lists, Tuples & Dicts",
         "title": "Corey Schafer Python Lists Tuples and Dictionaries",
         "channel": "Corey Schafer / Chai aur Code",
         "focus": "Slicing tricks, list comprehensions, dictionary hashing, and shallow vs deep copying.",
-        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Lists+Tuples+and+Dictionaries"
+        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Lists+Tuples+and+Dictionaries",
+        "duration": "40 mins",
+        "timeline": "Week 3\u20134 \u2022 Lists & Mutability",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Functions, LEGB Scope & Recursion",
         "title": "Telusko Python Functions and Recursion",
         "channel": "Telusko (Navin Reddy)",
         "focus": "`*args`, `kwargs`, LEGB variable scoping, closures, decorators, and call stack visualization for recursive algorithms.",
-        "url": "https://www.youtube.com/results?search_query=Telusko+Python+Functions+Arguments+Recursion"
+        "url": "https://www.youtube.com/results?search_query=Telusko+Python+Functions+Arguments+Recursion",
+        "duration": "35 mins",
+        "timeline": "Week 5\u20136 \u2022 Functions & Scopes",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit V: Object-Oriented Programming (OOP)",
         "title": "Corey Schafer Python OOP Tutorials",
         "channel": "Corey Schafer / FreeCodeCamp",
         "focus": "Classes, instances, inheritance, method overriding, `super()`, MRO C3 linearization, and magic/dunder methods.",
-        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+OOP+Tutorials"
+        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+OOP+Tutorials",
+        "duration": "45 mins",
+        "timeline": "Week 8\u20139 \u2022 Python OOP & MRO",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit VI: File Handling & Object Pickling",
         "title": "Corey Schafer Python File Objects Reading and Writing",
         "channel": "Telusko / Corey Schafer",
         "focus": "`with open()` context managers, binary files, serialization using `pickle.dump()` and `pickle.load()`.",
-        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+File+Objects+Reading+Writing"
+        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+File+Objects+Reading+Writing",
+        "duration": "30 mins",
+        "timeline": "Week 10 \u2022 File I/O & Pickling",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit VI: Exception Handling & Regex",
         "title": "Corey Schafer Python Regular Expressions Regex",
         "channel": "Corey Schafer / Tech With Tim",
         "focus": "`try-except-else-finally` execution blocks, regex tokenization, pattern extraction with `re.findall()`.",
-        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Regular+Expressions"
+        "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Regular+Expressions",
+        "duration": "28 mins",
+        "timeline": "Week 11 \u2022 Exceptions & Regex",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Complete 15 Lab Practicals Walkthrough",
         "title": "Python Programming Lab Practicals Gate Smashers",
         "channel": "Gate Smashers / Jenny's Lectures",
         "focus": "Step-by-step code demonstrations of all 15 university practical lab programs.",
-        "url": "https://www.youtube.com/results?search_query=Python+Programming+Lab+Practicals+Gate+Smashers"
+        "url": "https://www.youtube.com/results?search_query=Python+Programming+Lab+Practicals+Gate+Smashers",
+        "duration": "50 mins",
+        "timeline": "Week 12 \u2022 15 Lab Programs",
+        "priority": "\u26a1 Full Lab Practical Guide"
       },
       {
         "unit": "Master Viva Voce Preparation",
         "title": "Python Programming Viva Voce Questions Gate Smashers",
         "channel": "Gate Smashers / Knowledge Gate",
         "focus": "Top 75 external examiner interview questions, tricky syntax pitfalls, and output predictions.",
-        "url": "https://www.youtube.com/results?search_query=Python+Programming+Viva+Voce+Questions+Gate+Smashers"
+        "url": "https://www.youtube.com/results?search_query=Python+Programming+Viva+Voce+Questions+Gate+Smashers",
+        "duration": "35 mins",
+        "timeline": "Week 13 \u2022 Top 75 Viva Q&A",
+        "priority": "\ud83c\udfc6 Grade 'O' Viva Prep"
       }
     ],
     "vivaQuestions": [
@@ -1373,140 +1529,200 @@
         "title": "Rank of Matrix (Echelon Form & Normal Form)",
         "channel": "Dr. Gajendra Purohit",
         "focus": "How to apply elementary row operations without altering the matrix rank; transforming to Row Echelon form ($a_{ij} = 0$ for $i > j$); counting non-zero rows; transforming to Normal Form $[I_r\\ 0; 0\\ 0]$ using both row and column operations.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Rank+of+Matrix+Echelon+Form+Normal+Form"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Rank+of+Matrix+Echelon+Form+Normal+Form",
+        "duration": "30 mins",
+        "timeline": "Week 1 \u2022 Rank & Echelon",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit I: Matrix Methods, Linear Systems & Eigenvalues",
         "title": "System of Linear Equations ($AX = B$) & Consistency Tests",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Augmented matrix $[A|B]$ construction; Rouch\u00e9-Capelli consistency conditions; determining conditions for $\\lambda$ and $\\mu$ to yield (i) No solution, (ii) Unique solution, (iii) Infinite solutions.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+System+of+Linear+Equations+Consistency+Rouche+Capelli"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+System+of+Linear+Equations+Consistency+Rouche+Capelli",
+        "duration": "32 mins",
+        "timeline": "Week 2 \u2022 System Consistency",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit I: Matrix Methods, Linear Systems & Eigenvalues",
         "title": "Eigenvalues, Eigenvectors & Cayley-Hamilton Theorem",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Characteristic equation shortcut $\\lambda^3 - \\text{tr}(A)\\lambda^2 + (M_{11}+M_{22}+M_{33})\\lambda - |A| = 0$; finding orthogonal eigenvectors for repeated eigenvalues; verifying $P(A) = 0$; computing $A^{-1}$ and $A^4$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Eigenvalues+Eigenvectors+Cayley+Hamilton+Theorem"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Eigenvalues+Eigenvectors+Cayley+Hamilton+Theorem",
+        "duration": "35 mins",
+        "timeline": "Week 2 \u2022 Eigenvalues & Inverse",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit I: Matrix Methods, Linear Systems & Eigenvalues",
         "title": "Essence of Linear Algebra: 3D Visual Transformations",
         "channel": "3Blue1Brown",
         "focus": "Visualizing determinants as volume scaling factors, eigenvectors as directional invariants under linear transforms, and column spaces as spans.",
-        "url": "https://www.youtube.com/results?search_query=3Blue1Brown+Essence+of+Linear+Algebra"
+        "url": "https://www.youtube.com/results?search_query=3Blue1Brown+Essence+of+Linear+Algebra",
+        "duration": "20 mins",
+        "timeline": "Week 3 \u2022 3D Linear Algebra",
+        "priority": "\u26a1 Visual Geometric Intuition"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
         "title": "Leibniz's Theorem for $n$-th Derivative of a Product",
         "channel": "Bhagwan Singh Vishwakarma (BSV Maths)",
         "focus": "$(uv)_n = \\sum_{r=0}^n \\binom{n}{r} u_{n-r} v_r$; choosing $v$ such that higher derivatives terminate; standard university proofs like proving $(1-x^2)y_{n+2} - (2n+1)xy_{n+1} - (n^2+m^2)y_n = 0$ for $y = \\sin(m \\sin^{-1} x)$ or $y = (x^2-1)^n$.",
-        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Leibniz+Theorem+nth+derivative"
+        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Leibniz+Theorem+nth+derivative",
+        "duration": "38 mins",
+        "timeline": "Week 4 \u2022 Leibniz n-th Rule",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
         "title": "Mean Value Theorems (Rolle's, LMVT, Cauchy's MVT)",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Verifying continuity and differentiability conditions; algebraic and trigonometric functions; finding exact point $c \\in (a, b)$; Cauchy's theorem ratio $\\frac{f'(c)}{g'(c)} = \\frac{f(b)-f(a)}{g(b)-g(a)}$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Rolle+Theorem+LMVT+Cauchy+Mean+Value+Theorem"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Rolle+Theorem+LMVT+Cauchy+Mean+Value+Theorem",
+        "duration": "28 mins",
+        "timeline": "Week 4 \u2022 Mean Value Theorems",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
         "title": "Taylor's & Maclaurin's Series Expansions",
         "channel": "Bhagwan Singh Vishwakarma",
         "focus": "Expansion in powers of $(x - a)$ vs powers of $x$; Lagrange remainder term; expanding $\\ln(1+x), e^x, \\sin x, \\tan^{-1} x$.",
-        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Taylor+Maclaurin+Series+Expansion"
+        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Taylor+Maclaurin+Series+Expansion",
+        "duration": "25 mins",
+        "timeline": "Week 5 \u2022 Taylor & Maclaurin",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
         "title": "Indeterminate Forms & Multi-Stage L'H\u00f4pital's Rule",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Solving $0/0$ and $\\infty/\\infty$; converting $0 \\cdot \\infty$ and $\\infty - \\infty$; logarithmic conversion of exponential indeterminate forms $1^\\infty, 0^0, \\infty^0$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Indeterminate+Forms+L+Hospital+Rule+Shortcuts"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Indeterminate+Forms+L+Hospital+Rule+Shortcuts",
+        "duration": "22 mins",
+        "timeline": "Week 5 \u2022 L'H\u00f4pital Limits",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit III: Fundamentals of Integral Calculus & Reduction Formulas",
         "title": "Definite Integrals & King's Property",
         "channel": "Dr. Gajendra Purohit",
         "focus": "$\\int_0^a f(x)dx = \\int_0^a f(a-x)dx$; evaluating $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} dx = \\frac{\\pi}{4}$; proving $\\int_0^{\\pi/2} \\ln(\\sin x) dx = -\\frac{\\pi}{2}\\ln 2$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Definite+Integrals+Properties+King+Rule"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Definite+Integrals+Properties+King+Rule",
+        "duration": "30 mins",
+        "timeline": "Week 6 \u2022 King's Rule Integrals",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit III: Fundamentals of Integral Calculus & Reduction Formulas",
         "title": "Wallis' Formula & Beta-Gamma Reductions",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Solving $\\int_0^{\\pi/2} \\sin^m x \\cos^n x dx$; integer numerator/denominator countdown rules; Gamma function relation $\\Gamma(n) = (n-1)!$ and $\\Gamma(1/2) = \\sqrt{\\pi}$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Wallis+Formula+Beta+Gamma+Function"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Wallis+Formula+Beta+Gamma+Function",
+        "duration": "25 mins",
+        "timeline": "Week 6 \u2022 Wallis & Gamma",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
         "title": "Limits & Path Tests of Two Variables",
         "channel": "Dr. Gajendra Purohit",
         "focus": "$\\epsilon-\\delta$ limit definitions; testing paths $y = mx, y = mx^2, y = mx^3, y = mx - x^2$; proving non-existence of limits when the resulting value depends on slope $m$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Limits+and+Continuity+of+Two+Variables+Path+Test"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Limits+and+Continuity+of+Two+Variables+Path+Test",
+        "duration": "24 mins",
+        "timeline": "Week 8 \u2022 2-Variable Limits",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
         "title": "Euler's Theorem on Homogeneous Functions & Composite Extensions",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Identifying homogeneous degree $n$; proving $x u_x + y u_y = nu$; second order $x^2 u_{xx} + 2xy u_{xy} + y^2 u_{yy} = n(n-1)u$; solving composite inverse trig functions $u = \\sin^{-1}(\\dots)$ via $x u_x + y u_y = n \\frac{F(u)}{F'(u)}$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Euler+Theorem+on+Homogeneous+Functions"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Euler+Theorem+on+Homogeneous+Functions",
+        "duration": "35 mins",
+        "timeline": "Week 8 \u2022 Euler's Homogeneous",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
         "title": "Maxima & Minima of Two Variables ($rt - s^2$)",
         "channel": "Bhagwan Singh Vishwakarma",
         "focus": "Solving $f_x = 0$ and $f_y = 0$; calculating $r = f_{xx}, s = f_{xy}, t = f_{yy}$; constructing the discriminant table; distinguishing local minimum ($r > 0$), local maximum ($r < 0$), and saddle points ($\\Delta < 0$).",
-        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Maxima+and+Minima+Two+Variables+rt-s2"
+        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Maxima+and+Minima+Two+Variables+rt-s2",
+        "duration": "30 mins",
+        "timeline": "Week 9 \u2022 Maxima/Minima rt-s\u00b2",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
         "title": "Lagrange's Method of Undetermined Multipliers",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Auxiliary function $F = f + \\lambda g$; setting partial derivatives to 0; optimizing rectangular box volume inside an ellipsoid $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Lagrange+Method+of+Undetermined+Multipliers"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Lagrange+Method+of+Undetermined+Multipliers",
+        "duration": "28 mins",
+        "timeline": "Week 9 \u2022 Lagrange Multipliers",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: Multivariable Integration, Change of Order & Jacobians",
         "title": "Change of Order of Integration in Double Integrals",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Sketching boundary curves $y = f_1(x), y = f_2(x), x=a, x=b$; identifying bounded region $R$; changing vertical strip $(dy dx)$ to horizontal strip $(dx dy)$ for integrands like $\\int e^{-y^2} dy$ or $\\int \\frac{\\sin y}{y} dy$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Change+of+Order+of+Integration+Double+Integral"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Change+of+Order+of+Integration+Double+Integral",
+        "duration": "35 mins",
+        "timeline": "Week 10 \u2022 Change of Order",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit V: Multivariable Integration, Change of Order & Jacobians",
         "title": "Jacobians & Coordinate Transformations (Polar, Cylindrical, Spherical)",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Jacobian determinant calculation; $J \\cdot J' = 1$; composite chain rule for Jacobians; differential area elements ($dx dy = r dr d\\theta$) and volume elements ($dV = \\rho^2 \\sin\\phi d\\rho d\\phi d\\theta$).",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Jacobians+Properties+Coordinate+Transformation"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Jacobians+Properties+Coordinate+Transformation",
+        "duration": "28 mins",
+        "timeline": "Week 11 \u2022 Jacobians & Polar",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: Multivariable Integration, Change of Order & Jacobians",
         "title": "Double & Triple Integrals for Area and Volume Calculation",
         "channel": "Bhagwan Singh Vishwakarma",
         "focus": "Calculating area between parabolas $y^2 = 4ax$ and $x^2 = 4ay$; volume of sphere $x^2 + y^2 + z^2 = a^2$ via spherical coordinates.",
-        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Area+and+Volume+Multiple+Integrals"
+        "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Area+and+Volume+Multiple+Integrals",
+        "duration": "32 mins",
+        "timeline": "Week 11 \u2022 Area & Volume",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit VI: Fourier Series, Dirichlet Conditions & Half-Range Expansions",
         "title": "Fourier Series Full Concept & Euler's Formulas",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Periodic functions; Dirichlet conditions; integration by parts with $\\cos(n\\pi) = (-1)^n$ and $\\sin(n\\pi) = 0$; evaluating coefficients $a_0, a_n, b_n$ in $[-\\pi, \\pi]$ and $[-L, L]$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Fourier+Series+Euler+Formula+Full+Concept"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Fourier+Series+Euler+Formula+Full+Concept",
+        "duration": "40 mins",
+        "timeline": "Week 12 \u2022 Fourier Series Euler",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit VI: Fourier Series, Dirichlet Conditions & Half-Range Expansions",
         "title": "Even & Odd Functions in Fourier Series (Cosine vs Sine Series)",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Symmetry reduction: Even function $\\implies b_n = 0$; Odd function $\\implies a_0 = a_n = 0$; expanding $f(x) = x^2$ or $f(x) = |x|$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Fourier+Series+Even+Odd+Functions"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Fourier+Series+Even+Odd+Functions",
+        "duration": "30 mins",
+        "timeline": "Week 12 \u2022 Even/Odd Shortcuts",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit VI: Fourier Series, Dirichlet Conditions & Half-Range Expansions",
         "title": "Half-Range Fourier Sine and Cosine Series & Parseval's Identity",
         "channel": "Dr. Gajendra Purohit",
         "focus": "Half-range Sine series ($b_n = \\frac{2}{L}\\int_0^L f(x)\\sin\\frac{n\\pi x}{L}dx$); Half-range Cosine series; Parseval's formula $\\frac{1}{L}\\int [f(x)]^2 dx = \\frac{a_0^2}{2} + \\sum(a_n^2+b_n^2)$; deducing $\\sum \\frac{1}{n^2} = \\frac{\\pi^2}{6}$, $\\sum \\frac{1}{n^4} = \\frac{\\pi^4}{90}$.",
-        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Half+Range+Fourier+Series+Parseval+Identity"
+        "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Half+Range+Fourier+Series+Parseval+Identity",
+        "duration": "35 mins",
+        "timeline": "Week 13 \u2022 Half-Range Series",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       }
     ],
     "vivaQuestions": [
@@ -1712,119 +1928,170 @@
         "title": "Hall Effect Full Mathematical Derivation & Concept",
         "channel": "Dr. Gajendra Purohit / NPTEL Physics",
         "focus": "Cross-product magnetic Lorentz force $\\vec{F}_m = -e(\\vec{v}_d \\times \\vec{B})$ balancing electric force $e E_H$; establishing $E_H = v_d B$; substituting drift velocity $v_d = \\frac{J}{ne} = \\frac{I}{ne A} = \\frac{I}{ne w t}$; deriving Hall Voltage $V_H = E_H w = \\frac{B I}{n e t}$; defining Hall Coefficient $R_H = \\frac{1}{ne}$; determining majority carrier concentration $n$, carrier sign (n-type vs p-type), and Hall mobility $\\mu = \\sigma R_H$.",
-        "url": "https://www.youtube.com/results?search_query=Hall+Effect+Derivation+Engineering+Physics+Dr+Gajendra+Purohit"
+        "url": "https://www.youtube.com/results?search_query=Hall+Effect+Derivation+Engineering+Physics+Dr+Gajendra+Purohit",
+        "duration": "35 mins",
+        "timeline": "Week 1 \u2022 Hall Effect Proof",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit I: Solid State Physics, Energy Bands & Hall Effect",
         "title": "Fermi Energy, Fermi-Dirac Distribution & Band Theory",
         "channel": "Gate Smashers / Dr. P. Suresh",
         "focus": "Fermi-Dirac function $f(E) = \\frac{1}{1 + e^{(E-E_F)/kT}}$; behavior at $T = 0\\text{ K}$ (step function) vs $T > 0\\text{ K}$; Fermi level location for intrinsic semiconductors ($E_F \\approx \\frac{E_c+E_v}{2}$) and temperature dependence; Direct vs Indirect bandgap semiconductors (photon emission vs phonon scattering in LEDs/solar cells).",
-        "url": "https://www.youtube.com/results?search_query=Fermi+Dirac+Distribution+Band+Theory+of+Solids+Gate+Smashers"
+        "url": "https://www.youtube.com/results?search_query=Fermi+Dirac+Distribution+Band+Theory+of+Solids+Gate+Smashers",
+        "duration": "28 mins",
+        "timeline": "Week 2 \u2022 Fermi Energy",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit I: Solid State Physics, Energy Bands & Hall Effect",
         "title": "Solar Cell Working Principle & $I-V$ Characteristics",
         "channel": "NPTEL IIT Kharagpur / Physics Galaxy",
         "focus": "Three fundamental steps: (1) Electron-hole pair generation via photon absorption ($h\\nu \\ge E_g$), (2) Separation by built-in electric field in the depletion region, (3) Collection at front/back contacts; Open Circuit Voltage ($V_{oc}$), Short Circuit Current ($I_{sc}$), Fill Factor ($FF = \\frac{V_{mp} I_{mp}}{V_{oc} I_{sc}}$), and overall power conversion efficiency $\\eta = \\frac{P_{max}}{P_{in}} = \\frac{V_{oc} I_{sc} FF}{P_{in}}$.",
-        "url": "https://www.youtube.com/results?search_query=Solar+Cell+Working+Principle+IV+Characteristics+Engineering+Physics"
+        "url": "https://www.youtube.com/results?search_query=Solar+Cell+Working+Principle+IV+Characteristics+Engineering+Physics",
+        "duration": "22 mins",
+        "timeline": "Week 2 \u2022 Solar Cell IV Curve",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
         "title": "PN Junction Diode Working, Characteristics & Rectifiers",
         "channel": "All About Electronics",
         "focus": "Barrier potential formation (0.7V for Si, 0.3V for Ge); forward and reverse bias drift/diffusion balance; Shockley equation $I = I_0(e^{V/\\eta V_T}-1)$; Half-wave rectifier ($\\eta = 40.6\\%$, PIV $= V_m$), Full-wave center-tapped ($\\eta = 81.2\\%$, PIV $= 2V_m$), and Full-wave Bridge rectifier ($\\eta = 81.2\\%$, PIV $= V_m$).",
-        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics+Rectifiers"
+        "url": "https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics+Rectifiers",
+        "duration": "30 mins",
+        "timeline": "Week 3 \u2022 Diode & Rectifiers",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
         "title": "BJT Operation, CE Configuration & CMOS Inverter",
         "channel": "Gate Smashers / Neso Academy",
         "focus": "BJT current relations $I_E = I_B + I_C$, $\\alpha = \\frac{I_C}{I_E}$, $\\beta = \\frac{I_C}{I_B}$, $\\beta = \\frac{\\alpha}{1-\\alpha}$; CE input/output characteristics (Cutoff, Active, Saturation); CMOS Inverter: PMOS pull-up connected to $V_{DD}$ and NMOS pull-down connected to GND; why static power dissipation is virtually zero.",
-        "url": "https://www.youtube.com/results?search_query=BJT+Working+Principle+CE+Configuration+CMOS+Inverter+Neso+Academy"
+        "url": "https://www.youtube.com/results?search_query=BJT+Working+Principle+CE+Configuration+CMOS+Inverter+Neso+Academy",
+        "duration": "32 mins",
+        "timeline": "Week 4 \u2022 BJT & CMOS Inverter",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
         "title": "Optical Fiber: Numerical Aperture & Acceptance Angle",
         "channel": "Dr. Gajendra Purohit / Engineering Physics",
         "focus": "Total Internal Reflection (TIR) condition ($\\theta > \\theta_c = \\sin^{-1}(n_2/n_1)$); Snell's law at air-core interface; deriving $\\sin\\theta_a = \\sqrt{n_1^2 - n_2^2}$; defining $\\text{NA} = \\sin\\theta_a = n_1 \\sqrt{2\\Delta}$ where $\\Delta = \\frac{n_1 - n_2}{n_1}$; fractional index change.",
-        "url": "https://www.youtube.com/results?search_query=Optical+Fiber+Numerical+Aperture+Acceptance+Angle+Derivation"
+        "url": "https://www.youtube.com/results?search_query=Optical+Fiber+Numerical+Aperture+Acceptance+Angle+Derivation",
+        "duration": "25 mins",
+        "timeline": "Week 5 \u2022 Optical Fiber NA",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
         "title": "CPU vs GPU Architecture & AI Accelerator Chips",
         "channel": "Computerphile / ByteByteGo",
         "focus": "CPU: latency-optimized, heavy branch prediction, massive L1/L2/L3 caches, few powerful cores; GPU: throughput-optimized, thousands of ALU cores, SIMT/SIMD execution model; AI Accelerators (TPU/NPU): systolic arrays for $O(1)$ matrix multiplication accumulation without repeated memory bus access.",
-        "url": "https://www.youtube.com/results?search_query=CPU+vs+GPU+vs+TPU+Architecture+Explained"
+        "url": "https://www.youtube.com/results?search_query=CPU+vs+GPU+vs+TPU+Architecture+Explained",
+        "duration": "20 mins",
+        "timeline": "Week 6 \u2022 CPU/GPU/TPU Chips",
+        "priority": "\u26a1 Visual Computer Architecture"
       },
       {
         "unit": "Unit III: Number Systems, Boolean Algebra & K-Maps",
         "title": "Number System Conversions, 2's Complement Arithmetic & Codes",
         "channel": "Neso Academy",
         "focus": "Base-r conversions; 2's complement subtraction: if end-around carry occurs, drop carry and result is positive; if no carry, take 2's complement and result is negative; Binary-to-Gray conversion ($G_i = B_{i+1} \\oplus B_i$); BCD to Excess-3 conversion (+0011).",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Number+Systems+2s+Complement+Arithmetic+Gray+Code"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Number+Systems+2s+Complement+Arithmetic+Gray+Code",
+        "duration": "28 mins",
+        "timeline": "Week 7 \u2022 2's Complement Math",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit III: Number Systems, Boolean Algebra & K-Maps",
         "title": "Boolean Algebra Theorems & K-Map Minimization (up to 4 Variables)",
         "channel": "Neso Academy",
         "focus": "Gray code sequencing in K-Maps ($00, 01, 11, 10$); Minterm ($\\Sigma m$) vs Maxterm ($\\Pi M$) grouping; forming largest possible powers-of-two groups (octets $\\to$ quads $\\to$ pairs); rolling map wrap-around rules; optimal inclusion of Don't Care ('X') conditions.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+K+Map+Minimization+4+Variables+Dont+Care"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+K+Map+Minimization+4+Variables+Dont+Care",
+        "duration": "35 mins",
+        "timeline": "Week 8 \u2022 4-Variable K-Maps",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Combinational Logic Circuits (Adders, MUX, Decoders, Comparators)",
         "title": "Half Adder, Full Adder & Subtractor Design",
         "channel": "Neso Academy",
         "focus": "Full Adder truth table; Karnaugh map derivation: $S = A \\oplus B \\oplus C_{in}$, $C_{out} = AB + B C_{in} + A C_{in} = AB + C_{in}(A \\oplus B)$; implementing Full Adder using exactly two 2-input XOR gates, two AND gates, and one OR gate.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Half+Adder+Full+Adder+Subtractor+Logic+Circuit"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Half+Adder+Full+Adder+Subtractor+Logic+Circuit",
+        "duration": "30 mins",
+        "timeline": "Week 9 \u2022 Half/Full Adders",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit IV: Combinational Logic Circuits (Adders, MUX, Decoders, Comparators)",
         "title": "Multiplexers (MUX 2:1, 4:1, 8:1) & Implementing Boolean Functions",
         "channel": "Neso Academy",
         "focus": "Multiplexer truth tables and selection line equations $Y = \\bar{S}_1\\bar{S}_0 I_0 + \\bar{S}_1 S_0 I_1 + S_1\\bar{S}_0 I_2 + S_1 S_0 I_3$; implementation of any $n$-variable boolean function using a $2^{n-1}:1$ MUX via input assignment table.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Multiplexer+4+to+1+MUX+Boolean+Function+Implementation"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Multiplexer+4+to+1+MUX+Boolean+Function+Implementation",
+        "duration": "28 mins",
+        "timeline": "Week 10 \u2022 Multiplexers 8:1",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit IV: Combinational Logic Circuits (Adders, MUX, Decoders, Comparators)",
         "title": "Decoders, Priority Encoders & 2-Bit Magnitude Comparators",
         "channel": "Neso Academy",
         "focus": "3-to-8 active-LOW decoder with Enable pin; 8-to-3 Priority Encoder ($V$ valid bit, handling simultaneous active inputs); 2-bit Magnitude Comparator: equations for $A > B$, $A = B$ ($x_1 x_0 = \\overline{A_1 \\oplus B_1} \\cdot \\overline{A_0 \\oplus B_0}$), and $A < B$.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Decoder+3+to+8+Priority+Encoder+Magnitude+Comparator"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Decoder+3+to+8+Priority+Encoder+Magnitude+Comparator",
+        "duration": "30 mins",
+        "timeline": "Week 10 \u2022 Decoders & Encoders",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: Sequential Logic Circuits (Flip-Flops, Registers & Counters)",
         "title": "SR, JK, D, T Flip-Flops & Master-Slave JK Resolution",
         "channel": "Neso Academy",
         "focus": "Latches vs edge-triggered flip-flops; characteristic and excitation tables; **Race-around condition:** occurs in level-triggered JK flip-flops when $J=1, K=1$ and pulse width $t_p > t_{pd}$; **Master-Slave JK solution:** Master triggers on rising clock edge ($CLK=1$), Slave triggers on falling clock edge ($\\overline{CLK}=1$), isolating output from input during clock pulse.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+SR+JK+D+T+Flip+Flop+Master+Slave+Race+Around"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+SR+JK+D+T+Flip+Flop+Master+Slave+Race+Around",
+        "duration": "38 mins",
+        "timeline": "Week 11 \u2022 Master-Slave JK",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit V: Sequential Logic Circuits (Flip-Flops, Registers & Counters)",
         "title": "Flip-Flop Conversion Systematic Method",
         "channel": "Neso Academy",
         "focus": "Conversion procedure: (1) Identify Required FF and Available FF, (2) Construct Truth Table of Required FF with excitation entries for Available FF, (3) Draw K-Maps for Available FF inputs, (4) Draw the completed logic circuit.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Flip+Flop+Conversion+Step+by+Step"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Flip+Flop+Conversion+Step+by+Step",
+        "duration": "32 mins",
+        "timeline": "Week 11 \u2022 Flip-Flop Conversion",
+        "priority": "\u2b50 High-Yield Core Topic"
       },
       {
         "unit": "Unit V: Sequential Logic Circuits (Flip-Flops, Registers & Counters)",
         "title": "Shift Registers (SISO, SIPO, PISO, PIPO) & Asynchronous Counters",
         "channel": "Neso Academy",
         "focus": "Shift register configurations; Asynchronous 3-bit/4-bit Ripple UP/DOWN counter using T / JK flip-flops in toggle mode; Mod-N Counter: using an active-LOW NAND gate connected to asynchronous $\\overline{CLR}$ inputs to reset at state $N$.",
-        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Shift+Registers+SISO+SIPO+Asynchronous+Counter"
+        "url": "https://www.youtube.com/results?search_query=Neso+Academy+Shift+Registers+SISO+SIPO+Asynchronous+Counter",
+        "duration": "35 mins",
+        "timeline": "Week 12 \u2022 Shift Registers",
+        "priority": "\ud83d\udd25 Mandatory Exam Question"
       },
       {
         "unit": "Unit VI: Arduino Microcontroller Architecture & Sensor Interfacing",
         "title": "Arduino Board Architecture & Pinout Masterclass",
         "channel": "Programming Electronics Academy",
         "focus": "ATmega328P microcontroller internals; 14 digital I/O pins (pins 3, 5, 6, 9, 10, 11 supporting 8-bit PWM via `analogWrite(pin, val)`); 6 analog inputs (A0\u2013A5) with 10-bit Successive Approximation ADC (`analogRead(pin)`); 16 MHz quartz crystal clock; power regulation (5V, 3.3V, VIN).",
-        "url": "https://www.youtube.com/results?search_query=Arduino+UNO+Architecture+Pinout+ATmega328P+Explained"
+        "url": "https://www.youtube.com/results?search_query=Arduino+UNO+Architecture+Pinout+ATmega328P+Explained",
+        "duration": "25 mins",
+        "timeline": "Week 13 \u2022 Arduino Board Pinout",
+        "priority": "\u26a1 Hardware Lab Practical"
       },
       {
         "unit": "Unit VI: Arduino Microcontroller Architecture & Sensor Interfacing",
         "title": "Sensor Interfacing: Ultrasonic HC-SR04, IR, LDR & DHT11",
         "channel": "How To Mechatronics",
         "focus": "",
-        "url": "https://www.youtube.com/results?search_query=Arduino+Sensors+Interfacing+HC-SR04+LDR+DHT11+How+To+Mechatronics"
+        "url": "https://www.youtube.com/results?search_query=Arduino+Sensors+Interfacing+HC-SR04+LDR+DHT11+How+To+Mechatronics",
+        "duration": "30 mins",
+        "timeline": "Week 13 \u2022 Ultrasonic & Sensors",
+        "priority": "\u26a1 Hardware Lab Practical"
       }
     ],
     "vivaQuestions": [
