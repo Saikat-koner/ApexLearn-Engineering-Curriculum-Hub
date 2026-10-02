@@ -480,7 +480,7 @@ function renderDrawerTabContent() {
       ${textbooksHtml}
     `;
   } else if (activeDrawerTabName === 'tabVideos') {
-    // Video Master Hub with Timeline, Duration & Completion Tracking
+    // Video Master Hub with Playlist Sequence, Fixed Prescribed Watch Time & Syllabus Quota
     let watchedSet = new Set();
     try {
       const stored = localStorage.getItem(`apex_watched_vids_${sub.code}`);
@@ -491,49 +491,81 @@ function renderDrawerTabContent() {
     const watchedCount = watchedSet.size;
     const completionPercent = totalVids > 0 ? Math.round((watchedCount / totalVids) * 100) : 0;
 
-    // Calculate total duration in hours/mins
-    let totalMinutes = 0;
+    // Calculate total prescribed minutes and watched minutes
+    let totalPrescribedMins = 0;
+    let watchedMins = 0;
     if (sub.videos) {
       sub.videos.forEach(v => {
-        const match = (v.duration || '').match(/(\d+)/);
-        if (match) totalMinutes += parseInt(match[1], 10);
-        else totalMinutes += 25;
+        const mins = v.fixedMinutes || 25;
+        totalPrescribedMins += mins;
+        if (watchedSet.has(v.url || v.title)) {
+          watchedMins += mins;
+        }
       });
     }
-    const totalHours = Math.floor(totalMinutes / 60);
-    const remMins = totalMinutes % 60;
-    const totalDurationStr = totalHours > 0 ? `${totalHours}h ${remMins}m` : `${remMins}m`;
+    const totalHours = Math.floor(totalPrescribedMins / 60);
+    const remMins = totalPrescribedMins % 60;
+    const totalTimeStr = totalHours > 0 ? `${totalHours}h ${remMins}m` : `${remMins}m`;
+
+    const watchedHours = Math.floor(watchedMins / 60);
+    const watchedRemMins = watchedMins % 60;
+    const watchedTimeStr = watchedHours > 0 ? `${watchedHours}h ${watchedRemMins}m` : `${watchedRemMins}m`;
+    const syllabusTimePercent = totalPrescribedMins > 0 ? Math.round((watchedMins / totalPrescribedMins) * 100) : 0;
 
     let videosHtml = '';
     if (sub.videos && sub.videos.length > 0) {
       videosHtml = sub.videos.map((v, vidx) => {
-        const isWatched = watchedSet.has(v.url || v.title);
+        const vidKey = v.url || v.title;
+        const isWatched = watchedSet.has(vidKey);
         const cardClass = isWatched ? 'video-card-item watched' : 'video-card-item';
+        const vidNo = v.videoNo || (vidx + 1);
+        const seqLabel = v.playlistSequence || `Lecture #${vidNo < 10 ? '0' + vidNo : vidNo} of ${totalVids}`;
+        const targetTime = v.fixedWatchTime || `${v.duration || '25 mins'} (Fixed Target)`;
+        const syllabusRef = v.syllabusTopic || (v.unit ? `${v.unit} Core Topic` : 'Syllabus Core Topic');
+        const examWeight = v.examWeight || '10-Mark Core Topic';
+        const contrib = v.syllabusContribution || `+${Math.round(100/totalVids)}% Syllabus`;
+        const cumTime = v.cumulativeTime || `${v.fixedMinutes || 25}m / ${totalTimeStr}`;
+
         return `
           <div class="${cardClass}" id="vid_card_${sub.code}_${vidx}">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
-              <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
-                <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;" title="Toggle Completion">
-                  <input type="checkbox" class="video-watch-checkbox" ${isWatched ? 'checked' : ''} onchange="toggleVideoCompleted('${sub.code}', '${v.url || v.title}', this, 'vid_card_${sub.code}_${vidx}')">
-                  <span style="font-size: 0.75rem; color: ${isWatched ? '#10b981' : 'var(--text-muted)'}; font-weight: 700;">${isWatched ? '✓ Completed' : 'Mark Done'}</span>
-                </label>
-                <span class="video-timeline-badge">📅 ${v.timeline || 'Semester Roadmap'}</span>
-                <span class="video-duration-badge">⏱️ ${v.duration || '~25 mins'}</span>
-                <span class="video-priority-badge">${v.priority || '⭐ Core Topic'}</span>
+            <!-- Top Metadata Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.6rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                <span class="video-seq-pill">🎬 ${seqLabel}</span>
+                <span class="video-target-time">⏱️ Fixed Time: ${v.fixedMinutes || 25} Mins</span>
+                <span class="video-syllabus-chip">📈 ${contrib}</span>
+                <span class="video-exam-weight">🎯 ${examWeight}</span>
               </div>
-              <a href="${v.url}" target="_blank" class="btn btn-primary btn-sm" style="background: #dc2626; border-color: #dc2626; color: white; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 700;" title="Open YouTube Tutorial">
-                <span>▶ Watch Video</span>
+              <a href="${v.url}" target="_blank" class="btn btn-primary btn-sm" style="background: #dc2626; border-color: #dc2626; color: white; display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700;" title="Watch Lecture #${vidNo} on YouTube">
+                <span>▶ Watch Lecture #${vidNo}</span>
               </a>
             </div>
 
-            <div style="margin-bottom: 0.4rem;">
+            <!-- Syllabus Mapping Callout Box -->
+            <div class="syllabus-topic-callout">
+              <span>📖</span>
+              <div><strong>Syllabus Module:</strong> <span style="color: var(--primary);">${syllabusRef}</span></div>
+            </div>
+
+            <!-- Video Title & Attribution -->
+            <div style="margin-bottom: 0.5rem;">
               <strong style="color: var(--text-bright); font-size: 1.05rem; display: block; margin-bottom: 0.2rem;">${v.title}</strong>
-              <div style="font-size: 0.82rem; color: var(--text-muted);">
-                📺 <strong>Creator / Channel:</strong> <span style="color: var(--text-secondary);">${v.channel || 'Curated Faculty'}</span> • <strong>Syllabus Unit:</strong> <span style="color: var(--primary);">${v.unit || 'Core Unit'}</span>
+              <div style="font-size: 0.82rem; color: var(--text-muted); display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <span>📺 <strong>Faculty / Channel:</strong> <span style="color: var(--text-secondary);">${v.channel || 'Curated Faculty'}</span></span>
+                <span>⏳ <strong>Cumulative Syllabus Time:</strong> <span style="color: #fbbf24;">${cumTime}</span></span>
               </div>
             </div>
 
-            ${v.focus ? `<p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.55; margin: 0; background: rgba(255,255,255,0.02); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); border-left: 3px solid var(--primary);">${v.focus}</p>` : ''}
+            ${v.focus ? `<p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.55; margin: 0 0 0.65rem; background: rgba(255,255,255,0.02); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); border-left: 3px solid var(--primary);">${v.focus}</p>` : ''}
+
+            <!-- Bottom Completion Action Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 0.5rem;">
+              <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; user-select: none;">
+                <input type="checkbox" class="video-watch-checkbox" ${isWatched ? 'checked' : ''} onchange="toggleVideoCompleted('${sub.code}', '${vidKey}', this, 'vid_card_${sub.code}_${vidx}', ${v.fixedMinutes || 25})">
+                <span style="font-size: 0.82rem; color: ${isWatched ? '#10b981' : 'var(--text-muted)'}; font-weight: 700;">${isWatched ? '✅ Completed (' + (v.fixedMinutes || 25) + ' mins counted)' : 'Mark Lecture Completed (' + (v.fixedMinutes || 25) + ' mins)'}</span>
+              </label>
+              <span style="font-size: 0.75rem; color: var(--text-muted);">Syllabus Quota: <strong>${v.fixedMinutes || 25} mins required</strong></span>
+            </div>
           </div>
         `;
       }).join('');
@@ -546,26 +578,34 @@ function renderDrawerTabContent() {
 
       <!-- Video Course Completion Overview Banner -->
       <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; box-shadow: var(--shadow-sm);">
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.85rem;">
           <div>
-            <h4 style="color: var(--primary); margin: 0 0 0.25rem;">📺 Curated Video Master Hub (${totalVids} Core Tutorials)</h4>
-            <span style="font-size: 0.85rem; color: var(--text-muted);">Total Estimated Video Study Load: <strong style="color: #fbbf24;">~${totalDurationStr}</strong> • 14-Week Semester Sprint Plan</span>
+            <h4 style="color: var(--primary); margin: 0 0 0.25rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📺</span> ${sub.title} — Video Playlist (${totalVids} Sequential Lectures)
+            </h4>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              Total Prescribed Syllabus Watch Time: <strong style="color: #fbbf24;">${totalTimeStr} (${totalPrescribedMins} mins fixed study quota)</strong>
+            </div>
           </div>
           <div style="text-align: right;">
-            <div style="font-size: 0.78rem; color: var(--text-muted);">Course Video Progress</div>
-            <strong id="vidProgressHeader_${sub.code}" style="font-size: 1.15rem; color: #10b981;">${watchedCount} / ${totalVids} Watched (${completionPercent}%)</strong>
+            <div style="font-size: 0.78rem; color: var(--text-muted);">Syllabus Watch Progress</div>
+            <strong id="vidProgressHeader_${sub.code}" style="font-size: 1.15rem; color: #10b981;">
+              ${watchedCount} / ${totalVids} Lectures (${watchedTimeStr} / ${totalTimeStr} • ${syllabusTimePercent}%)
+            </strong>
           </div>
         </div>
 
         <!-- Progress Bar -->
-        <div style="width: 100%; height: 8px; background: rgba(255,255,255,0.08); border-radius: 9999px; overflow: hidden;">
-          <div id="vidProgressBar_${sub.code}" style="width: ${completionPercent}%; height: 100%; background: linear-gradient(90deg, var(--primary), #10b981); border-radius: 9999px; transition: width 0.3s ease;"></div>
+        <div style="width: 100%; height: 10px; background: rgba(255,255,255,0.08); border-radius: 9999px; overflow: hidden; position: relative;">
+          <div id="vidProgressBar_${sub.code}" style="width: ${syllabusTimePercent}%; height: 100%; background: linear-gradient(90deg, var(--primary), #10b981); border-radius: 9999px; transition: width 0.3s ease;"></div>
         </div>
       </div>
 
       <div style="margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-        <span style="font-size: 0.85rem; color: var(--text-muted);">Follow the semester roadmap below. Tick the checkboxes as you complete each video lecture:</span>
-        <button class="btn btn-secondary btn-sm" onclick="resetVideoProgress('${sub.code}')" style="font-size: 0.75rem;">🔄 Reset Video Tracker</button>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">
+          Follow the sequential playlist order below. Each video covers a specific syllabus topic with a fixed prescribed time:
+        </span>
+        <button class="btn btn-secondary btn-sm" onclick="resetVideoProgress('${sub.code}')" style="font-size: 0.75rem;">🔄 Reset Playlist Progress</button>
       </div>
 
       ${videosHtml}

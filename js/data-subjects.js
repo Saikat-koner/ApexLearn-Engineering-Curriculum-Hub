@@ -166,8 +166,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Decomposition, Pattern Recognition, Abstraction, Algorithm Design.",
         "url": "https://www.youtube.com/results?search_query=CS50+Computational+Thinking",
         "duration": "20 mins",
-        "timeline": "Week 1 \u2022 Orientation",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #01 of 13",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 Computational Thinking 4-Pillar Pipeline",
+        "examWeight": "10-Mark Section A Core",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "20m / 5h 20m"
       },
       {
         "unit": "Unit I: OS Types & Kernel Modes",
@@ -176,8 +185,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Batch, Time-sharing, RTOS (Hard vs Soft), and Distributed OS.",
         "url": "https://www.youtube.com/results?search_query=Gate+Smashers+Types+of+Operating+System",
         "duration": "25 mins",
-        "timeline": "Week 2 \u2022 Unit I Foundation",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #02 \u2022 Week 2",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #02 of 13",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit I \u00a7 1.2 \u2014 Dual-Mode CPU (Ring 3 vs Ring 0) & OS Architectures",
+        "examWeight": "10-Mark Core Derivation",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "45m / 5h 20m"
       },
       {
         "unit": "Unit I: Linux CLI & Hierarchy",
@@ -186,8 +204,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Linux root `/` hierarchy, `chmod 755`, `grep -rn`, `mkdir -p`, `ps aux`.",
         "url": "https://www.youtube.com/results?search_query=freeCodeCamp+Linux+Command+Line+for+Beginners",
         "duration": "35 mins",
-        "timeline": "Week 2 \u2022 Lab & CLI",
-        "priority": "\u26a1 Practical Mastery"
+        "timeline": "Lecture #03 \u2022 Week 3",
+        "priority": "\u26a1 Practical Mastery",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #03 of 13",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit I \u00a7 1.3 \u2014 Linux Root Filesystem, Inodes & chmod Octal Bitmask",
+        "examWeight": "15-Mark Lab & Theory",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "1h 20m / 5h 20m"
       },
       {
         "unit": "Unit I: Network Devices & Topologies",
@@ -196,8 +223,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Animated walkthrough of Layer 1 Hubs, Layer 2 Switches, Layer 3 Routers, Gateways.",
         "url": "https://www.youtube.com/results?search_query=PowerCert+Network+Devices+Hub+Switch+Router",
         "duration": "22 mins",
-        "timeline": "Week 3 \u2022 Unit I Networks",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #04 \u2022 Week 4",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #04 of 13",
+        "fixedWatchTime": "22 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 22,
+        "syllabusTopic": "Unit I \u00a7 1.4 \u2014 Network Topologies (Mesh N(N-1)/2) & OSI/TCP Layering",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "1h 42m / 5h 20m"
       },
       {
         "unit": "Unit I: Hypervisors Type-1 vs Type-2",
@@ -206,8 +242,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Bare-Metal (ESXi) vs Hosted (VirtualBox) with clear architectural visuals.",
         "url": "https://www.youtube.com/results?search_query=NetworkChuck+Hypervisor+Type+1+Type+2",
         "duration": "18 mins",
-        "timeline": "Week 3 \u2022 Unit I Cloud",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #05 \u2022 Week 5",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #05 of 13",
+        "fixedWatchTime": "18 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 18,
+        "syllabusTopic": "Unit I \u00a7 1.5 \u2014 Type-1 Bare-Metal vs Type-2 Hosted Hypervisors",
+        "examWeight": "5-Mark Conceptual",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "2h 0m / 5h 20m"
       },
       {
         "unit": "Unit I: Cloud Models (IaaS, PaaS, SaaS)",
@@ -215,9 +260,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Fireship",
         "focus": "Fast, intuitive breakdown of SPI tiers and Cloud Deployment Models.",
         "url": "https://www.youtube.com/results?search_query=Fireship+Cloud+Computing+in+100+Seconds",
-        "duration": "10 mins",
-        "timeline": "Week 4 \u2022 Unit I Cloud SPI",
-        "priority": "\u26a1 Fast Concept Booster"
+        "duration": "15 mins",
+        "timeline": "Lecture #06 \u2022 Week 6",
+        "priority": "\u26a1 Fast Concept Booster",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #06 of 13",
+        "fixedWatchTime": "15 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 15,
+        "syllabusTopic": "Unit I \u00a7 1.6 \u2014 Cloud Computing Service Models (SPI: SaaS, PaaS, IaaS)",
+        "examWeight": "5-Mark Conceptual",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "2h 15m / 5h 20m"
       },
       {
         "unit": "Unit II: Git & GitHub Masterclass",
@@ -226,8 +280,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Practical end-to-end walkthrough of Git 4 stages, branch merging, pull requests.",
         "url": "https://www.youtube.com/results?search_query=Kunal+Kushwaha+Git+GitHub+Tutorial",
         "duration": "45 mins",
-        "timeline": "Week 5 \u2022 Mid-Term Lab Core",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #07 \u2022 Week 7",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #07 of 13",
+        "fixedWatchTime": "45 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 45,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 Git 4-Stage State Machine & DAG Commit History",
+        "examWeight": "15-Mark Section C Practical",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "3h 0m / 5h 20m"
       },
       {
         "unit": "Unit II: Malware Taxonomy & Cyber Threats",
@@ -236,8 +299,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Viruses, Worms, Trojans, Ransomware, Rootkits, Spyware, Botnets, and MFA.",
         "url": "https://www.youtube.com/results?search_query=Cyber+Security+Full+Course+Simplilearn",
         "duration": "30 mins",
-        "timeline": "Week 6 \u2022 Mid-Term Security",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #08 \u2022 Week 8",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #08 of 13",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit II \u00a7 2.2 \u2014 7-Class Malware Taxonomy, 3-Factor MFA & PoLP Security",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "3h 30m / 5h 20m"
       },
       {
         "unit": "Unit IV: Machine Learning Paradigms",
@@ -246,8 +318,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Visual, jargon-free breakdown of Supervised vs Unsupervised vs Reinforcement Learning.",
         "url": "https://www.youtube.com/results?search_query=StatQuest+Machine+Learning+Basics",
         "duration": "20 mins",
-        "timeline": "Week 8 \u2022 Unit IV AI/ML",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #09 \u2022 Week 9",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 9,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #09 of 13",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 AI \u2283 ML \u2283 DL Hierarchy & Learning Paradigms",
+        "examWeight": "10-Mark Section A",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "3h 50m / 5h 20m"
       },
       {
         "unit": "Unit IV: Neural Networks & Deep Learning",
@@ -256,8 +337,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Weights, biases, activation functions, and deep representations.",
         "url": "https://www.youtube.com/results?search_query=3Blue1Brown+Neural+Networks",
         "duration": "25 mins",
-        "timeline": "Week 9 \u2022 Unit IV Deep Tech",
-        "priority": "\u26a1 Visual 3D Intuition"
+        "timeline": "Lecture #10 \u2022 Week 10",
+        "priority": "\u26a1 Visual Intuition",
+        "videoNo": 10,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #10 of 13",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit IV \u00a7 4.2 \u2014 Neural Networks, Weights, Biases & Backpropagation",
+        "examWeight": "10-Mark Deep Dive",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "4h 15m / 5h 20m"
       },
       {
         "unit": "Unit IV: Generative AI vs Agentic AI",
@@ -265,9 +355,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Fireship / Andrew Ng",
         "focus": "Why Agentic AI (perception-tool-action loop) differs from static GenAI.",
         "url": "https://www.youtube.com/results?search_query=Fireship+AI+Agents+in+100+Seconds",
-        "duration": "12 mins",
-        "timeline": "Week 10 \u2022 Unit IV Agentic AI",
-        "priority": "\ud83c\udfc6 100-Percentile Booster"
+        "duration": "15 mins",
+        "timeline": "Lecture #11 \u2022 Week 11",
+        "priority": "\ud83c\udfc6 100-Percentile Booster",
+        "videoNo": 11,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #11 of 13",
+        "fixedWatchTime": "15 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 15,
+        "syllabusTopic": "Unit IV \u00a7 4.3 \u2014 Generative AI vs Agentic AI Tool-Use Loops",
+        "examWeight": "5-Mark Section B",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "4h 30m / 5h 20m"
       },
       {
         "unit": "Unit IV: Prompt Engineering Masterclass",
@@ -275,9 +374,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "DeepLearning.AI (Andrew Ng)",
         "focus": "Zero-shot, Few-shot, Chain-of-Thought (CoT), System Personas.",
         "url": "https://www.youtube.com/results?search_query=ChatGPT+Prompt+Engineering+for+Developers+Andrew+Ng",
-        "duration": "28 mins",
-        "timeline": "Week 11 \u2022 Unit IV Prompting",
-        "priority": "\u26a1 Practical Industry Skill"
+        "duration": "25 mins",
+        "timeline": "Lecture #12 \u2022 Week 12",
+        "priority": "\u26a1 Practical Industry Skill",
+        "videoNo": 12,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #12 of 13",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit IV \u00a7 4.4 \u2014 Prompt Engineering: Zero-Shot, Few-Shot & Chain-of-Thought",
+        "examWeight": "10-Mark Applied Task",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "4h 55m / 5h 20m"
       },
       {
         "unit": "Unit V & VI: ATS Resume & STAR Method",
@@ -286,8 +394,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "1-page ATS-beating resume design, STAR bullet formula with quantified metrics.",
         "url": "https://www.youtube.com/results?search_query=Kunal+Kushwaha+Resume+Review",
         "duration": "25 mins",
-        "timeline": "Week 13 \u2022 Unit V & VI Career",
-        "priority": "\ud83c\udfc6 Placement & Portfolio"
+        "timeline": "Lecture #13 \u2022 Week 14",
+        "priority": "\ud83c\udfc6 Placement & Portfolio",
+        "videoNo": 13,
+        "totalVideosInPlaylist": 13,
+        "playlistSequence": "Lecture #13 of 13",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit V & VI \u00a7 5.1 \u2014 Career Pathways Matrix, 5-Step IDP & ATS Dream CV",
+        "examWeight": "15-Mark Portfolio Milestone",
+        "syllabusContribution": "+7.7% Syllabus",
+        "cumulativeTime": "5h 20m / 5h 20m"
       }
     ],
     "vivaQuestions": [
@@ -344,7 +461,9 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/CSE111_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/CSE111_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/CSE111_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 320,
+    "totalStudyTimeFormatted": "5h 20m"
   },
   {
     "id": "che110",
@@ -463,8 +582,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "17 SDGs breakdown, Brundtland definition, Carrying capacity.",
         "url": "https://www.youtube.com/results?search_query=CrashCourse+Sustainable+Development+Goals",
         "duration": "15 mins",
-        "timeline": "Week 1 \u2022 Unit I Foundation",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #01 of 11",
+        "fixedWatchTime": "15 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 15,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 Multidisciplinary Nature of Environmental Studies",
+        "examWeight": "5-Mark Section A",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "15m / 3h 55m"
       },
       {
         "unit": "Unit I: 4 Spheres of Earth",
@@ -472,9 +600,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "National Geographic / Amoeba Sisters",
         "focus": "Atmosphere, Hydrosphere, Lithosphere, Biosphere interactions.",
         "url": "https://www.youtube.com/results?search_query=National+Geographic+Spheres+of+the+Earth",
-        "duration": "18 mins",
-        "timeline": "Week 2 \u2022 Unit I Ecology",
-        "priority": "\u26a1 Visual Earth Systems"
+        "duration": "20 mins",
+        "timeline": "Lecture #02 \u2022 Week 2",
+        "priority": "\u26a1 Visual Earth Systems",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #02 of 11",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit I \u00a7 1.2 \u2014 Earth Spheres: Lithosphere, Hydrosphere, Atmosphere & Biosphere",
+        "examWeight": "5-Mark Section A",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "35m / 3h 55m"
       },
       {
         "unit": "Unit II: Ecosystem Structure & Energy Flow",
@@ -482,9 +619,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Khan Academy / Amoeba Sisters",
         "focus": "10% Lindeman's Rule, Food Chains vs Webs, Hydrosere vs Xerosere.",
         "url": "https://www.youtube.com/results?search_query=Amoeba+Sisters+Ecological+Succession+Energy+Flow",
-        "duration": "22 mins",
-        "timeline": "Week 3 \u2022 Unit II Ecosystems",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "duration": "25 mins",
+        "timeline": "Lecture #03 \u2022 Week 3",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #03 of 11",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 Ecosystem Structure, Trophic Food Chains & Energy Flows",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "1h 0m / 3h 55m"
       },
       {
         "unit": "Unit II: Ecological Pyramids",
@@ -493,8 +639,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Why Energy Pyramids are always upright; inverted aquatic biomass.",
         "url": "https://www.youtube.com/results?search_query=Ecological+Pyramids+Number+Biomass+Energy+Explained",
         "duration": "20 mins",
-        "timeline": "Week 4 \u2022 Unit II Pyramids",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #04 \u2022 Week 5",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #04 of 11",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit II \u00a7 2.2 \u2014 Ecological Pyramids (Numbers, Biomass, Energy Inverted/Upright)",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "1h 20m / 3h 55m"
       },
       {
         "unit": "Unit III: Biodiversity Hotspots & IUCN",
@@ -503,8 +658,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "4 Indian Hotspots (Western Ghats, Himalayas, etc.), IUCN Red List.",
         "url": "https://www.youtube.com/results?search_query=StudyIQ+Biodiversity+Hotspots+in+India",
         "duration": "25 mins",
-        "timeline": "Week 5 \u2022 Mid-Term Biodiversity",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #05 \u2022 Week 6",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #05 of 11",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit III \u00a7 3.1 \u2014 4 Indian Biodiversity Hotspots (Western Ghats, Himalayas, Indo-Burma, Sundaland)",
+        "examWeight": "10-Mark Section C",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "1h 45m / 3h 55m"
       },
       {
         "unit": "Unit III: In-situ vs Ex-situ Conservation",
@@ -512,9 +676,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Amit Sengupta",
         "focus": "National Parks vs Sanctuaries vs Biosphere Reserves vs Seed Banks.",
         "url": "https://www.youtube.com/results?search_query=Amit+Sengupta+In+situ+and+Ex+situ+Conservation",
-        "duration": "18 mins",
-        "timeline": "Week 6 \u2022 Mid-Term Conservation",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "20 mins",
+        "timeline": "Lecture #06 \u2022 Week 7",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #06 of 11",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit III \u00a7 3.2 \u2014 In-Situ vs Ex-Situ Conservation Strategies",
+        "examWeight": "5-Mark Section B",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "2h 5m / 3h 55m"
       },
       {
         "unit": "Unit IV: Air & Water Pollution, Smog",
@@ -523,8 +696,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Primary/Secondary pollutants, Eutrophication, BOD/COD.",
         "url": "https://www.youtube.com/results?search_query=Photochemical+Smog+vs+Classical+Smog+StudyIQ",
         "duration": "30 mins",
-        "timeline": "Week 8 \u2022 Unit IV Pollution",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #07 \u2022 Week 8",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #07 of 11",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 Water Quality Parameters: BOD, COD & EDTA Hardness Titration",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "2h 35m / 3h 55m"
       },
       {
         "unit": "Unit IV: Ozone Depletion & Montreal Protocol",
@@ -532,9 +714,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "TED-Ed / SciShow",
         "focus": "CFC catalytic chlorine cycle, Polar Stratospheric Clouds.",
         "url": "https://www.youtube.com/results?search_query=TED+Ed+Ozone+Layer+Depletion",
-        "duration": "16 mins",
-        "timeline": "Week 9 \u2022 Unit IV Ozone Layer",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "15 mins",
+        "timeline": "Lecture #08 \u2022 Week 10",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #08 of 11",
+        "fixedWatchTime": "15 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 15,
+        "syllabusTopic": "Unit IV \u00a7 4.2 \u2014 Ozone Layer Depletion, Dobson Units & Montreal/Kyoto Protocols",
+        "examWeight": "5-Mark Section B",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "2h 50m / 3h 55m"
       },
       {
         "unit": "Unit V: Disaster Management Framework",
@@ -543,8 +734,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "NDMA, SDMA, DDMA structure, Disaster Lifecycle.",
         "url": "https://www.youtube.com/results?search_query=National+Disaster+Management+Authority+NDMA+India+StudyIQ",
         "duration": "20 mins",
-        "timeline": "Week 11 \u2022 Unit V Disaster Mgmt",
-        "priority": "\u26a1 Policy & Framework"
+        "timeline": "Lecture #09 \u2022 Week 11",
+        "priority": "\u26a1 Policy & Framework",
+        "videoNo": 9,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #09 of 11",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit V \u00a7 5.1 \u2014 Disaster Management: Earthquakes, Cyclones & NDMA Framework",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "3h 10m / 3h 55m"
       },
       {
         "unit": "Unit VI: Environmental Movements in India",
@@ -552,9 +752,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "StudyIQ IAS / Drishti IAS",
         "focus": "Bishnoi (1730), Chipko (1973), Appiko, Silent Valley, NBA.",
         "url": "https://www.youtube.com/results?search_query=Environmental+Movements+in+India+Chipko+Narmada+StudyIQ",
-        "duration": "22 mins",
-        "timeline": "Week 12 \u2022 Unit VI Movements",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "20 mins",
+        "timeline": "Lecture #10 \u2022 Week 12",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 10,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #10 of 11",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit VI \u00a7 6.1 \u2014 Environmental Movements: Chipko, Appiko & Narmada Bachao",
+        "examWeight": "5-Mark Case Study",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "3h 30m / 3h 55m"
       },
       {
         "unit": "Unit VI: Major Environmental Acts in India",
@@ -562,9 +771,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "StudyIQ IAS",
         "focus": "Wildlife Act 1972, Water 1974, Forest 1980, Air 1981, EPA 1986, NGT 2010.",
         "url": "https://www.youtube.com/results?search_query=Important+Environmental+Acts+in+India+EPA+1986+StudyIQ",
-        "duration": "28 mins",
-        "timeline": "Week 13 \u2022 Unit VI Legislation",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "duration": "25 mins",
+        "timeline": "Lecture #11 \u2022 Week 14",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 11,
+        "totalVideosInPlaylist": 11,
+        "playlistSequence": "Lecture #11 of 11",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit VI \u00a7 6.2 \u2014 Environmental Protection Act 1986 & 12 Green Chemistry Principles",
+        "examWeight": "15-Mark Mandatory Question",
+        "syllabusContribution": "+9.1% Syllabus",
+        "cumulativeTime": "3h 55m / 3h 55m"
       }
     ],
     "vivaQuestions": [
@@ -613,7 +831,9 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/CHE110_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/CHE110_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/CHE110_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 235,
+    "totalStudyTimeFormatted": "3h 55m"
   },
   {
     "id": "cse326",
@@ -735,8 +955,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Semantic elements, accessible form controls, input attributes, and SEO.",
         "url": "https://www.youtube.com/results?search_query=Dave+Gray+HTML+Full+Course+for+Beginners",
         "duration": "40 mins",
-        "timeline": "Week 1\u20132 \u2022 HTML5 Semantics",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #01 of 10",
+        "fixedWatchTime": "40 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 40,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 HTML5 Semantic Elements, Document Outlines & Form Validation",
+        "examWeight": "10-Mark Section A",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "40m / 5h 0m"
       },
       {
         "unit": "Unit III: CSS Box Model & Specificity",
@@ -745,8 +974,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Specificity calculation $(a,b,c,d)$, `box-sizing: border-box`, margins.",
         "url": "https://www.youtube.com/results?search_query=Kevin+Powell+CSS+Specificity+and+Box+Model",
         "duration": "25 mins",
-        "timeline": "Week 3 \u2022 CSS Specificity",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #02 \u2022 Week 2",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #02 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 CSS Box Model, Specificity Math & Inheritance Cascades",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "1h 5m / 5h 0m"
       },
       {
         "unit": "Unit III: Flexbox in 20 Minutes",
@@ -754,9 +992,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Kevin Powell / Fireship",
         "focus": "Main axis vs Cross axis, `justify-content`, `align-items`, responsive navbars.",
         "url": "https://www.youtube.com/results?search_query=Kevin+Powell+Flexbox+CSS+Guide",
-        "duration": "20 mins",
-        "timeline": "Week 4 \u2022 Flexbox 1D Layouts",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "duration": "25 mins",
+        "timeline": "Lecture #03 \u2022 Week 4",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #03 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit II \u00a7 2.2 \u2014 Flexbox 1D Axis Model (Main vs Cross Axis, justify/align)",
+        "examWeight": "15-Mark Lab Implementation",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "1h 30m / 5h 0m"
       },
       {
         "unit": "Unit III: CSS Grid Masterclass",
@@ -765,8 +1012,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "2D layouts, `grid-template-columns`, `auto-fit` vs `auto-fill`, `minmax()`.",
         "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+CSS+Grid+Tutorial",
         "duration": "30 mins",
-        "timeline": "Week 5 \u2022 CSS Grid 2D Macro",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #04 \u2022 Week 5",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #04 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit II \u00a7 2.3 \u2014 CSS Grid 2D Macro Layouts & Responsive Media Queries",
+        "examWeight": "15-Mark Lab Implementation",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "2h 0m / 5h 0m"
       },
       {
         "unit": "Unit IV: JS Fundamentals & Scope",
@@ -775,8 +1031,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Execution context, call stack, hoisting, closures, lexical scope.",
         "url": "https://www.youtube.com/results?search_query=Namaste+JavaScript+Akshay+Saini+Season+1",
         "duration": "45 mins",
-        "timeline": "Week 7 \u2022 JS Execution & Scope",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #05 \u2022 Week 7",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #05 of 10",
+        "fixedWatchTime": "45 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 45,
+        "syllabusTopic": "Unit III \u00a7 3.1 \u2014 JavaScript Execution Context, Call Stack & Closures",
+        "examWeight": "15-Mark Theory & Code",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "2h 45m / 5h 0m"
       },
       {
         "unit": "Unit IV: Higher Order Functions",
@@ -785,8 +1050,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Deep-dive into `.map()`, `.filter()`, and `.reduce()` with array transformations.",
         "url": "https://www.youtube.com/results?search_query=Akshay+Saini+map+filter+reduce+JavaScript",
         "duration": "25 mins",
-        "timeline": "Week 8 \u2022 Functional JS",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #06 \u2022 Week 8",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #06 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit III \u00a7 3.2 \u2014 ES6+ Syntax, Array Methods (map/filter/reduce) & Arrow Functions",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "3h 10m / 5h 0m"
       },
       {
         "unit": "Unit V: DOM Manipulation & Events",
@@ -795,8 +1069,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "`querySelector`, `addEventListener`, Event Bubbling, Delegation.",
         "url": "https://www.youtube.com/results?search_query=Traversy+Media+JavaScript+DOM+Crash+Course",
         "duration": "35 mins",
-        "timeline": "Week 9 \u2022 DOM & Event Bubbling",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #07 \u2022 Week 9",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #07 of 10",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 DOM Tree Manipulation, Event Bubbling & Delegation",
+        "examWeight": "15-Mark Lab & Theory",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "3h 45m / 5h 0m"
       },
       {
         "unit": "Unit V: Fetch API, Async/Await & JSON",
@@ -804,9 +1087,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Web Dev Simplified / Fireship",
         "focus": "`fetch()`, Promises, `async/await`, HTTP GET/POST, JSON parsing.",
         "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+Fetch+API+JavaScript",
-        "duration": "28 mins",
-        "timeline": "Week 10 \u2022 Async/Await & APIs",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "30 mins",
+        "timeline": "Lecture #08 \u2022 Week 11",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #08 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit V \u00a7 5.1 \u2014 Asynchronous JS, Promises, Async/Await & Fetch API REST Calls",
+        "examWeight": "15-Mark Core Question",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "4h 15m / 5h 0m"
       },
       {
         "unit": "Unit V: Web Storage API (LocalStorage)",
@@ -814,9 +1106,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "dcode / Web Dev Simplified",
         "focus": "`localStorage.setItem()`, `getItem()`, `clear()`, `JSON.stringify()`.",
         "url": "https://www.youtube.com/results?search_query=Web+Dev+Simplified+LocalStorage+and+SessionStorage",
-        "duration": "18 mins",
-        "timeline": "Week 11 \u2022 Web Storage API",
-        "priority": "\u26a1 Practical Web Mastery"
+        "duration": "20 mins",
+        "timeline": "Lecture #09 \u2022 Week 12",
+        "priority": "\u26a1 Practical Web Mastery",
+        "videoNo": 9,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #09 of 10",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit V \u00a7 5.2 \u2014 Browser Storage: localStorage, sessionStorage & Cookies",
+        "examWeight": "5-Mark Section A",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "4h 35m / 5h 0m"
       },
       {
         "unit": "Unit VI: GitHub Pages Deployment",
@@ -824,9 +1125,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Kevin Powell / Traversy Media",
         "focus": "Git repository init, commit, branch, and live GitHub Pages hosting.",
         "url": "https://www.youtube.com/results?search_query=Deploy+Website+to+GitHub+Pages+Traversy+Media",
-        "duration": "20 mins",
-        "timeline": "Week 13 \u2022 GitHub Deployment",
-        "priority": "\ud83c\udfc6 Project Hosting Mastery"
+        "duration": "25 mins",
+        "timeline": "Lecture #10 \u2022 Week 14",
+        "priority": "\ud83c\udfc6 Project Hosting Mastery",
+        "videoNo": 10,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #10 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit VI \u00a7 6.1 \u2014 Web Hosting, GitHub Pages CI/CD & Project Deployment",
+        "examWeight": "10-Mark Practical Capstone",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "5h 0m / 5h 0m"
       }
     ],
     "vivaQuestions": [
@@ -875,7 +1185,9 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/CSE326_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/CSE326_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/CSE326_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 300,
+    "totalStudyTimeFormatted": "5h 0m"
   },
   {
     "id": "ece120",
@@ -1009,8 +1321,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Node Voltage Analysis, Mesh Current Analysis, Thevenin & Norton equivalent derivations with solved numericals.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Network+Theory+KVL+KCL",
         "duration": "35 mins",
-        "timeline": "Week 1\u20132 \u2022 DC Theorems",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #01 of 10",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 KCL, KVL, Thevenin's, Norton's & Maximum Power Theorems",
+        "examWeight": "15-Mark Mandatory Numerical",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "35m / 4h 45m"
       },
       {
         "unit": "AC Circuits & Phasors",
@@ -1019,8 +1340,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "RMS, Average, Form factor, Impedance triangle ($R-L-C$ series/parallel resonance).",
         "url": "https://www.youtube.com/results?search_query=All+About+Electronics+AC+Circuit+Analysis+Phasors",
         "duration": "30 mins",
-        "timeline": "Week 3\u20134 \u2022 AC Phasors & RLC",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #02 \u2022 Week 2",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #02 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 Single-Phase AC Circuits, Phasors, Impedance & Power Factor",
+        "examWeight": "15-Mark Numerical",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "1h 5m / 4h 45m"
       },
       {
         "unit": "PN Junction Diodes & V-I Curve",
@@ -1028,9 +1358,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "All About Electronics / Neso Academy",
         "focus": "Barrier potential derivation, forward/reverse bias, dynamic resistance, Zener diode breakdown.",
         "url": "https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics",
-        "duration": "28 mins",
-        "timeline": "Week 5 \u2022 Diodes & V-I Curve",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "25 mins",
+        "timeline": "Lecture #03 \u2022 Week 4",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #03 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit III \u00a7 3.1 \u2014 P-N Junction Diode V-I Characteristics & Dynamic Resistance",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "1h 30m / 4h 45m"
       },
       {
         "unit": "Half-Wave & Full-Wave Rectifiers",
@@ -1038,9 +1377,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "All About Electronics",
         "focus": "Circuit diagrams, derivation of efficiency ($\\eta$), Ripple factor ($\\gamma$), and PIV ratings.",
         "url": "https://www.youtube.com/results?search_query=All+About+Electronics+Half+Wave+and+Full+Wave+Rectifier",
-        "duration": "32 mins",
-        "timeline": "Week 6 \u2022 Rectifier Efficiency",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "duration": "30 mins",
+        "timeline": "Lecture #04 \u2022 Week 5",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #04 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit III \u00a7 3.2 \u2014 Half-Wave & Full-Wave Bridge Rectifiers, Ripple & PIV",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "2h 0m / 4h 45m"
       },
       {
         "unit": "BJT Configurations & Biasing",
@@ -1049,8 +1397,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "CE/CB input/output curves, DC load line, Q-point stability, Voltage Divider Biasing.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+BJT+Transistor+Biasing",
         "duration": "30 mins",
-        "timeline": "Week 8 \u2022 BJT Transistors",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #05 \u2022 Week 7",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #05 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 Bipolar Junction Transistors (BJT) CE Modes, \u03b1 & \u03b2 Relations",
+        "examWeight": "10-Mark Derivation",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "2h 30m / 4h 45m"
       },
       {
         "unit": "Logic Gates & Universal NAND/NOR",
@@ -1059,8 +1416,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Truth tables, De Morgan's theorems, implementing NOT, AND, OR, XOR, XNOR using NAND/NOR only.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Logic+Gates+Universal+Gates",
         "duration": "25 mins",
-        "timeline": "Week 9 \u2022 Universal Logic Gates",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #06 \u2022 Week 8",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #06 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit V \u00a7 5.1 \u2014 Universal Logic Gates (NAND & NOR Gate Realizations)",
+        "examWeight": "10-Mark Circuit Design",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "2h 55m / 4h 45m"
       },
       {
         "unit": "Adders, Subtractors & K-Maps",
@@ -1068,9 +1434,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Gate Smashers / Neso Academy",
         "focus": "2, 3, 4-variable K-maps, Half/Full adder logic diagrams, Ripple carry adders.",
         "url": "https://www.youtube.com/results?search_query=Gate+Smashers+Half+Adder+and+Full+Adder",
-        "duration": "28 mins",
-        "timeline": "Week 10 \u2022 Adders & K-Maps",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "duration": "30 mins",
+        "timeline": "Lecture #07 \u2022 Week 9",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #07 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit V \u00a7 5.2 \u2014 Half Adder, Full Adder & 4-Variable K-Map Minimization",
+        "examWeight": "15-Mark Circuit Design",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "3h 25m / 4h 45m"
       },
       {
         "unit": "Breadboard Lab Practicals (Exp 1-5)",
@@ -1079,8 +1454,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Physical hardware wiring, DMM voltage/current measurement, IC 74xx testing on trainer kit.",
         "url": "https://www.youtube.com/results?search_query=All+About+Electronics+Breadboard+Practical+Experiments",
         "duration": "25 mins",
-        "timeline": "Week 11 \u2022 Breadboard Hardware",
-        "priority": "\u26a1 Lab Practical Guide"
+        "timeline": "Lecture #08 \u2022 Week 11",
+        "priority": "\u26a1 Lab Practical Guide",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #08 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit VI \u00a7 6.1 \u2014 Breadboard Wiring, IC Pinouts & Multimeter Calibration",
+        "examWeight": "15-Mark Lab Exam",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "3h 50m / 4h 45m"
       },
       {
         "unit": "Arduino Uno + IR Sensor Interfacing",
@@ -1088,9 +1472,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Circuit Digest",
         "focus": "Complete wiring, active-LOW `digitalRead()` logic, Serial monitor debugging, buzzer alerts.",
         "url": "https://www.youtube.com/results?search_query=Arduino+Uno+IR+Sensor+Interfacing+Circuit+Digest",
-        "duration": "22 mins",
-        "timeline": "Week 12 \u2022 Arduino Sensor I/O",
-        "priority": "\u26a1 IoT Lab Practical"
+        "duration": "25 mins",
+        "timeline": "Lecture #09 \u2022 Week 12",
+        "priority": "\u26a1 IoT Lab Practical",
+        "videoNo": 9,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #09 of 10",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit VI \u00a7 6.2 \u2014 Arduino UNO Sensor I/O (LDR, Ultrasonic & PWM AnalogWrite)",
+        "examWeight": "15-Mark Lab Exam",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "4h 15m / 4h 45m"
       },
       {
         "unit": "Master Viva Voce Preparation",
@@ -1099,8 +1492,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "50+ examiner questions, troubleshooting breadboard errors, IC pinout traps.",
         "url": "https://www.youtube.com/results?search_query=Digital+Electronics+Viva+Questions+Gate+Smashers",
         "duration": "30 mins",
-        "timeline": "Week 13 \u2022 Master Viva Voce",
-        "priority": "\ud83c\udfc6 100-Percentile Viva"
+        "timeline": "Lecture #10 \u2022 Week 14",
+        "priority": "\ud83c\udfc6 100-Percentile Viva",
+        "videoNo": 10,
+        "totalVideosInPlaylist": 10,
+        "playlistSequence": "Lecture #10 of 10",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit VI \u00a7 6.3 \u2014 Top 30 Comprehensive Electrical & Electronics Viva Voce Bank",
+        "examWeight": "20-Mark Viva Voce",
+        "syllabusContribution": "+10.0% Syllabus",
+        "cumulativeTime": "4h 45m / 4h 45m"
       }
     ],
     "vivaQuestions": [
@@ -1149,7 +1551,9 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/ECE120_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/ECE120_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/ECE120_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 285,
+    "totalStudyTimeFormatted": "4h 45m"
   },
   {
     "id": "int108",
@@ -1268,8 +1672,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Python environment setup, PVM model, conditionals, `while`/`for` loops, loop `else` clauses.",
         "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Tutorial+Beginners",
         "duration": "35 mins",
-        "timeline": "Week 1\u20132 \u2022 PVM & Control Flow",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #01 of 8",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 Python Virtual Machine (PVM), Bytecode & Control Flow",
+        "examWeight": "10-Mark Section A",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "35m / 5h 0m"
       },
       {
         "unit": "Unit III: Strings, Lists, Tuples & Dicts",
@@ -1278,8 +1691,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Slicing tricks, list comprehensions, dictionary hashing, and shallow vs deep copying.",
         "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Lists+Tuples+and+Dictionaries",
         "duration": "40 mins",
-        "timeline": "Week 3\u20134 \u2022 Lists & Mutability",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #02 \u2022 Week 3",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #02 of 8",
+        "fixedWatchTime": "40 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 40,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 Lists, Tuples, Dictionaries, Sets & Object Mutability Traps",
+        "examWeight": "15-Mark Theory & Code",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "1h 15m / 5h 0m"
       },
       {
         "unit": "Unit IV: Functions, LEGB Scope & Recursion",
@@ -1288,8 +1710,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "`*args`, `kwargs`, LEGB variable scoping, closures, decorators, and call stack visualization for recursive algorithms.",
         "url": "https://www.youtube.com/results?search_query=Telusko+Python+Functions+Arguments+Recursion",
         "duration": "35 mins",
-        "timeline": "Week 5\u20136 \u2022 Functions & Scopes",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #03 \u2022 Week 5",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #03 of 8",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit III \u00a7 3.1 \u2014 Functions, LEGB Scoping, *args/**kwargs & Lambda Expressions",
+        "examWeight": "15-Mark Section B",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "1h 50m / 5h 0m"
       },
       {
         "unit": "Unit V: Object-Oriented Programming (OOP)",
@@ -1298,8 +1729,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Classes, instances, inheritance, method overriding, `super()`, MRO C3 linearization, and magic/dunder methods.",
         "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+OOP+Tutorials",
         "duration": "45 mins",
-        "timeline": "Week 8\u20139 \u2022 Python OOP & MRO",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #04 \u2022 Week 7",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #04 of 8",
+        "fixedWatchTime": "45 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 45,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 Python OOP: Classes, Encapsulation, Inheritance & C3 MRO",
+        "examWeight": "15-Mark Mandatory Code",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "2h 35m / 5h 0m"
       },
       {
         "unit": "Unit VI: File Handling & Object Pickling",
@@ -1308,8 +1748,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "`with open()` context managers, binary files, serialization using `pickle.dump()` and `pickle.load()`.",
         "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+File+Objects+Reading+Writing",
         "duration": "30 mins",
-        "timeline": "Week 10 \u2022 File I/O & Pickling",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #05 \u2022 Week 8",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #05 of 8",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit V \u00a7 5.1 \u2014 File I/O (read/write/append), CSV Processing & Pickle Serialization",
+        "examWeight": "10-Mark Lab Task",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "3h 5m / 5h 0m"
       },
       {
         "unit": "Unit VI: Exception Handling & Regex",
@@ -1317,9 +1766,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Corey Schafer / Tech With Tim",
         "focus": "`try-except-else-finally` execution blocks, regex tokenization, pattern extraction with `re.findall()`.",
         "url": "https://www.youtube.com/results?search_query=Corey+Schafer+Python+Regular+Expressions",
-        "duration": "28 mins",
-        "timeline": "Week 11 \u2022 Exceptions & Regex",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "30 mins",
+        "timeline": "Lecture #06 \u2022 Week 10",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #06 of 8",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit V \u00a7 5.2 \u2014 Exception Handling (try-except-finally) & Regex Pattern Matching",
+        "examWeight": "10-Mark Code Debugging",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "3h 35m / 5h 0m"
       },
       {
         "unit": "Complete 15 Lab Practicals Walkthrough",
@@ -1328,8 +1786,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Step-by-step code demonstrations of all 15 university practical lab programs.",
         "url": "https://www.youtube.com/results?search_query=Python+Programming+Lab+Practicals+Gate+Smashers",
         "duration": "50 mins",
-        "timeline": "Week 12 \u2022 15 Lab Programs",
-        "priority": "\u26a1 Full Lab Practical Guide"
+        "timeline": "Lecture #07 \u2022 Week 12",
+        "priority": "\u26a1 Full Lab Practical Guide",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #07 of 8",
+        "fixedWatchTime": "50 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 50,
+        "syllabusTopic": "Unit VI \u00a7 6.1 \u2014 Complete Source Code & Logic for All 15 University Lab Practicals",
+        "examWeight": "30-Mark Final Lab Exam",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "4h 25m / 5h 0m"
       },
       {
         "unit": "Master Viva Voce Preparation",
@@ -1338,8 +1805,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Top 75 external examiner interview questions, tricky syntax pitfalls, and output predictions.",
         "url": "https://www.youtube.com/results?search_query=Python+Programming+Viva+Voce+Questions+Gate+Smashers",
         "duration": "35 mins",
-        "timeline": "Week 13 \u2022 Top 75 Viva Q&A",
-        "priority": "\ud83c\udfc6 Grade 'O' Viva Prep"
+        "timeline": "Lecture #08 \u2022 Week 14",
+        "priority": "\ud83c\udfc6 Grade 'O' Viva Prep",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 8,
+        "playlistSequence": "Lecture #08 of 8",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit VI \u00a7 6.2 \u2014 Top 75 High-Yield Python Viva Voce Questions & CPython Internals",
+        "examWeight": "20-Mark Viva Voce",
+        "syllabusContribution": "+12.5% Syllabus",
+        "cumulativeTime": "5h 0m / 5h 0m"
       }
     ],
     "vivaQuestions": [
@@ -1388,7 +1864,9 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/INT108_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/INT108_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/INT108_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 300,
+    "totalStudyTimeFormatted": "5h 0m"
   },
   {
     "id": "mth165",
@@ -1535,8 +2013,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "How to apply elementary row operations without altering the matrix rank; transforming to Row Echelon form ($a_{ij} = 0$ for $i > j$); counting non-zero rows; transforming to Normal Form $[I_r\\ 0; 0\\ 0]$ using both row and column operations.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Rank+of+Matrix+Echelon+Form+Normal+Form",
         "duration": "30 mins",
-        "timeline": "Week 1 \u2022 Rank & Echelon",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #01 of 20",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 Rank of Matrix via Echelon & Normal Forms",
+        "examWeight": "10-Mark Mandatory Numerical",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "30m / 10h 3m"
       },
       {
         "unit": "Unit I: Matrix Methods, Linear Systems & Eigenvalues",
@@ -1545,8 +2032,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Augmented matrix $[A|B]$ construction; Rouch\u00e9-Capelli consistency conditions; determining conditions for $\\lambda$ and $\\mu$ to yield (i) No solution, (ii) Unique solution, (iii) Infinite solutions.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+System+of+Linear+Equations+Consistency+Rouche+Capelli",
         "duration": "32 mins",
-        "timeline": "Week 2 \u2022 System Consistency",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #02 \u2022 Week 1",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #02 of 20",
+        "fixedWatchTime": "32 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 32,
+        "syllabusTopic": "Unit I \u00a7 1.2 \u2014 System of Linear Equations & Rouch\u00e9-Capelli Consistency Test",
+        "examWeight": "15-Mark Mandatory Numerical",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "1h 2m / 10h 3m"
       },
       {
         "unit": "Unit I: Matrix Methods, Linear Systems & Eigenvalues",
@@ -1555,8 +2051,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Characteristic equation shortcut $\\lambda^3 - \\text{tr}(A)\\lambda^2 + (M_{11}+M_{22}+M_{33})\\lambda - |A| = 0$; finding orthogonal eigenvectors for repeated eigenvalues; verifying $P(A) = 0$; computing $A^{-1}$ and $A^4$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Eigenvalues+Eigenvectors+Cayley+Hamilton+Theorem",
         "duration": "35 mins",
-        "timeline": "Week 2 \u2022 Eigenvalues & Inverse",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #03 \u2022 Week 2",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #03 of 20",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit I \u00a7 1.3 \u2014 Eigenvalues, Eigenvectors & Cayley-Hamilton Theorem for A\u207b\u00b9",
+        "examWeight": "15-Mark Mandatory Numerical",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "1h 37m / 10h 3m"
       },
       {
         "unit": "Unit I: Matrix Methods, Linear Systems & Eigenvalues",
@@ -1565,8 +2070,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Visualizing determinants as volume scaling factors, eigenvectors as directional invariants under linear transforms, and column spaces as spans.",
         "url": "https://www.youtube.com/results?search_query=3Blue1Brown+Essence+of+Linear+Algebra",
         "duration": "20 mins",
-        "timeline": "Week 3 \u2022 3D Linear Algebra",
-        "priority": "\u26a1 Visual Geometric Intuition"
+        "timeline": "Lecture #04 \u2022 Week 2",
+        "priority": "\u26a1 Visual Intuition",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #04 of 20",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit I \u00a7 1.4 \u2014 Geometric Intuition of Linear Transformations & Determinants",
+        "examWeight": "Conceptual Foundation",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "1h 57m / 10h 3m"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
@@ -1575,8 +2089,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "$(uv)_n = \\sum_{r=0}^n \\binom{n}{r} u_{n-r} v_r$; choosing $v$ such that higher derivatives terminate; standard university proofs like proving $(1-x^2)y_{n+2} - (2n+1)xy_{n+1} - (n^2+m^2)y_n = 0$ for $y = \\sin(m \\sin^{-1} x)$ or $y = (x^2-1)^n$.",
         "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Leibniz+Theorem+nth+derivative",
         "duration": "38 mins",
-        "timeline": "Week 4 \u2022 Leibniz n-th Rule",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #05 \u2022 Week 3",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #05 of 20",
+        "fixedWatchTime": "38 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 38,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 Leibniz's Theorem for n-th Derivative of Product (uv)_n",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "2h 35m / 10h 3m"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
@@ -1585,8 +2108,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Verifying continuity and differentiability conditions; algebraic and trigonometric functions; finding exact point $c \\in (a, b)$; Cauchy's theorem ratio $\\frac{f'(c)}{g'(c)} = \\frac{f(b)-f(a)}{g(b)-g(a)}$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Rolle+Theorem+LMVT+Cauchy+Mean+Value+Theorem",
         "duration": "28 mins",
-        "timeline": "Week 4 \u2022 Mean Value Theorems",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #06 \u2022 Week 4",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #06 of 20",
+        "fixedWatchTime": "28 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 28,
+        "syllabusTopic": "Unit II \u00a7 2.2 \u2014 Rolle's Theorem, LMVT & Cauchy's Mean Value Theorems",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "3h 3m / 10h 3m"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
@@ -1595,8 +2127,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Expansion in powers of $(x - a)$ vs powers of $x$; Lagrange remainder term; expanding $\\ln(1+x), e^x, \\sin x, \\tan^{-1} x$.",
         "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Taylor+Maclaurin+Series+Expansion",
         "duration": "25 mins",
-        "timeline": "Week 5 \u2022 Taylor & Maclaurin",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #07 \u2022 Week 4",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #07 of 20",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit II \u00a7 2.3 \u2014 Taylor's & Maclaurin's Series Expansions for Single Variable",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "3h 28m / 10h 3m"
       },
       {
         "unit": "Unit II: Differential Calculus, Leibniz's Theorem & Mean Value Theorems",
@@ -1605,8 +2146,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Solving $0/0$ and $\\infty/\\infty$; converting $0 \\cdot \\infty$ and $\\infty - \\infty$; logarithmic conversion of exponential indeterminate forms $1^\\infty, 0^0, \\infty^0$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Indeterminate+Forms+L+Hospital+Rule+Shortcuts",
         "duration": "22 mins",
-        "timeline": "Week 5 \u2022 L'H\u00f4pital Limits",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #08 \u2022 Week 5",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #08 of 20",
+        "fixedWatchTime": "22 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 22,
+        "syllabusTopic": "Unit II \u00a7 2.4 \u2014 Indeterminate Forms (0/0, \u221e/\u221e, 0\u00b7\u221e, 1^\u221e) & L'H\u00f4pital's Rule",
+        "examWeight": "5-Mark Section A",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "3h 50m / 10h 3m"
       },
       {
         "unit": "Unit III: Fundamentals of Integral Calculus & Reduction Formulas",
@@ -1615,8 +2165,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "$\\int_0^a f(x)dx = \\int_0^a f(a-x)dx$; evaluating $I = \\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} dx = \\frac{\\pi}{4}$; proving $\\int_0^{\\pi/2} \\ln(\\sin x) dx = -\\frac{\\pi}{2}\\ln 2$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Definite+Integrals+Properties+King+Rule",
         "duration": "30 mins",
-        "timeline": "Week 6 \u2022 King's Rule Integrals",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #09 \u2022 Week 6",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 9,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #09 of 20",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit III \u00a7 3.1 \u2014 Definite Integrals, Symmetry Properties & King's Rule",
+        "examWeight": "10-Mark Numerical",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "4h 20m / 10h 3m"
       },
       {
         "unit": "Unit III: Fundamentals of Integral Calculus & Reduction Formulas",
@@ -1625,8 +2184,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Solving $\\int_0^{\\pi/2} \\sin^m x \\cos^n x dx$; integer numerator/denominator countdown rules; Gamma function relation $\\Gamma(n) = (n-1)!$ and $\\Gamma(1/2) = \\sqrt{\\pi}$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Wallis+Formula+Beta+Gamma+Function",
         "duration": "25 mins",
-        "timeline": "Week 6 \u2022 Wallis & Gamma",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #10 \u2022 Week 7",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 10,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #10 of 20",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit III \u00a7 3.2 \u2014 Wallis Reduction Formulas, Beta & Gamma Functions",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "4h 45m / 10h 3m"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
@@ -1634,9 +2202,18 @@ window.DEFAULT_SUBJECTS = [
         "channel": "Dr. Gajendra Purohit",
         "focus": "$\\epsilon-\\delta$ limit definitions; testing paths $y = mx, y = mx^2, y = mx^3, y = mx - x^2$; proving non-existence of limits when the resulting value depends on slope $m$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Limits+and+Continuity+of+Two+Variables+Path+Test",
-        "duration": "24 mins",
-        "timeline": "Week 8 \u2022 2-Variable Limits",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "duration": "25 mins",
+        "timeline": "Lecture #11 \u2022 Week 7",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 11,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #11 of 20",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 Functions of Several Variables, Partial Derivatives & Limits",
+        "examWeight": "5-Mark Section A",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "5h 10m / 10h 3m"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
@@ -1645,8 +2222,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Identifying homogeneous degree $n$; proving $x u_x + y u_y = nu$; second order $x^2 u_{xx} + 2xy u_{xy} + y^2 u_{yy} = n(n-1)u$; solving composite inverse trig functions $u = \\sin^{-1}(\\dots)$ via $x u_x + y u_y = n \\frac{F(u)}{F'(u)}$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Euler+Theorem+on+Homogeneous+Functions",
         "duration": "35 mins",
-        "timeline": "Week 8 \u2022 Euler's Homogeneous",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #12 \u2022 Week 8",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 12,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #12 of 20",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit IV \u00a7 4.2 \u2014 Euler's Theorem on Homogeneous Functions & Deductions",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "5h 45m / 10h 3m"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
@@ -1655,8 +2241,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Solving $f_x = 0$ and $f_y = 0$; calculating $r = f_{xx}, s = f_{xy}, t = f_{yy}$; constructing the discriminant table; distinguishing local minimum ($r > 0$), local maximum ($r < 0$), and saddle points ($\\Delta < 0$).",
         "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Maxima+and+Minima+Two+Variables+rt-s2",
         "duration": "30 mins",
-        "timeline": "Week 9 \u2022 Maxima/Minima rt-s\u00b2",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #13 \u2022 Week 9",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 13,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #13 of 20",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit IV \u00a7 4.3 \u2014 Two-Variable Extrema (rt - s\u00b2 Discriminant Test) & Saddle Points",
+        "examWeight": "15-Mark Mandatory Numerical",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "6h 15m / 10h 3m"
       },
       {
         "unit": "Unit IV: Multivariate Differentiation, Euler's Theorem & Extrema",
@@ -1665,8 +2260,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Auxiliary function $F = f + \\lambda g$; setting partial derivatives to 0; optimizing rectangular box volume inside an ellipsoid $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Lagrange+Method+of+Undetermined+Multipliers",
         "duration": "28 mins",
-        "timeline": "Week 9 \u2022 Lagrange Multipliers",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #14 \u2022 Week 9",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 14,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #14 of 20",
+        "fixedWatchTime": "28 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 28,
+        "syllabusTopic": "Unit IV \u00a7 4.4 \u2014 Lagrange's Method of Undetermined Multipliers with Constraints",
+        "examWeight": "10-Mark Section C",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "6h 43m / 10h 3m"
       },
       {
         "unit": "Unit V: Multivariable Integration, Change of Order & Jacobians",
@@ -1675,8 +2279,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Sketching boundary curves $y = f_1(x), y = f_2(x), x=a, x=b$; identifying bounded region $R$; changing vertical strip $(dy dx)$ to horizontal strip $(dx dy)$ for integrands like $\\int e^{-y^2} dy$ or $\\int \\frac{\\sin y}{y} dy$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Change+of+Order+of+Integration+Double+Integral",
         "duration": "35 mins",
-        "timeline": "Week 10 \u2022 Change of Order",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #15 \u2022 Week 10",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 15,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #15 of 20",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit V \u00a7 5.1 \u2014 Change of Order of Integration in Double Integrals",
+        "examWeight": "15-Mark Mandatory Question",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "7h 18m / 10h 3m"
       },
       {
         "unit": "Unit V: Multivariable Integration, Change of Order & Jacobians",
@@ -1685,8 +2298,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Jacobian determinant calculation; $J \\cdot J' = 1$; composite chain rule for Jacobians; differential area elements ($dx dy = r dr d\\theta$) and volume elements ($dV = \\rho^2 \\sin\\phi d\\rho d\\phi d\\theta$).",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Jacobians+Properties+Coordinate+Transformation",
         "duration": "28 mins",
-        "timeline": "Week 11 \u2022 Jacobians & Polar",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #16 \u2022 Week 11",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 16,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #16 of 20",
+        "fixedWatchTime": "28 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 28,
+        "syllabusTopic": "Unit V \u00a7 5.2 \u2014 Jacobians & Coordinate Transformations (Cartesian to Polar)",
+        "examWeight": "10-Mark Derivation",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "7h 46m / 10h 3m"
       },
       {
         "unit": "Unit V: Multivariable Integration, Change of Order & Jacobians",
@@ -1695,8 +2317,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Calculating area between parabolas $y^2 = 4ax$ and $x^2 = 4ay$; volume of sphere $x^2 + y^2 + z^2 = a^2$ via spherical coordinates.",
         "url": "https://www.youtube.com/results?search_query=Bhagwan+Singh+Vishwakarma+Area+and+Volume+Multiple+Integrals",
         "duration": "32 mins",
-        "timeline": "Week 11 \u2022 Area & Volume",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #17 \u2022 Week 11",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 17,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #17 of 20",
+        "fixedWatchTime": "32 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 32,
+        "syllabusTopic": "Unit V \u00a7 5.3 \u2014 Area & Volume Evaluations using Double & Triple Integrals",
+        "examWeight": "15-Mark Numerical",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "8h 18m / 10h 3m"
       },
       {
         "unit": "Unit VI: Fourier Series, Dirichlet Conditions & Half-Range Expansions",
@@ -1705,8 +2336,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Periodic functions; Dirichlet conditions; integration by parts with $\\cos(n\\pi) = (-1)^n$ and $\\sin(n\\pi) = 0$; evaluating coefficients $a_0, a_n, b_n$ in $[-\\pi, \\pi]$ and $[-L, L]$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Fourier+Series+Euler+Formula+Full+Concept",
         "duration": "40 mins",
-        "timeline": "Week 12 \u2022 Fourier Series Euler",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #18 \u2022 Week 12",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 18,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #18 of 20",
+        "fixedWatchTime": "40 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 40,
+        "syllabusTopic": "Unit VI \u00a7 6.1 \u2014 Fourier Series in [-L, L] & Euler's Formulas for (a\u2080, a\u2099, b\u2099)",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "8h 58m / 10h 3m"
       },
       {
         "unit": "Unit VI: Fourier Series, Dirichlet Conditions & Half-Range Expansions",
@@ -1715,8 +2355,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Symmetry reduction: Even function $\\implies b_n = 0$; Odd function $\\implies a_0 = a_n = 0$; expanding $f(x) = x^2$ or $f(x) = |x|$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Fourier+Series+Even+Odd+Functions",
         "duration": "30 mins",
-        "timeline": "Week 12 \u2022 Even/Odd Shortcuts",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #19 \u2022 Week 13",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 19,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #19 of 20",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit VI \u00a7 6.2 \u2014 Even & Odd Functions Fourier Symmetry & Dirichlet Conditions",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "9h 28m / 10h 3m"
       },
       {
         "unit": "Unit VI: Fourier Series, Dirichlet Conditions & Half-Range Expansions",
@@ -1725,8 +2374,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Half-range Sine series ($b_n = \\frac{2}{L}\\int_0^L f(x)\\sin\\frac{n\\pi x}{L}dx$); Half-range Cosine series; Parseval's formula $\\frac{1}{L}\\int [f(x)]^2 dx = \\frac{a_0^2}{2} + \\sum(a_n^2+b_n^2)$; deducing $\\sum \\frac{1}{n^2} = \\frac{\\pi^2}{6}$, $\\sum \\frac{1}{n^4} = \\frac{\\pi^4}{90}$.",
         "url": "https://www.youtube.com/results?search_query=Dr+Gajendra+Purohit+Half+Range+Fourier+Series+Parseval+Identity",
         "duration": "35 mins",
-        "timeline": "Week 13 \u2022 Half-Range Series",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #20 \u2022 Week 14",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 20,
+        "totalVideosInPlaylist": 20,
+        "playlistSequence": "Lecture #20 of 20",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit VI \u00a7 6.3 \u2014 Half-Range Fourier Sine & Cosine Expansions in [0, L]",
+        "examWeight": "15-Mark Mandatory Question",
+        "syllabusContribution": "+5.0% Syllabus",
+        "cumulativeTime": "10h 3m / 10h 3m"
       }
     ],
     "vivaQuestions": [
@@ -1775,7 +2433,9 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/MTH165_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/MTH165_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/MTH165_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 603,
+    "totalStudyTimeFormatted": "10h 3m"
   },
   {
     "id": "phy175",
@@ -1934,8 +2594,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Cross-product magnetic Lorentz force $\\vec{F}_m = -e(\\vec{v}_d \\times \\vec{B})$ balancing electric force $e E_H$; establishing $E_H = v_d B$; substituting drift velocity $v_d = \\frac{J}{ne} = \\frac{I}{ne A} = \\frac{I}{ne w t}$; deriving Hall Voltage $V_H = E_H w = \\frac{B I}{n e t}$; defining Hall Coefficient $R_H = \\frac{1}{ne}$; determining majority carrier concentration $n$, carrier sign (n-type vs p-type), and Hall mobility $\\mu = \\sigma R_H$.",
         "url": "https://www.youtube.com/results?search_query=Hall+Effect+Derivation+Engineering+Physics+Dr+Gajendra+Purohit",
         "duration": "35 mins",
-        "timeline": "Week 1 \u2022 Hall Effect Proof",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #01 \u2022 Week 1",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 1,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #01 of 17",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit I \u00a7 1.1 \u2014 Hall Effect Derivation, Lorentz Force & Carrier Density (RH = 1/ne)",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "35m / 8h 23m"
       },
       {
         "unit": "Unit I: Solid State Physics, Energy Bands & Hall Effect",
@@ -1944,8 +2613,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Fermi-Dirac function $f(E) = \\frac{1}{1 + e^{(E-E_F)/kT}}$; behavior at $T = 0\\text{ K}$ (step function) vs $T > 0\\text{ K}$; Fermi level location for intrinsic semiconductors ($E_F \\approx \\frac{E_c+E_v}{2}$) and temperature dependence; Direct vs Indirect bandgap semiconductors (photon emission vs phonon scattering in LEDs/solar cells).",
         "url": "https://www.youtube.com/results?search_query=Fermi+Dirac+Distribution+Band+Theory+of+Solids+Gate+Smashers",
         "duration": "28 mins",
-        "timeline": "Week 2 \u2022 Fermi Energy",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #02 \u2022 Week 1",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 2,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #02 of 17",
+        "fixedWatchTime": "28 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 28,
+        "syllabusTopic": "Unit I \u00a7 1.2 \u2014 Fermi-Dirac Distribution, Energy Band Theory & Direct/Indirect Gaps",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "1h 3m / 8h 23m"
       },
       {
         "unit": "Unit I: Solid State Physics, Energy Bands & Hall Effect",
@@ -1954,8 +2632,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Three fundamental steps: (1) Electron-hole pair generation via photon absorption ($h\\nu \\ge E_g$), (2) Separation by built-in electric field in the depletion region, (3) Collection at front/back contacts; Open Circuit Voltage ($V_{oc}$), Short Circuit Current ($I_{sc}$), Fill Factor ($FF = \\frac{V_{mp} I_{mp}}{V_{oc} I_{sc}}$), and overall power conversion efficiency $\\eta = \\frac{P_{max}}{P_{in}} = \\frac{V_{oc} I_{sc} FF}{P_{in}}$.",
         "url": "https://www.youtube.com/results?search_query=Solar+Cell+Working+Principle+IV+Characteristics+Engineering+Physics",
         "duration": "22 mins",
-        "timeline": "Week 2 \u2022 Solar Cell IV Curve",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #03 \u2022 Week 2",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 3,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #03 of 17",
+        "fixedWatchTime": "22 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 22,
+        "syllabusTopic": "Unit I \u00a7 1.3 \u2014 Solar Cell Working Principle, Fill Factor & I-V Characteristics",
+        "examWeight": "5-Mark Section A",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "1h 25m / 8h 23m"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
@@ -1964,8 +2651,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Barrier potential formation (0.7V for Si, 0.3V for Ge); forward and reverse bias drift/diffusion balance; Shockley equation $I = I_0(e^{V/\\eta V_T}-1)$; Half-wave rectifier ($\\eta = 40.6\\%$, PIV $= V_m$), Full-wave center-tapped ($\\eta = 81.2\\%$, PIV $= 2V_m$), and Full-wave Bridge rectifier ($\\eta = 81.2\\%$, PIV $= V_m$).",
         "url": "https://www.youtube.com/results?search_query=All+About+Electronics+PN+Junction+Diode+Characteristics+Rectifiers",
         "duration": "30 mins",
-        "timeline": "Week 3 \u2022 Diode & Rectifiers",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #04 \u2022 Week 3",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 4,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #04 of 17",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit II \u00a7 2.1 \u2014 P-N Junction Diode Equation, Bridge Rectifier & Ripple Factor",
+        "examWeight": "15-Mark Derivation",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "1h 55m / 8h 23m"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
@@ -1974,8 +2670,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "BJT current relations $I_E = I_B + I_C$, $\\alpha = \\frac{I_C}{I_E}$, $\\beta = \\frac{I_C}{I_B}$, $\\beta = \\frac{\\alpha}{1-\\alpha}$; CE input/output characteristics (Cutoff, Active, Saturation); CMOS Inverter: PMOS pull-up connected to $V_{DD}$ and NMOS pull-down connected to GND; why static power dissipation is virtually zero.",
         "url": "https://www.youtube.com/results?search_query=BJT+Working+Principle+CE+Configuration+CMOS+Inverter+Neso+Academy",
         "duration": "32 mins",
-        "timeline": "Week 4 \u2022 BJT & CMOS Inverter",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #05 \u2022 Week 4",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 5,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #05 of 17",
+        "fixedWatchTime": "32 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 32,
+        "syllabusTopic": "Unit II \u00a7 2.2 \u2014 Bipolar Transistor (BJT) CE Biasing & CMOS Inverter Operation",
+        "examWeight": "10-Mark Circuit Operation",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "2h 27m / 8h 23m"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
@@ -1984,8 +2689,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Total Internal Reflection (TIR) condition ($\\theta > \\theta_c = \\sin^{-1}(n_2/n_1)$); Snell's law at air-core interface; deriving $\\sin\\theta_a = \\sqrt{n_1^2 - n_2^2}$; defining $\\text{NA} = \\sin\\theta_a = n_1 \\sqrt{2\\Delta}$ where $\\Delta = \\frac{n_1 - n_2}{n_1}$; fractional index change.",
         "url": "https://www.youtube.com/results?search_query=Optical+Fiber+Numerical+Aperture+Acceptance+Angle+Derivation",
         "duration": "25 mins",
-        "timeline": "Week 5 \u2022 Optical Fiber NA",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #06 \u2022 Week 4",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 6,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #06 of 17",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit II \u00a7 2.3 \u2014 Optical Fiber Acceptance Angle, Numerical Aperture (NA) & Modes",
+        "examWeight": "15-Mark Derivation",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "2h 52m / 8h 23m"
       },
       {
         "unit": "Unit II: Electricity Fundamentals, PN Diodes, BJT, CMOS & Hardware",
@@ -1994,8 +2708,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "CPU: latency-optimized, heavy branch prediction, massive L1/L2/L3 caches, few powerful cores; GPU: throughput-optimized, thousands of ALU cores, SIMT/SIMD execution model; AI Accelerators (TPU/NPU): systolic arrays for $O(1)$ matrix multiplication accumulation without repeated memory bus access.",
         "url": "https://www.youtube.com/results?search_query=CPU+vs+GPU+vs+TPU+Architecture+Explained",
         "duration": "20 mins",
-        "timeline": "Week 6 \u2022 CPU/GPU/TPU Chips",
-        "priority": "\u26a1 Visual Computer Architecture"
+        "timeline": "Lecture #07 \u2022 Week 5",
+        "priority": "\u26a1 Visual Architecture",
+        "videoNo": 7,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #07 of 17",
+        "fixedWatchTime": "20 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 20,
+        "syllabusTopic": "Unit II \u00a7 2.4 \u2014 Modern Processor Hardware: CPU vs GPU vs TPU Compute Fabrics",
+        "examWeight": "Conceptual Architecture",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "3h 12m / 8h 23m"
       },
       {
         "unit": "Unit III: Number Systems, Boolean Algebra & K-Maps",
@@ -2004,8 +2727,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Base-r conversions; 2's complement subtraction: if end-around carry occurs, drop carry and result is positive; if no carry, take 2's complement and result is negative; Binary-to-Gray conversion ($G_i = B_{i+1} \\oplus B_i$); BCD to Excess-3 conversion (+0011).",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Number+Systems+2s+Complement+Arithmetic+Gray+Code",
         "duration": "28 mins",
-        "timeline": "Week 7 \u2022 2's Complement Math",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #08 \u2022 Week 6",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 8,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #08 of 17",
+        "fixedWatchTime": "28 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 28,
+        "syllabusTopic": "Unit III \u00a7 3.1 \u2014 2's Complement Subtraction, Overflow Detection & Gray Codes",
+        "examWeight": "10-Mark Numerical",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "3h 40m / 8h 23m"
       },
       {
         "unit": "Unit III: Number Systems, Boolean Algebra & K-Maps",
@@ -2014,8 +2746,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Gray code sequencing in K-Maps ($00, 01, 11, 10$); Minterm ($\\Sigma m$) vs Maxterm ($\\Pi M$) grouping; forming largest possible powers-of-two groups (octets $\\to$ quads $\\to$ pairs); rolling map wrap-around rules; optimal inclusion of Don't Care ('X') conditions.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+K+Map+Minimization+4+Variables+Dont+Care",
         "duration": "35 mins",
-        "timeline": "Week 8 \u2022 4-Variable K-Maps",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #09 \u2022 Week 7",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 9,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #09 of 17",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit III \u00a7 3.2 \u2014 4-Variable K-Map Minimization with Don't Care 'X' Conditions",
+        "examWeight": "15-Mark Mandatory Numerical",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "4h 15m / 8h 23m"
       },
       {
         "unit": "Unit IV: Combinational Logic Circuits (Adders, MUX, Decoders, Comparators)",
@@ -2024,8 +2765,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Full Adder truth table; Karnaugh map derivation: $S = A \\oplus B \\oplus C_{in}$, $C_{out} = AB + B C_{in} + A C_{in} = AB + C_{in}(A \\oplus B)$; implementing Full Adder using exactly two 2-input XOR gates, two AND gates, and one OR gate.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Half+Adder+Full+Adder+Subtractor+Logic+Circuit",
         "duration": "30 mins",
-        "timeline": "Week 9 \u2022 Half/Full Adders",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #10 \u2022 Week 8",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 10,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #10 of 17",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit IV \u00a7 4.1 \u2014 Half Adder, Full Adder Circuit Design using 2 HAs + OR Gate",
+        "examWeight": "15-Mark Mandatory Design",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "4h 45m / 8h 23m"
       },
       {
         "unit": "Unit IV: Combinational Logic Circuits (Adders, MUX, Decoders, Comparators)",
@@ -2034,8 +2784,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Multiplexer truth tables and selection line equations $Y = \\bar{S}_1\\bar{S}_0 I_0 + \\bar{S}_1 S_0 I_1 + S_1\\bar{S}_0 I_2 + S_1 S_0 I_3$; implementation of any $n$-variable boolean function using a $2^{n-1}:1$ MUX via input assignment table.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Multiplexer+4+to+1+MUX+Boolean+Function+Implementation",
         "duration": "28 mins",
-        "timeline": "Week 10 \u2022 Multiplexers 8:1",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #11 \u2022 Week 9",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 11,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #11 of 17",
+        "fixedWatchTime": "28 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 28,
+        "syllabusTopic": "Unit IV \u00a7 4.2 \u2014 8:1 Multiplexer Logic Realization & 2-Bit Magnitude Comparator",
+        "examWeight": "10-Mark Section C",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "5h 13m / 8h 23m"
       },
       {
         "unit": "Unit IV: Combinational Logic Circuits (Adders, MUX, Decoders, Comparators)",
@@ -2044,8 +2803,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "3-to-8 active-LOW decoder with Enable pin; 8-to-3 Priority Encoder ($V$ valid bit, handling simultaneous active inputs); 2-bit Magnitude Comparator: equations for $A > B$, $A = B$ ($x_1 x_0 = \\overline{A_1 \\oplus B_1} \\cdot \\overline{A_0 \\oplus B_0}$), and $A < B$.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Decoder+3+to+8+Priority+Encoder+Magnitude+Comparator",
         "duration": "30 mins",
-        "timeline": "Week 10 \u2022 Decoders & Encoders",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #12 \u2022 Week 9",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 12,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #12 of 17",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit IV \u00a7 4.3 \u2014 Binary Decoders (3:8), Priority Encoders & 7-Segment Drivers",
+        "examWeight": "10-Mark Section B",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "5h 43m / 8h 23m"
       },
       {
         "unit": "Unit V: Sequential Logic Circuits (Flip-Flops, Registers & Counters)",
@@ -2054,8 +2822,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Latches vs edge-triggered flip-flops; characteristic and excitation tables; **Race-around condition:** occurs in level-triggered JK flip-flops when $J=1, K=1$ and pulse width $t_p > t_{pd}$; **Master-Slave JK solution:** Master triggers on rising clock edge ($CLK=1$), Slave triggers on falling clock edge ($\\overline{CLK}=1$), isolating output from input during clock pulse.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+SR+JK+D+T+Flip+Flop+Master+Slave+Race+Around",
         "duration": "38 mins",
-        "timeline": "Week 11 \u2022 Master-Slave JK",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #13 \u2022 Week 10",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 13,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #13 of 17",
+        "fixedWatchTime": "38 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 38,
+        "syllabusTopic": "Unit V \u00a7 5.1 \u2014 Master-Slave JK Flip-Flop & Race-Around Condition Fix",
+        "examWeight": "15-Mark Mandatory Derivation",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "6h 21m / 8h 23m"
       },
       {
         "unit": "Unit V: Sequential Logic Circuits (Flip-Flops, Registers & Counters)",
@@ -2064,8 +2841,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Conversion procedure: (1) Identify Required FF and Available FF, (2) Construct Truth Table of Required FF with excitation entries for Available FF, (3) Draw K-Maps for Available FF inputs, (4) Draw the completed logic circuit.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Flip+Flop+Conversion+Step+by+Step",
         "duration": "32 mins",
-        "timeline": "Week 11 \u2022 Flip-Flop Conversion",
-        "priority": "\u2b50 High-Yield Core Topic"
+        "timeline": "Lecture #14 \u2022 Week 11",
+        "priority": "\u2b50 High-Yield Core Topic",
+        "videoNo": 14,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #14 of 17",
+        "fixedWatchTime": "32 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 32,
+        "syllabusTopic": "Unit V \u00a7 5.2 \u2014 Flip-Flop Conversions (SR to JK, JK to D, D to T) Table Rules",
+        "examWeight": "15-Mark Conversion Task",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "6h 53m / 8h 23m"
       },
       {
         "unit": "Unit V: Sequential Logic Circuits (Flip-Flops, Registers & Counters)",
@@ -2074,8 +2860,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "Shift register configurations; Asynchronous 3-bit/4-bit Ripple UP/DOWN counter using T / JK flip-flops in toggle mode; Mod-N Counter: using an active-LOW NAND gate connected to asynchronous $\\overline{CLR}$ inputs to reset at state $N$.",
         "url": "https://www.youtube.com/results?search_query=Neso+Academy+Shift+Registers+SISO+SIPO+Asynchronous+Counter",
         "duration": "35 mins",
-        "timeline": "Week 12 \u2022 Shift Registers",
-        "priority": "\ud83d\udd25 Mandatory Exam Question"
+        "timeline": "Lecture #15 \u2022 Week 12",
+        "priority": "\ud83d\udd25 Mandatory Exam Question",
+        "videoNo": 15,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #15 of 17",
+        "fixedWatchTime": "35 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 35,
+        "syllabusTopic": "Unit V \u00a7 5.3 \u2014 Shift Registers (SISO, SIPO, PISO, PIPO) & 4-Bit Ripple Counters",
+        "examWeight": "15-Mark Sequential Design",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "7h 28m / 8h 23m"
       },
       {
         "unit": "Unit VI: Arduino Microcontroller Architecture & Sensor Interfacing",
@@ -2084,8 +2879,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "ATmega328P microcontroller internals; 14 digital I/O pins (pins 3, 5, 6, 9, 10, 11 supporting 8-bit PWM via `analogWrite(pin, val)`); 6 analog inputs (A0\u2013A5) with 10-bit Successive Approximation ADC (`analogRead(pin)`); 16 MHz quartz crystal clock; power regulation (5V, 3.3V, VIN).",
         "url": "https://www.youtube.com/results?search_query=Arduino+UNO+Architecture+Pinout+ATmega328P+Explained",
         "duration": "25 mins",
-        "timeline": "Week 13 \u2022 Arduino Board Pinout",
-        "priority": "\u26a1 Hardware Lab Practical"
+        "timeline": "Lecture #16 \u2022 Week 13",
+        "priority": "\u26a1 Hardware Lab Practical",
+        "videoNo": 16,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #16 of 17",
+        "fixedWatchTime": "25 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 25,
+        "syllabusTopic": "Unit VI \u00a7 6.1 \u2014 Arduino UNO Microcontroller Architecture, Pinout & 10-Bit ADC",
+        "examWeight": "15-Mark Lab Exam",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "7h 53m / 8h 23m"
       },
       {
         "unit": "Unit VI: Arduino Microcontroller Architecture & Sensor Interfacing",
@@ -2094,8 +2898,17 @@ window.DEFAULT_SUBJECTS = [
         "focus": "",
         "url": "https://www.youtube.com/results?search_query=Arduino+Sensors+Interfacing+HC-SR04+LDR+DHT11+How+To+Mechatronics",
         "duration": "30 mins",
-        "timeline": "Week 13 \u2022 Ultrasonic & Sensors",
-        "priority": "\u26a1 Hardware Lab Practical"
+        "timeline": "Lecture #17 \u2022 Week 14",
+        "priority": "\u26a1 Hardware Lab Practical",
+        "videoNo": 17,
+        "totalVideosInPlaylist": 17,
+        "playlistSequence": "Lecture #17 of 17",
+        "fixedWatchTime": "30 Mins (Prescribed Syllabus Target)",
+        "fixedMinutes": 30,
+        "syllabusTopic": "Unit VI \u00a7 6.2 \u2014 HC-SR04 Ultrasonic Distance Formula, LDR & DHT11 Interfacing",
+        "examWeight": "15-Mark Lab Exam",
+        "syllabusContribution": "+5.9% Syllabus",
+        "cumulativeTime": "8h 23m / 8h 23m"
       }
     ],
     "vivaQuestions": [
@@ -2144,6 +2957,8 @@ window.DEFAULT_SUBJECTS = [
       "dashboard": "subjects/PHY175_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/PHY175_Ultimate_Master_Study_Guide_and_Video_Hub.md",
       "guidePdf": "subjects/PHY175_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
-    }
+    },
+    "totalStudyMinutes": 503,
+    "totalStudyTimeFormatted": "8h 23m"
   }
 ];

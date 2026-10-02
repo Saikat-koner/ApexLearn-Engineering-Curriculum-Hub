@@ -22,13 +22,14 @@
 
 ---
 
-### 2. 📺 Curated Video Master Hub with Pacing Timeline & Completion Tracker (89 Tutorials)
-- **89 High-Yield YouTube Video Masterclasses** calibrated to university examination topics and faculty lecture syllabi.
-- **📅 14-Week Semester Study Timeline Roadmaps:** Direct scheduling tags (e.g. `Week 1–2 Foundation`, `Week 5–6 Mid-Term Sprint`, `Week 12–14 End-Term Sprint`) on every tutorial.
-- **⏱️ Estimated Video Watch & Study Durations:** Granular pacing estimates (e.g. `⏱️ 22 mins`, `⏱️ 35 mins`) and total subject study load calculations (e.g. `~5h 45m total load`).
-- **🔥 Exam Priority & Weight Badges:** Clear distinction between `🔥 Mandatory Exam Question`, `⭐ High-Yield Core Topic`, `⚡ Practical Mastery`, and `🏆 100-Percentile Grade 'O' Booster`.
-- **✅ Interactive Completion Tracker:** Persistent `localStorage`-backed checkbox tracking (`apex_watched_vids_*`) with live percentage completion bars and 1-click progress resets.
-- **Top Creators:** *Dr. Gajendra Purohit, Gate Smashers, 3Blue1Brown, CS50 Harvard, All About Electronics, Kevin Powell, Corey Schafer, NetworkChuck, and Kunal Kushwaha*.
+### 2. 📺 Structured Video Playlists with Fixed Watch Quotas & Syllabus Topic Mapping (89 Tutorials)
+- **Sequential Playlist Numbering:** Every tutorial is numbered in curriculum order (e.g., `🎬 Lecture #01 of 13`, `🎬 Lecture #02 of 13`).
+- **⏱️ Fixed Prescribed Watch Time Quota:** Each video defines an exact, non-negotiable study time allocation (e.g. `20 mins`, `25 mins`, `35 mins`) required to cover that specific syllabus module.
+- **📖 Syllabus Module Mapping:** Direct unit and chapter links (e.g. `Unit I § 1.1 — Computational Thinking 4-Pillar Pipeline`, `Unit I § 1.3 — Eigenvalues & Cayley-Hamilton`).
+- **📈 Syllabus Contribution & Cumulative Progress:** Displays real-time syllabus coverage weight (e.g. `+7.7% Syllabus`) and cumulative watch time (e.g. `20m / 5h 40m`).
+- **🎯 Examination Weight Badges:** Highlights marks impact (e.g., `15-Mark Mandatory Numerical`, `10-Mark Section A Core`).
+- **✅ Persistent Completion Tracking:** LocalStorage-backed checkbox tracker updating both lecture count and exact watched minutes with dynamic progress bars.
+- **Top Faculty & Creators:** *Dr. Gajendra Purohit, Gate Smashers, 3Blue1Brown, CS50 Harvard, All About Electronics, Kevin Powell, Corey Schafer, NetworkChuck, and Kunal Kushwaha*.
 
 ---
 

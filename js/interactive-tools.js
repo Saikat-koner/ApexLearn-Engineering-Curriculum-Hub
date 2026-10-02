@@ -1017,9 +1017,10 @@ function escapeHtml(text) {
 
 
 // ==============================================================================
+// ==============================================================================
 // 8. VIDEO MASTER HUB COMPLETION TRACKER ENGINE
 // ==============================================================================
-function toggleVideoCompleted(subCode, vidId, checkboxEl, cardElId) {
+function toggleVideoCompleted(subCode, vidId, checkboxEl, cardElId, vidMins) {
   let watchedSet = new Set();
   const storageKey = `apex_watched_vids_${subCode}`;
   try {
@@ -1048,25 +1049,46 @@ function toggleVideoCompleted(subCode, vidId, checkboxEl, cardElId) {
   // Update checkbox label
   const labelSpan = checkboxEl.parentElement.querySelector('span');
   if (labelSpan) {
-    labelSpan.textContent = checkboxEl.checked ? '✓ Completed' : 'Mark Done';
+    const mins = vidMins || 25;
+    labelSpan.textContent = checkboxEl.checked ? `✅ Completed (${mins} mins counted)` : `Mark Lecture Completed (${mins} mins)`;
     labelSpan.style.color = checkboxEl.checked ? '#10b981' : 'var(--text-muted)';
   }
 
   // Update subject video progress header & bar
   const sub = typeof allSubjects !== 'undefined' ? allSubjects.find(s => s.code === subCode || s.id.toLowerCase() === subCode.toLowerCase()) : null;
-  const totalVids = sub && sub.videos ? sub.videos.length : 1;
-  const count = watchedSet.size;
-  const percent = Math.min(100, Math.round((count / totalVids) * 100));
+  if (sub && sub.videos) {
+    const totalVids = sub.videos.length;
+    const count = watchedSet.size;
+    let watchedMinutes = 0;
+    let totalMinutes = 0;
 
-  const progressHeader = document.getElementById(`vidProgressHeader_${subCode}`);
-  const progressBar = document.getElementById(`vidProgressBar_${subCode}`);
+    sub.videos.forEach(v => {
+      const vm = v.fixedMinutes || 25;
+      totalMinutes += vm;
+      if (watchedSet.has(v.url || v.title)) {
+        watchedMinutes += vm;
+      }
+    });
 
-  if (progressHeader) progressHeader.textContent = `${count} / ${totalVids} Watched (${percent}%)`;
-  if (progressBar) progressBar.style.width = `${percent}%`;
+    const percent = totalMinutes > 0 ? Math.round((watchedMinutes / totalMinutes) * 100) : 0;
+    const watchedH = Math.floor(watchedMinutes / 60);
+    const watchedM = watchedMinutes % 60;
+    const watchedStr = watchedH > 0 ? `${watchedH}h ${watchedM}m` : `${watchedM}m`;
+
+    const totalH = Math.floor(totalMinutes / 60);
+    const totalM = totalMinutes % 60;
+    const totalStr = totalH > 0 ? `${totalH}h ${totalM}m` : `${totalM}m`;
+
+    const progressHeader = document.getElementById(`vidProgressHeader_${subCode}`);
+    const progressBar = document.getElementById(`vidProgressBar_${subCode}`);
+
+    if (progressHeader) progressHeader.textContent = `${count} / ${totalVids} Lectures (${watchedStr} / ${totalStr} • ${percent}%)`;
+    if (progressBar) progressBar.style.width = `${percent}%`;
+  }
 }
 
 function resetVideoProgress(subCode) {
-  if (confirm(`Reset all watched video progress for ${subCode}?`)) {
+  if (confirm(`Reset all playlist watch progress for ${subCode}?`)) {
     localStorage.removeItem(`apex_watched_vids_${subCode}`);
     if (typeof openSubjectDrawer === 'function') {
       const sub = typeof allSubjects !== 'undefined' ? allSubjects.find(s => s.code === subCode || s.id.toLowerCase() === subCode.toLowerCase()) : null;
