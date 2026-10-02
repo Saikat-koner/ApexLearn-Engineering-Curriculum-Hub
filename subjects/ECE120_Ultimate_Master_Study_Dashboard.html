@@ -436,6 +436,473 @@
             </div>
         </div>
 
+                <!-- TAB: MODULE 1 -->
+        <div id="tab-mod1" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">⚡ Module 1: DC Circuit Analysis & Network Theorems</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Module 1</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">1.1 Fundamental Laws & Rules</h3>
+* <strong>Ohm's Law:</strong> $V = I \times R$, valid only at constant temperature for linear bilateral conductors.
+* <strong>Kirchhoff's Current Law (KCL):</strong> The algebraic sum of currents entering any electrical node is zero.
+  $$\sum I_{\text{entering}} = \sum I_{\text{leaving}} \iff \sum I = 0 \quad \text{(Conservation of Electric Charge)}$$
+* <strong>Kirchhoff's Voltage Law (KVL):</strong> The algebraic sum of all voltages around any closed loop is zero.
+  $$\sum V_{\text{rises}} - \sum V_{\text{drops}} = 0 \iff \sum V = 0 \quad \text{(Conservation of Energy)}$$
+* <strong>Voltage Divider Rule (Series Circuit):</strong>
+  $$V_x = V_s \times \left[ \frac{R_x}{R_1 + R_2 + \dots + R_n} \right] \quad \text{(Current } I \text{ is constant)}$$
+* <strong>Current Divider Rule (2 Parallel Branches):</strong>
+  $$I_1 = I_s \times \left[ \frac{R_2}{R_1 + R_2} \right], \quad I_2 = I_s \times \left[ \frac{R_1}{R_1 + R_2} \right] \quad \text{(Voltage } V \text{ is constant)}$$
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                        DC CIRCUIT ANALYSIS LOGIC FLOWCHART
+                                         │
+                        [ COMPLEX RESISTIVE DC NETWORK ]
+                                         │
+        ┌────────────────────────────────┴────────────────────────────────┐
+        ▼                                                                 ▼
+[ MESH / LOOP ANALYSIS ]                                      [ NODAL VOLTAGE ANALYSIS ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">Identify independent planar meshes                          • Identify Essential Nodes &amp; pick 1 Ground (0V)</li>
+  <li style="margin-bottom:0.35rem;">Assign clockwise loop currents I1, I2                       • Apply KCL at each non-ground node</li>
+  <li style="margin-bottom:0.35rem;">Apply KVL: Sum(V) = 0                                       • Express branch currents: I = (V_node - V_adj)/R</li>
+  <li style="margin-bottom:0.35rem;">Solve simultaneous linear equations                         • Solve node voltages matrix [G][V] = [I]</li>
+</ul>
+        │                                                                 │
+        └────────────────────────────────┬────────────────────────────────┘
+                                         ▼
+                             [ NETWORK THEOREMS ]
+        ┌────────────────────────────────┼────────────────────────────────┐
+        ▼                                ▼                                ▼
+[ THEVENIN'S THEOREM ]         [ NORTON'S THEOREM ]         [ MAX POWER TRANSFER ]
+Replace network with:          Replace network with:        Max power delivered when:
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">Vth = Open-Circuit Voltage   • IN = Short-Circuit Current • R_Load = R_Thevenin</li>
+  <li style="margin-bottom:0.35rem;">Rth = Dead-source resistance • RN = Rth (in parallel)     • Max Efficiency η = 50%</li>
+</ul>
+</code></pre></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">1.2 Thevenin's Theorem Step-by-Step Procedure:</h3>
+1. <strong>Remove the Load Resistor ($R_L$):</strong> Disconnect $R_L$ between terminal terminals $A$ and $B$.
+2. <strong>Calculate Open-Circuit Voltage ($V_{th}$):</strong> Find the potential difference $V_{AB}$ across terminals $A-B$ using KVL or Nodal Analysis.
+3. <strong>Calculate Thevenin Resistance ($R_{th}$):</strong> Deactivate all independent sources (replace independent <strong>Voltage Sources with Short Circuits</strong> and independent <strong>Current Sources with Open Circuits</strong>). Calculate equivalent resistance looking into terminals $A-B$.
+4. <strong>Draw Thevenin Equivalent Circuit:</strong> Connect $V_{th}$ in series with $R_{th}$ and reconnect $R_L$.
+5. <strong>Calculate Load Current ($I_L$) & Load Voltage ($V_L$):</strong>
+   $$I_L = \frac{V_{th}}{R_{th} + R_L}, \quad V_L = I_L \times R_L$$
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="module-2"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: MODULE 2 -->
+        <div id="tab-mod2" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🔌 Module 2: Semiconductor Diodes & Rectifiers</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Module 2</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">2.1 Semiconductor Physics & P-N Junction</h3>
+* <strong>Energy Bandgap ($E_g$):</strong> Conductor ($E_g \approx 0\text{ eV}$), Semiconductor (Si: $1.1\text{ eV}$, Ge: $0.67\text{ eV}$, GaAs: $1.42\text{ eV}$), Insulator ($E_g > 5\text{ eV}$).
+* <strong>P-N Junction Formation:</strong> P-region (doped with trivalent acceptors e.g., Boron; majority holes) joins N-region (doped with pentavalent donors e.g., Phosphorus; majority electrons). Carrier diffusion across junction creates immobile positive and negative ion cores forming the <strong>Depletion Region</strong> and built-in <strong>Barrier Potential ($V_0$)</strong>.
+* <strong>Biasing Modes:</strong>
+  * <strong>Forward Bias:</strong> (+) connected to P-type, (-) connected to N-type $\rightarrow$ narrows depletion width $\rightarrow$ exponential current conduction when $V > V_{\text{knee}}$ ($0.7\text{V}$ for Si, $0.3\text{V}$ for Ge).
+  * <strong>Reverse Bias:</strong> (+) connected to N-type, (-) connected to P-type $\rightarrow$ widens depletion width $\rightarrow$ only tiny temperature-dependent reverse saturation current ($I_0 \approx \text{nA}$ for Si, $\mu\text{A}$ for Ge) flows until Zener or Avalanche breakdown occurs.
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                      DIODE V-I CHARACTERISTICS &amp; RECTIFIER PIPELINE
+                                             │
+      ┌──────────────────────────────────────┴──────────────────────────────────────┐
+      ▼                                                                             ▼
+[ FORWARD BIAS REGION ]                                                   [ REVERSE BIAS REGION ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">Depletion layer thins out                                               • Depletion layer widens</li>
+  <li style="margin-bottom:0.35rem;">V &lt; V_knee: Current ≈ 0 mA                                              • Tiny reverse saturation current I0</li>
+  <li style="margin-bottom:0.35rem;">V &gt; V_knee (Si: 0.7V, Ge: 0.3V): Exponential rise                       • Breakdown at V_Z (Zener/Avalanche)</li>
+  <li style="margin-bottom:0.35rem;">Dynamic Resistance rd = ΔVD / ΔID ≈ 26mV / ID                           • Zener Diode operates as Voltage Regulator</li>
+</ul>
+      │                                                                             │
+      └──────────────────────────────────────┬──────────────────────────────────────┘
+                                             ▼
+                              [ AC TO DC POWER RECTIFIERS ]
+      ┌──────────────────────────────────────┴──────────────────────────────────────┐
+      ▼                                                                             ▼
+[ HALF-WAVE RECTIFIER (1 Diode) ]                               [ FULL-WAVE BRIDGE RECTIFIER (4 Diodes) ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">Conducts during (+) half-cycle only                           • Conducts during both (+) and (-) half-cycles</li>
+  <li style="margin-bottom:0.35rem;">DC Output: Vdc = Vm / π = 0.318 Vm                            • DC Output: Vdc = 2Vm / π = 0.636 Vm</li>
+  <li style="margin-bottom:0.35rem;">Max Efficiency: η_max = 40.6%                                 • Max Efficiency: η_max = 81.2%</li>
+  <li style="margin-bottom:0.35rem;">Ripple Factor: γ = 1.21                                       • Ripple Factor: γ = 0.482</li>
+  <li style="margin-bottom:0.35rem;">Peak Inverse Voltage: PIV = Vm                                • Peak Inverse Voltage: PIV = Vm (per diode)</li>
+  <li style="margin-bottom:0.35rem;">Output Ripple Frequency: f_out = f_in (50 Hz)                 • Output Ripple Frequency: f_out = 2 * f_in (100 Hz)</li>
+</ul>
+</code></pre></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">2.2 Rectifier Comparison Performance Matrix (Guaranteed Exam Table):</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Parameter</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Half-Wave Rectifier</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Center-Tapped Full-Wave</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Bridge Full-Wave Rectifier</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Number of Diodes</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1 Diode</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">2 Diodes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>4 Diodes</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Transformer Required?</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Optional</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Center-Tapped (Expensive/Bulky)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Standard / Optional</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$V_{dc}$ (Average DC Voltage)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$V_m / \pi \approx 0.318 V_m$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$2V_m / \pi \approx 0.636 V_m$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$2V_m / \pi \approx 0.636 V_m$</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$I_{dc}$ (Average DC Current)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$I_m / \pi$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$2I_m / \pi$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$2I_m / \pi$</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$V_{rms}$ (RMS Output Voltage)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$V_m / 2 = 0.5 V_m$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$V_m / \sqrt{2} \approx 0.707 V_m$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$V_m / \sqrt{2} \approx 0.707 V_m$</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Max Rectification Efficiency ($\eta$)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$40.6\%$</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$81.2\%$</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$81.2\%$</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Ripple Factor ($\gamma = \sqrt{(V_{rms}/V_{dc})^2 - 1}$)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$1.21$</strong> (Very High)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$0.482$</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$0.482$</strong> (Low)</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Peak Inverse Voltage (PIV)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$V_m$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$2V_m$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$V_m$</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Output Fundamental Frequency</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$f_{in}$ ($50\text{ Hz}$)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$2f_{in}$ ($100\text{ Hz}$)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$2f_{in}$ ($100\text{ Hz}$)</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Transformer Utilization Factor (TUF)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$0.287$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$0.693$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>$0.812$</strong> (Highest)</td></tr></tbody></table></div>
+---
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="module-3"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: MODULE 3 -->
+        <div id="tab-mod3" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">📻 Module 3: Bipolar Junction Transistors (BJT) & Biasing</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Module 3</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">3.1 BJT Physics & Current Relationships</h3>
+* <strong>Structure:</strong> Three doped regions — <strong>Emitter (E)</strong> (heavily doped, medium size), <strong>Base (B)</strong> (very lightly doped, ultra-thin $\approx 1\,\mu\text{m}$), and <strong>Collector (C)</strong> (moderately doped, largest physical size for heat dissipation).
+* <strong>Fundamental Current Equation:</strong>
+  $$I_E = I_B + I_C \quad (\text{Emitter current is always the sum of Base and Collector currents})$$
+* <strong>Current Gain Parameters:</strong>
+  * <strong>Common Base Current Gain ($\alpha$):</strong> $\alpha = \frac{I_C}{I_E}$ (Typically $0.95 - 0.998$).
+  * <strong>Common Emitter Current Gain ($\beta$):</strong> $\beta = \frac{I_C}{I_B}$ (Typically $50 - 300$).
+  * <strong>Inter-relationship Formula:</strong>
+    $$\beta = \frac{\alpha}{1 - \alpha}, \quad \alpha = \frac{\beta}{1 + \beta}$$
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                               BJT OPERATING REGIONS &amp; DC BIASING
+                                               │
+             ┌─────────────────────────────────┼─────────────────────────────────┐
+             ▼                                 ▼                                 ▼
+   [ CUT-OFF REGION ]                  [ ACTIVE REGION ]                [ SATURATION REGION ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">E-B Junction: Reverse Biased      • E-B Junction: Forward Biased   • E-B Junction: Forward Biased</li>
+  <li style="margin-bottom:0.35rem;">C-B Junction: Reverse Biased      • C-B Junction: Reverse Biased   • C-B Junction: Forward Biased</li>
+  <li style="margin-bottom:0.35rem;">IC ≈ 0 mA, VCE ≈ VCC              • Linear Amplification: IC = β*IB• Fully ON: VCE(sat) ≈ 0.2V</li>
+  <li style="margin-bottom:0.35rem;">APPLICATION: Digital Switch OFF   • APPLICATION: Linear Amplifier  • APPLICATION: Digital Switch ON</li>
+</ul>
+             │                                 │                                 │
+             └─────────────────────────────────┼─────────────────────────────────┘
+                                               ▼
+                              [ TRANSISTOR BIASING CIRCUITS ]
+             ┌─────────────────────────────────┴─────────────────────────────────┐
+             ▼                                                                   ▼
+   [ FIXED BIAS CIRCUIT ]                                            [ VOLTAGE DIVIDER BIAS (SELF-BIAS) ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">Simple, uses single RB resistor                                 • Most stable, independent of β variations</li>
+  <li style="margin-bottom:0.35rem;">Highly unstable: Q-point shifts with β &amp; temp                   • R1 &amp; R2 set fixed base voltage: V_B = VCC * R2/(R1+R2)</li>
+  <li style="margin-bottom:0.35rem;">Stability Factor: S = 1 + β (Poor)                              • Emitter resistor RE provides negative feedback: S ≈ 1</li>
+</ul>
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="module-4"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: MODULE 4 -->
+        <div id="tab-mod4" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🧩 Module 4: Digital Logic Gates & Universal Realizations</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Module 4</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.1 Truth Tables & Logic Gate Taxonomy</h3>
+* <strong>Basic Gates:</strong> AND ($Y = A \cdot B$), OR ($Y = A + B$), NOT ($Y = A'$).
+* <strong>Universal Gates:</strong> NAND ($Y = (A \cdot B)'$), NOR ($Y = (A + B)'$).
+* <strong>Arithmetic / Parity Gates:</strong> XOR ($Y = A \oplus B = A'B + AB'$), XNOR ($Y = (A \oplus B)' = AB + A'B'$).
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>========================================================================================================
+GATE NAME  | LOGIC SYMBOL (ASCII)    | BOOLEAN EQUATION          | TRUTH TABLE (A, B -&gt; Output Y)
+========================================================================================================
+NOT Gate   | A ──[|&gt;o── Y            | Y = A'                    | A=0-&gt;1, A=1-&gt;0
+AND Gate   | A ──[ &amp; ]── Y           | Y = A · B                 | 00-&gt;0, 01-&gt;0, 10-&gt;0, 11-&gt;1
+OR Gate    | A ──[ ≥1]── Y           | Y = A + B                 | 00-&gt;0, 01-&gt;1, 10-&gt;1, 11-&gt;1
+NAND Gate  | A ──[ &amp; ]o── Y          | Y = (A · B)'              | 00-&gt;1, 01-&gt;1, 10-&gt;1, 11-&gt;0 (Universal)
+NOR Gate   | A ──[ ≥1]o── Y          | Y = (A + B)'              | 00-&gt;1, 01-&gt;0, 10-&gt;0, 11-&gt;0 (Universal)
+XOR Gate   | A ──[ =1]── Y           | Y = A ⊕ B = A'B + AB'     | 00-&gt;0, 01-&gt;1, 10-&gt;1, 11-&gt;0 (Odd 1s Detector)
+XNOR Gate  | A ──[ =1]o── Y          | Y = (A ⊕ B)' = AB + A'B'  | 00-&gt;1, 01-&gt;0, 10-&gt;0, 11-&gt;1 (Equivalence Gate)
+========================================================================================================
+</code></pre></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.2 Universal Gate Realizations (NAND & NOR Gate Counts):</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Target Gate to Realize</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Minimum Number of 2-Input NAND Gates</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Minimum Number of 2-Input NOR Gates</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>NOT Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>1</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>1</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>AND Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>2</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>3</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>OR Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>3</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>2</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>NOR Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>4</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>1</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>NAND Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>1</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>4</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>XOR Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>4</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>5</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>XNOR Gate</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>5</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>4</strong></td></tr></tbody></table></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.3 Standard 74xx TTL IC Pin Configurations (DIP-14 Package):</h3>
+* <strong>Pin 14:</strong> $V_{CC} = +5.0\text{V}$ Regulated DC Power.
+* <strong>Pin 7:</strong> $GND = 0\text{V}$ Ground.
+* <strong>IC 7400:</strong> Quad 2-Input NAND Gate (Pins 1,2 Inputs $\rightarrow$ Pin 3 Output; Pins 4,5 Inputs $\rightarrow$ Pin 6 Output).
+* <strong>IC 7408:</strong> Quad 2-Input AND Gate (Pins 1,2 Inputs $\rightarrow$ Pin 3 Output).
+* <strong>IC 7432:</strong> Quad 2-Input OR Gate (Pins 1,2 Inputs $\rightarrow$ Pin 3 Output).
+* <strong>IC 7486:</strong> Quad 2-Input XOR Gate (Pins 1,2 Inputs $\rightarrow$ Pin 3 Output).
+* <strong>⚠️ CRITICAL EXAM TRAP — IC 7402 (Quad 2-Input NOR):</strong> Unlike all other standard 74xx ICs, <strong>Pin 1 is Output</strong> and <strong>Pins 2 & 3 are Inputs</strong>; <strong>Pin 4 is Output</strong> and <strong>Pins 5 & 6 are Inputs</strong>!
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="module-5"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: MODULE 5 -->
+        <div id="tab-mod5" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">➕ Module 5: Combinational Logic (Adders & Subtractors)</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Module 5</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.1 Half Adder & Full Adder Design Equations</h3>
+* <strong>Half Adder:</strong> Adds two 1-bit inputs ($A, B$).
+  $$\text{Sum } (S) = A \oplus B = A'B + AB' \quad (\text{IC 7486 XOR})$$
+  $$\text{Carry } (C) = A \cdot B \quad (\text{IC 7408 AND})$$
+* <strong>Full Adder:</strong> Adds three 1-bit inputs ($A, B, C_{in}$).
+  $$\text{Sum } (S) = A \oplus B \oplus C_{in}$$
+  $$\text{Carry-Out } (C_{out}) = AB + BC_{in} + AC_{in} = AB + C_{in}(A \oplus B)$$
+* <strong>Full Adder Realization Rule:</strong> A Full Adder is constructed using <strong>2 Half Adders and 1 OR Gate</strong> (or 9 NAND gates).
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>HALF ADDER LOGIC CIRCUIT:
+A ───────*─────────────┐ +---+
+         │             └─┤ = ├─── Sum = A ⊕ B (IC 7486 XOR)
+B ───*───┼─────────────┌─┤ 1 │
+     │   │             │ +---+
+     │   └─────┐ +---+ │
+     │         └─┤ &amp; ├─┴───────── Carry = A · B (IC 7408 AND)
+     └───────────┤   │
+                 +---+
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">FULL ADDER BLOCK ARCHITECTURE:
+A ───┐ +--------------+  Sum1   +--------------+  Sum = A ⊕ B ⊕ Cin
+B ───┴─┤ HALF ADDER 1 ├─────────┤ HALF ADDER 2 ├─────────────────────►
+       |              | Carry1  |              | Carry2
+Cin ───┼──────────────┼─────────┤              ├───┐
+       +--------------+         +--------------+   │  +---+
+                                                   └──┤ ≥ ├── Cout = Carry1 + Carry2
+                                                      │ 1 ├──► = AB + BCin + ACin
+                                                   ┌──┤   │
+                                                   │  +---+
+</code></pre></div></p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.2 Full Adder Comprehensive Truth Table:</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Input A</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Input B</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Carry-In ($C_{in}$)</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Sum ($S = A \oplus B \oplus C_{in}$)</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Carry-Out ($C_{out}$)</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1</td></tr></tbody></table></div>
+---
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="module-6"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: MODULE 6 -->
+        <div id="tab-mod6" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🤖 Module 6: Microcontrollers & Arduino IoT Interfacing</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Module 6</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.1 Arduino Uno (ATmega328P) Hardware Specifications</h3>
+* <strong>Core MCU:</strong> Microchip ATmega328P 8-bit AVR RISC microcontroller.
+* <strong>Operating Clock Speed:</strong> $16\text{ MHz}$ External Quartz Crystal Oscillator.
+* <strong>Memory Architecture:</strong> $32\text{ KB}$ Flash Memory ($0.5\text{ KB}$ used by Bootloader), $2\text{ KB}$ SRAM (Static RAM for runtime variables), $1\text{ KB}$ EEPROM (Non-volatile storage).
+* <strong>I/O Pinout Breakdown:</strong>
+  * <strong>14 Digital I/O Pins (Pins 0 to 13):</strong> Logic $0 = 0\text{V}$, Logic $1 = 5\text{V}$.
+  * <strong>6 PWM Pins (Pins 3, 5, 6, 9, 10, 11):</strong> Output pseudo-analog voltages ($0-5\text{V}$) via `analogWrite(pin, 0-255)` at $490\text{ Hz}$ / $980\text{ Hz}$.
+  * <strong>6 Analog Input Channels (Pins A0 to A5):</strong> Built-in 10-bit Successive Approximation ADC ($2^{10} = 1024$ quantization levels: $0\text{V} \rightarrow 0$, $5\text{V} \rightarrow 1023$, Resolution $= 5\text{V}/1024 \approx 4.88\text{ mV}$).
+  * <strong>UART Serial Pins:</strong> Pin 0 ($RX$) and Pin 1 ($TX$).
+* <strong>Current Limits:</strong> Max DC current per GPIO pin $= 40\text{ mA}$ (Recommended safe limit $\le 20\text{ mA}$). Total package limit $= 200\text{ mA}$.
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                             ARDUINO UNO + IR SENSOR SYSTEM ARCHITECTURE
+                                                  │
+                 ┌────────────────────────────────┴────────────────────────────────┐
+                 ▼                                                                 ▼
+      [ SENSOR HARDWARE MODULE ]                                       [ ATmega328P EMBEDDED CONTROLLER ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">IR Transmitter LED (940nm)                                     • 16 MHz Clock, 32KB Flash, 2KB SRAM</li>
+  <li style="margin-bottom:0.35rem;">IR Photodiode Receiver                                         • Pin D2 configured as INPUT (pinMode)</li>
+  <li style="margin-bottom:0.35rem;">LM393 High-Speed Voltage Comparator                            • Pin D13 configured as OUTPUT</li>
+  <li style="margin-bottom:0.35rem;">10kΩ Potentiometer Sensitivity Trimmer                         • UART Hardware Serial @ 9600 Baud</li>
+  <li style="margin-bottom:0.35rem;">ACTIVE-LOW LOGIC OUTPUT:                                       • Embedded Execution Loop:</li>
+  <li style="margin-bottom:0.35rem;">Obstacle Present  -&gt; Pin OUT = LOW (0V)                        1. digitalRead(2)</li>
+  <li style="margin-bottom:0.35rem;">Path Clear        -&gt; Pin OUT = HIGH (5V)                       2. if (state == LOW) -&gt; digitalWrite(13, HIGH)</li>
+</ul>
+                                                                         3. Serial.println("Obstacle Alert!")
+</code></pre></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.2 Production Arduino C++ Sketch (`intelligent_ir_system.ino`):</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>// ECE120: Intelligent Embedded Systems - IR Obstacle Detection &amp; Buzzer Alert
+const int IR_SENSOR_PIN = 2;  // Digital Pin 2 connected to IR module OUT
+const int ALERT_LED_PIN = 13; // Built-in LED &amp; External Buzzer on Pin 13
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">void setup() {
+    pinMode(IR_SENSOR_PIN, INPUT);    // Configure D2 as digital input
+    pinMode(ALERT_LED_PIN, OUTPUT);   // Configure D13 as digital output
+    Serial.begin(9600);               // Initialize Serial UART communication at 9600 bps
+    Serial.println("==================================================");
+    Serial.println("ECE120: Intelligent IR Obstacle Alert System Ready");
+    Serial.println("==================================================");
+}</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">void loop() {
+    // Read the digital logic state from the IR sensor module
+    int sensorState = digitalRead(IR_SENSOR_PIN);</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">// CRITICAL ACTIVE-LOW LOGIC:
+    // Sensor outputs LOW (0V) when obstacle reflects IR light
+    if (sensorState == LOW) {
+        digitalWrite(ALERT_LED_PIN, HIGH); // Sound buzzer and light alert LED
+        Serial.println("[ALERT] Obstacle Detected! Object within proximity range.");
+    } else {
+        digitalWrite(ALERT_LED_PIN, LOW);  // Turn off alert LED and buzzer
+        Serial.println("[STATUS] Path Clear. No obstacle detected.");
+    }</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">delay(200); // 200ms sampling delay to prevent Serial buffer congestion
+}
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="numericals"></a>
+## 🧮 10. Step-by-Step Worked Numerical Problems & Derivations</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 1: Thevenin Equivalent Circuit Calculation</h3>
+<strong>Question:</strong> In a DC circuit, a $20\text{V}$ voltage source is connected in series with an $8\ \Omega$ resistor, which connects to a node with a parallel $12\ \Omega$ resistor and a load resistor $R_L = 6\ \Omega$ across terminals $A-B$. Calculate $V_{th}$, $R_{th}$, and the load current $I_L$.
+* <strong>Step 1 (Find $V_{th}$):</strong> Remove $R_L$. By Voltage Divider across the $12\ \Omega$ resistor:
+  $$V_{th} = V_{AB} = 20\text{V} \times \left( \frac{12}{8 + 12} \right) = 20 \times \frac{12}{20} = \mathbf{12\text{ V}}$$
+* <strong>Step 2 (Find $R_{th}$):</strong> Short-circuit the $20\text{V}$ source. Looking into terminals $A-B$:
+  $$R_{th} = 8\ \Omega \parallel 12\ \Omega = \frac{8 \times 12}{8 + 12} = \frac{96}{20} = \mathbf{4.8\ \Omega}$$
+* <strong>Step 3 (Find $I_L$):</strong>
+  $$I_L = \frac{V_{th}}{R_{th} + R_L} = \frac{12\text{V}}{4.8\ \Omega + 6\ \Omega} = \frac{12}{10.8} = \mathbf{1.111\text{ A}}$$
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 2: Resistor 4-Band Color Code Calculation</h3>
+<strong>Question:</strong> Determine the resistance and tolerance range for a resistor with color bands: <strong>Yellow - Violet - Orange - Gold</strong>.
+* <strong>Band 1 (Yellow):</strong> $4$
+* <strong>Band 2 (Violet):</strong> $7$
+* <strong>Band 3 (Orange - Multiplier):</strong> $10^3\ \Omega = 1\text{ k}\Omega$
+* <strong>Band 4 (Gold - Tolerance):</strong> $\pm 5\%$
+* <strong>Calculation:</strong>
+  $$R = 47 \times 10^3\ \Omega \pm 5\% = \mathbf{47\text{ k}\Omega \pm 5\%}$$
+  $$\text{Tolerance Value} = 47\text{ k}\Omega \times 0.05 = 2.35\text{ k}\Omega$$
+  $$\text{Range} = [47 - 2.35]\text{ k}\Omega \text{ to } [47 + 2.35]\text{ k}\Omega = \mathbf{44.65\text{ k}\Omega \text{ to } 49.35\text{ k}\Omega}$$
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 3: Diode Dynamic Resistance Calculation</h3>
+<strong>Question:</strong> A Silicon diode operating at room temperature ($V_T = 26\text{ mV}$) carries a forward current of $I_D = 2\text{ mA}$ with an ideality factor $\eta = 1$. Calculate its dynamic resistance ($r_d$).
+* <strong>Formula:</strong>
+  $$r_d = \frac{\eta V_T}{I_D} = \frac{1 \times 26\text{ mV}}{2\text{ mA}} = \mathbf{13\ \Omega}$$
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="practicals"></a>
+## 🧰 11. Hardware Practical Experiments & Laboratory Precautions</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Summary of All 6 Lab Experiments:</h3>
+1. <strong>Exp 1: The Electronics Expedition:</strong> Identification of active/passive components, DMM measurements (voltage, current, resistance, diode check), and breadboard rail architecture.
+2. <strong>Exp 2: Divider Quest:</strong> Breadboard verification of Voltage Divider Rule ($V_2 = V_s \frac{R_2}{R_1+R_2}$), Current Divider Rule, KVL ($\sum V = 0$), and KCL ($\sum I = 0$).
+3. <strong>Exp 3: Diode Voltage Quest:</strong> Forward bias V-I curve plotting for 1N4007 Silicon diode, Knee Voltage determination ($0.7\text{V}$), and dynamic resistance ($r_d$).
+4. <strong>Exp 4: Universal Gate Adventure:</strong> Realization of NOT, AND, OR, XOR using Universal NAND (IC 7400) and NOR (IC 7402) on digital trainer kit.
+5. <strong>Exp 5: Adder Chronicles:</strong> Breadboard wiring and truth table validation of Half Adder (IC 7486 XOR + IC 7408 AND) and Full Adder (2 HAs + IC 7432 OR).
+6. <strong>Exp 6: Intelligent Systems:</strong> Interfacing Arduino Uno with Active-LOW IR sensor module (LM393) and triggering LED/Buzzer alerts.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">⚠️ Top 5 Crucial Laboratory Precautions & Exam Gotchas:</h3>
+1. <strong>Never Connect DMM Ammeter in Parallel:</strong> An ammeter has near $0\ \Omega$ internal resistance. Connecting it in parallel across a power rail causes a direct short circuit, instantly blowing the internal fuse!
+2. <strong>Mandatory Diode Current-Limiting Resistor:</strong> Always insert a $330\ \Omega$ or $1\text{ k}\Omega$ resistor in series with a diode. Direct connection causes thermal runaway and destroys the diode.
+3. <strong>IC 7402 NOR Gate Pinout Exception:</strong> In IC 7402, <strong>Pin 1 is Output</strong> and <strong>Pins 2 & 3 are Inputs</strong> (opposite of standard 7400/7408 ICs).
+4. <strong>Active-LOW IR Sensor Condition:</strong> Obstacle detection pulls the OUT pin to <strong>$0\text{V}$ (LOW)</strong>; code must check `if (digitalRead(pin) == LOW)`.
+5. <strong>TTL Supply Voltage Cap:</strong> Apply strictly $+5.0\text{V} \pm 5\%$ to Pin 14 ($V_{CC}$) and Pin 7 ($GND$). Voltages $>5.5\text{V}$ permanently damage TTL chips.
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="projects"></a>
+## 🚀 12. IoT Capstone Project Blueprint Matrix</p>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Domain</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Capstone Project Title</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Sensors & Modules</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Actuators & Interfaces</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Key System Architecture</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Smart Infrastructure</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Automated Smart Street Lighting</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">LDR (Light Dependent Resistor), IR Proximity Sensor</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">5V Relay Module, High-Power LED Lamp</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Lights turn ON only at night when vehicles/pedestrians are detected by IR sensors.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Environmental Monitoring</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Industrial Gas & Temperature Monitor</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">MQ-135 Gas Sensor, DHT11 Temp/Humidity</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">16x2 I2C LCD, 5V Active Piezo Buzzer</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Real-time air quality index monitoring with audio alarm when toxic thresholds are breached.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Robotics & Automation</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Autonomous Obstacle-Avoiding Rover</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">HC-SR04 Ultrasonic Sensor, SG90 Servo, IR</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">L298N Dual H-Bridge Motor Driver, 2x DC Motors</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Ultrasonic radar mounted on servo scans $180^\circ$ to steer rover away from obstacles.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Healthcare & Biomedical</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Contactless Patient Health Monitor</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">MAX30102 Pulse Oximeter & Heart-Rate Sensor</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0.96" I2C OLED Display, ESP8266 Wi-Fi</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Real-time $SpO_2$ and BPM monitoring streamed to a cloud IoT dashboard.</td></tr></tbody></table></div>
+---
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="viva-bank"></a>
+## 🎯 13. Top 50 Guaranteed High-Frequency Exam & Viva Voce Questions</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">1. <strong>Q: State Ohm's Law and its limitations.</strong>
+   <em>A:</em> At constant temperature, the current flowing through a conductor is directly proportional to the potential difference across it ($V = IR$). Limitations: Non-linear devices (diodes, transistors, vacuum tubes) and non-metallic conductors do not obey Ohm's Law.
+2. <strong>Q: State Kirchhoff's Current Law (KCL) and its conservation principle.</strong>
+   <em>A:</em> The algebraic sum of currents meeting at any electrical junction is zero ($\sum I = 0$). It is based on the <strong>Law of Conservation of Electric Charge</strong>.
+3. <strong>Q: State Kirchhoff's Voltage Law (KVL) and its conservation principle.</strong>
+   <em>A:</em> The algebraic sum of voltages in any closed loop is zero ($\sum V = 0$). It is based on the <strong>Law of Conservation of Energy</strong>.
+4. <strong>Q: What is the internal resistance of an ideal voltmeter and an ideal ammeter?</strong>
+   <em>A:</em> Ideal Voltmeter $= \infty$ (draws zero current); Ideal Ammeter $= 0\ \Omega$ (causes zero voltage drop).
+5. <strong>Q: What is the Loading Effect in a voltage divider circuit?</strong>
+   <em>A:</em> When a voltmeter or load resistor ($R_L$) is connected in parallel with $R_2$, the equivalent resistance drops ($R_2 \parallel R_L$), causing the measured voltage to be lower than the calculated open-circuit voltage.
+6. <strong>Q: State Thevenin's Theorem.</strong>
+   <em>A:</em> Any linear, bilateral, active two-terminal DC network can be replaced by an equivalent circuit consisting of a single independent voltage source $V_{th}$ in series with a resistance $R_{th}$.
+7. <strong>Q: State Norton's Theorem.</strong>
+   <em>A:</em> Any linear two-terminal DC network can be replaced by an equivalent circuit consisting of an independent current source $I_N$ in parallel with a resistance $R_N$ ($R_N = R_{th}$).
+8. <strong>Q: State the Maximum Power Transfer Theorem.</strong>
+   <em>A:</em> Maximum DC power is transferred from a source to a load when the load resistance equals the Thevenin resistance of the network ($R_L = R_{th}$). The maximum efficiency at this point is $50\%$.
+9. <strong>Q: What is the Knee / Cut-in Voltage of Silicon and Germanium Diodes?</strong>
+   <em>A:</em> Silicon $= \approx 0.7\text{V}$, Germanium $= \approx 0.3\text{V}$.
+10. <strong>Q: Why is Silicon preferred over Germanium in semiconductor diodes?</strong>
+    <em>A:</em> Silicon has a wider bandgap ($1.1\text{ eV}$ vs $0.67\text{ eV}$), drastically lower reverse saturation current ($\text{nA}$ vs $\mu\text{A}$), and much higher maximum operating temperature ($175^\circ\text{C}$ vs $75^\circ\text{C}$).
+11. <strong>Q: What is Peak Inverse Voltage (PIV)?</strong>
+    <em>A:</em> The maximum reverse bias voltage a diode can withstand without breaking down.
+12. <strong>Q: What is the maximum efficiency of a Half-Wave and Full-Wave Rectifier?</strong>
+    <em>A:</em> Half-Wave $= 40.6\%$, Full-Wave (Bridge/Center-Tapped) $= 81.2\%$.
+13. <strong>Q: What is the Ripple Factor of a Half-Wave and Full-Wave Rectifier?</strong>
+    <em>A:</em> Half-Wave $\gamma = 1.21$, Full-Wave $\gamma = 0.482$.
+14. <strong>Q: What is the fundamental ripple frequency of a Full-Wave Rectifier with $50\text{ Hz}$ AC input?</strong>
+    <em>A:</em> $f_{out} = 2 \times f_{in} = 2 \times 50\text{ Hz} = 100\text{ Hz}$.
+15. <strong>Q: What is the operating principle of a Zener Diode?</strong>
+    <em>A:</em> A heavily doped PN diode that operates in the reverse breakdown region to maintain a constant DC voltage across its terminals despite variations in input voltage or load current.
+16. <strong>Q: Differentiate between Avalanche Breakdown and Zener Breakdown.</strong>
+    <em>A:</em> Zener Breakdown occurs in heavily doped diodes at low voltages ($<6\text{V}$) via quantum mechanical electron tunneling with a negative temperature coefficient. Avalanche Breakdown occurs in lightly doped diodes at higher voltages ($>6\text{V}$) via carrier impact ionization with a positive temperature coefficient.
+17. <strong>Q: What are the three regions of a Bipolar Junction Transistor (BJT)?</strong>
+    <em>A:</em> Emitter (heavily doped), Base (very thin and lightly doped), Collector (moderately doped, largest physical area for heat dissipation).
+18. <strong>Q: What is the fundamental BJT current relation?</strong>
+    <em>A:</em> $I_E = I_B + I_C$.
+19. <strong>Q: Define $\alpha$ and $\beta$ of a transistor and give their mathematical relation.</strong>
+    <em>A:</em> $\alpha = I_C/I_E$ (CB gain), $\beta = I_C/I_B$ (CE gain). Relation: $\beta = \frac{\alpha}{1-\alpha}$, $\alpha = \frac{\beta}{1+\beta}$.
+20. <strong>Q: What are the biasing conditions for the three operating regions of a BJT?</strong>
+    <em>A:</em> Active Region: E-B forward, C-B reverse (Amplifier). Cut-off Region: E-B reverse, C-B reverse (Switch OFF). Saturation Region: E-B forward, C-B forward (Switch ON).
+21. <strong>Q: Why is the Voltage Divider Bias circuit the most popular BJT biasing method?</strong>
+    <em>A:</em> Because its operating point (Q-point) is exceptionally stable and virtually independent of transistor current gain ($\beta$) variations and temperature fluctuations.
+22. <strong>Q: Why are NAND and NOR called Universal Logic Gates?</strong>
+    <em>A:</em> Because any Boolean logic expression and all standard logic gates (NOT, AND, OR, XOR, XNOR) can be constructed solely using NAND gates or solely using NOR gates.
+23. <strong>Q: State De Morgan's First and Second Laws.</strong>
+    <em>A:</em> 1st: $(A + B)' = A' \cdot B'$; 2nd: $(A \cdot B)' = A' + B'$.
+24. <strong>Q: How many 2-input NAND gates are needed to implement an XOR gate?</strong>
+    <em>A:</em> Exactly <strong>4 NAND gates</strong>.
+25. <strong>Q: How many 2-input NOR gates are needed to implement an XOR gate?</strong>
+    <em>A:</em> Exactly <strong>5 NOR gates</strong>.
+26. <strong>Q: What are the standard VCC and Ground pin numbers for a standard 14-pin TTL IC?</strong>
+    <em>A:</em> Pin 14 is $V_{CC} (+5\text{V})$ and Pin 7 is $GND (0\text{V})$.
+27. <strong>Q: What is the pinout exception for IC 7402 (NOR Gate)?</strong>
+    <em>A:</em> In IC 7402, Pin 1 is the Output, while Pins 2 and 3 are Inputs.
+28. <strong>Q: What are the defined TTL logic voltage levels?</strong>
+    <em>A:</em> Logic HIGH $= 2.0\text{V} - 5.0\text{V}$ (typically $>2.4\text{V}$); Logic LOW $= 0.0\text{V} - 0.8\text{V}$ (typically $<0.4\text{V}$). The region between $0.8\text{V}$ and $2.0\text{V}$ is indeterminate.
+29. <strong>Q: What happens if a TTL input is left floating/unconnected?</strong>
+    <em>A:</em> It acts as a Logic HIGH ($1$), but is susceptible to noise pickup.
+30. <strong>Q: What is Propagation Delay in digital logic gates?</strong>
+    <em>A:</em> The time delay between the transition of an input signal and the corresponding transition of the output signal (typically $\approx 10\text{ ns}$ in standard TTL).
+31. <strong>Q: What is Fan-Out of a logic gate?</strong>
+    <em>A:</em> The maximum number of standard logic inputs that the output of a single gate can drive without degrading logic voltage levels (typically $10$ for standard TTL).
+32. <strong>Q: What is the Boolean expression for the Sum and Carry of a Half Adder?</strong>
+    <em>A:</em> $\text{Sum} = A \oplus B$, $\text{Carry} = A \cdot B$.
+33. <strong>Q: What is the Boolean expression for the Sum and Carry-Out of a Full Adder?</strong>
+    <em>A:</em> $\text{Sum} = A \oplus B \oplus C_{in}$, $C_{out} = AB + BC_{in} + AC_{in} = AB + C_{in}(A \oplus B)$.
+34. <strong>Q: How many Half Adders and OR gates are needed to build a Full Adder?</strong>
+    <em>A:</em> <strong>2 Half Adders and 1 OR Gate</strong> (or 9 NAND gates).
+35. <strong>Q: What is a Ripple Carry Adder and what is its primary limitation?</strong>
+    <em>A:</em> An $n$-bit parallel adder formed by cascading $n$ Full Adders. Limitation: Propagation delay increases linearly with $n$ because each stage must wait for the carry bit from the preceding stage.
+36. <strong>Q: What is the difference between a Half Subtractor and a Half Adder?</strong>
+    <em>A:</em> Half Adder: $\text{Sum} = A \oplus B$, $\text{Carry} = AB$. Half Subtractor: $\text{Difference} = A \oplus B$, $\text{Borrow} = A'B$.
+37. <strong>Q: What is the main microcontroller chip on an Arduino Uno board?</strong>
+    <em>A:</em> Microchip <strong>ATmega328P</strong> (8-bit AVR RISC microcontroller).
+38. <strong>Q: What is the operating clock speed and supply voltage of Arduino Uno?</strong>
+    <em>A:</em> Clock Speed $= 16\text{ MHz}$, Operating Voltage $= 5\text{V}$ DC.
+39. <strong>Q: What are the Flash, SRAM, and EEPROM memory sizes on ATmega328P?</strong>
+    <em>A:</em> Flash $= 32\text{ KB}$, SRAM $= 2\text{ KB}$, EEPROM $= 1\text{ KB}$.
+40. <strong>Q: What is the difference between `digitalRead()` and `analogRead()` in Arduino?</strong>
+    <em>A:</em> `digitalRead()` returns binary `HIGH` ($5\text{V}$) or `LOW` ($0\text{V}$). `analogRead()` reads ADC pins ($0-5\text{V}$) and returns a 10-bit quantized integer value from $0$ to $1023$.
+41. <strong>Q: What is PWM in Arduino Uno and which pins support it?</strong>
+    <em>A:</em> Pulse Width Modulation simulates analog voltages by varying the duty cycle of a digital square wave via `analogWrite(pin, 0-255)`. Pins: <strong>3, 5, 6, 9, 10, 11</strong>.
+42. <strong>Q: What is the maximum current that an Arduino Uno GPIO pin can source?</strong>
+    <em>A:</em> Absolute maximum $= 40\text{ mA}$ (Recommended continuous operating current $\le 20\text{ mA}$).
+43. <strong>Q: How does an IR Proximity Sensor module work?</strong>
+    <em>A:</em> An IR LED emits infrared radiation at $\approx 940\text{nm}$. When an object is within range, radiation reflects back to an IR photodiode receiver, altering its reverse resistance, which is converted to a digital signal by an onboard LM393 voltage comparator.
+44. <strong>Q: Why does the standard IR sensor module operate on Active-LOW logic?</strong>
+    <em>A:</em> When an obstacle is detected, the comparator output is pulled to Ground ($0\text{V}$ / `LOW`). When no obstacle is present, the output is pulled to $5\text{V}$ (`HIGH`).
+45. <strong>Q: Why do black objects fail to trigger an IR sensor?</strong>
+    <em>A:</em> Black surfaces absorb infrared radiation instead of reflecting it back to the receiver photodiode.
+46. <strong>Q: What is the purpose of the potentiometer trimmer on an IR sensor module?</strong>
+    <em>A:</em> To adjust the reference threshold voltage of the LM393 comparator, thereby calibrating the detection distance ($2\text{cm} - 30\text{cm}$).
+47. <strong>Q: What is the function of a pull-up or pull-down resistor?</strong>
+    <em>A:</em> To hold a digital input pin at a deterministic HIGH or LOW voltage state when no active driving signal is connected, preventing floating indeterminate states caused by EMI noise.
+48. <strong>Q: What are the color bands for a $1\text{ k}\Omega \pm 5\%$ resistor?</strong>
+    <em>A:</em> Brown (1), Black (0), Red ($\times 10^2$), Gold ($\pm 5\%$).
+49. <strong>Q: What are the color bands for a $10\text{ k}\Omega \pm 5\%$ resistor?</strong>
+    <em>A:</em> Brown (1), Black (0), Orange ($\times 10^3$), Gold ($\pm 5\%$).
+50. <strong>Q: What are the color bands for a $330\ \Omega \pm 5\%$ resistor?</strong>
+    <em>A:</em> Orange (3), Orange (3), Brown ($\times 10^1$), Gold ($\pm 5\%$).</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="strategy"></a>
+## 🏆 14. 100-Percentile 4-Tier Exam Scoring Strategy</p>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+---------------------------------------------------------------------------------------------------+
+|                        100-PERCENTILE 4-TIER ECE120 EXAM EXECUTION ROADMAP                        |
++---------------------------------------------------------------------------------------------------+
+                                                  |
+        ┌─────────────────────────────────────────┼─────────────────────────────────────────┐
+        ▼                                         ▼                                         ▼
+[ TIER 1: HIGH-WEIGHTAGE CORE ]         [ TIER 2: SEMICONDUCTOR &amp; BJT ]           [ TIER 3: LOGIC &amp; EMBEDDED ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">DC Circuits: KVL, KCL, Dividers       • Diode V-I characteristics &amp; Knee math   • Truth tables &amp; K-map simplification</li>
+  <li style="margin-bottom:0.35rem;">Thevenin &amp; Norton solved numericals   • Half/Full-Wave Rectifier parameters     • Universal NAND/NOR gate realization</li>
+  <li style="margin-bottom:0.35rem;">Resistor 4-Band color code math       • BJT CE curves &amp; Voltage Divider Bias    • Full Adder design (2 HAs + 1 OR)</li>
+  <li style="margin-bottom:0.35rem;">Max Power Transfer (RL = Rth, η=50%)  • Dynamic resistance formula (rd = 26/ID) • Arduino GPIO, Active-LOW IR code</li>
+</ul>
+        │                                         │                                         │
+        └─────────────────────────────────────────┼─────────────────────────────────────────┘
+                                                  ▼
+                                 [ TIER 4: PERFECT EXAM PRESENTATION ]
+        1. Always begin every numerical with an explicit GIVEN DATA &amp; FORMULA block.
+        2. Draw large, clean ASCII or schematic circuit diagrams with clear pinouts (Pin 14 VCC, Pin 7 GND).
+        3. For every law or theorem, write the underlying Conservation Principle (KVL=Energy, KCL=Charge).
+        4. In lab viva, highlight exact component values (Si 0.7V, 16MHz clock, 40mA GPIO limit, Active-LOW IR).
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---
+<em>Generated and Compiled for Saikat Koner (Black Hat Coders 108). All Rights Reserved.</em></p>
+            </div>
+        </div>
+
         <!-- TAB: PRACTICALS -->
         <div id="tab-practicals" class="tab-content" style="display:none;">
             <div class="card">

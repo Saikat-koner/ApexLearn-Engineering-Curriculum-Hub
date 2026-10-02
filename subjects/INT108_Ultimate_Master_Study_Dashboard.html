@@ -373,6 +373,752 @@
             </div>
         </div>
 
+                <!-- TAB: UNITS -->
+        <div id="tab-units" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🐍 Units I–VI: Complete Python Programming Deep-Dive & Internals</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Units 1 to 6</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Unit I: Python Environment & PVM Internals</h3>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.1 CPython Compilation Pipeline & PVM Architecture</h3>
+Unlike purely compiled languages (C/C++) or purely interpreted shells (Bash), Python utilizes a two-stage execution architecture:
+1. <strong>Lexing & Parsing:</strong> Source `.py` text is tokenized and transformed into a Concrete Syntax Tree (CST), then compiled into an Abstract Syntax Tree (AST).
+2. <strong>Bytecode Compilation:</strong> The AST is compiled into platform-independent bytecode instructions (`.pyc` cached in `__pycache__`).
+3. <strong>PVM Evaluation Loop:</strong> The <strong>Python Virtual Machine (PVM)</strong> (`ceval.c` in CPython) executes the bytecode stack-based instructions on native CPU hardware.
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+---------------------------------------------------------------------------------------------------+
+|                              PYTHON EXECUTION PIPELINE (SOURCE TO PVM)                            |
++---------------------------------------------------------------------------------------------------+
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">+-------------------+        +----------------------+        +-------------------------------+
+   |   Source Code     |  CPython Compilation          |  Bytecode File |                               |
+   |   script.py       | ─────────────────────────────►|  script.pyc   |                               |
+   |  (Human Readable) |       | (Syntax / Tokens)    |  (__pycache__) |                               |
+   +-------------------+        +----------------------+        +---------------+---------------+
+                                                                                |
+                                                                                ▼
+                                                                +-------------------------------+
+                                                                | Python Virtual Machine (PVM)  |
+                                                                | • Bytecode Interpretation     |
+                                                                | • Memory Allocation / Heap    |
+                                                                | • Reference Counting GC       |
+                                                                +---------------+---------------+
+                                                                                |
+                                                                                ▼
+                                                                +-------------------------------+
+                                                                | Native Machine Execution      |
+                                                                | CPU Instructions / Output     |
+                                                                +-------------------------------+
+</code></pre></div></p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.2 CPython Memory Model: Reference Counting & Cyclic GC</h3>
+* <strong>Variables as Name Tags:</strong> In Python, variables are not typed memory locations. They are untyped reference pointers bound to strongly typed heap objects.
+* <strong>Reference Counting:</strong> Every Python object contains an internal header (`PyObject`) with `ob_refcnt` (reference count) and `ob_type` (pointer to type descriptor). When `ob_refcnt == 0`, memory is deallocated instantly.
+* <strong>Generational Cyclic Garbage Collector:</strong> Detects circular reference graphs (e.g., `a.obj = b; b.obj = a`) using 3 generational buckets (Gen 0, Gen 1, Gen 2).
+* <strong>Global Interpreter Lock (GIL):</strong> A mutex lock in CPython ensuring only one native thread executes Python bytecode at a time, safeguarding thread-unsafe reference counting. CPU-bound concurrency is scaled via `multiprocessing`.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.3 Small Integer Caching & String Interning</h3>
+* <strong>Small Integer Pool:</strong> CPython pre-allocates integers in the range `[-5, 256]`. Reassigning numbers in this range reuses the identical memory address:
+  <div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>  x = 100; y = 100; print(x is y) # True (Shared cached object)
+  a = 1000; b = 1000; print(a is b) # False (Distinct heap allocations)
+  </code></pre></div>
+* <strong>String Interning:</strong> Python automatically interns compile-time constant strings matching identifier patterns to optimize dictionary lookups via pointer comparison ($O(1)$) rather than character-by-character comparison ($O(n)$).
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.4 Complete Operator Precedence Table (PEMDAS / BMODS)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+---------------------------------------------------------------------------------------------------+
+| Level | Operators                            | Associativity   | Description                      |
++-------+--------------------------------------+-----------------+----------------------------------+
+| 1     | () [] {}                             | Left to Right   | Grouping, Indexing, Calling      |
+| 2     | <strong>                                   | RIGHT to Left   | Exponentiation (2</strong>3<em></em>2 = 512!)  |
+| 3     | +x, -x, ~x                           | Right to Left   | Unary Positive, Negative, Bitwise|
+| 4     | *, /, //, %                          | Left to Right   | Multiplication, Divisions, Modulo|
+| 5     | +, -                                 | Left to Right   | Addition, Subtraction            |
+| 6     | &lt;&lt;, &gt;&gt;                               | Left to Right   | Bitwise Shift                    |
+| 7     | &amp;                                    | Left to Right   | Bitwise AND                      |
+| 8     | ^                                    | Left to Right   | Bitwise XOR                      |
+| 9     | |                                    | Left to Right   | Bitwise OR                       |
+| 10    | ==, !=, &gt;, &lt;, &gt;=, &lt;=, is, is not, in | Left to Right   | Comparisons &amp; Membership         |
+| 11    | not                                  | Right to Left   | Logical NOT                      |
+| 12    | and                                  | Left to Right   | Logical AND (Short-Circuit)      |
+| 13    | or                                   | Left to Right   | Logical OR (Short-Circuit)       |
++---------------------------------------------------------------------------------------------------+
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-ii"></a>
+## 🔀 5. Unit II: Conditionals, Loops, Loop-Else Invariants & Randomization</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.1 Truth Value Testing (Truthy vs Falsy Invariants)</h3>
+In Python, all objects evaluate to a boolean value in conditional contexts.
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Falsy Objects (Evaluate to `False`)</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Truthy Objects (Evaluate to `True`)</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`None`, `False`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`True`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Zero numbers: `0`, `0.0`, `0j`, `Decimal(0)`, `Fraction(0, 1)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any non-zero number: `1`, `-42`, `3.14`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Empty collections: `""`, `()`, `[]`, `{}`, `set()`, `range(0)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any non-empty collection: `[0]`, `" "`, `(False,)`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Custom objects returning `0` or `False` from `__bool__()` or `__len__()`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Standard object instances</td></tr></tbody></table></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.2 Short-Circuit Evaluation Semantics</h3>
+* `A and B`: Evaluates `A`. If `A` is falsy, returns `A` immediately without touching `B`. If `A` is truthy, evaluates and returns `B`.
+* `A or B`: Evaluates `A`. If `A` is truthy, returns `A` immediately without touching `B`. If `A` is falsy, evaluates and returns `B`.
+* <strong>Idiomatic Default Assignment:</strong> `username = user_input or "Guest"` (assigns `"Guest"` if `user_input` is empty `""`).
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.3 Formal Loop `else` Clause Execution Invariant</h3>
+In Python, both `for` and `while` loops possess an optional `else:` block. The `else:` block executes <strong>if and only if the loop terminates normally</strong> (exhausts all iterable elements or condition becomes `False`) without executing a `break` statement.
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                           LOOP WITH 'ELSE' EXECUTION FLOW
+                                         │
+                                  [ LOOP CONDITION ]
+                                         │
+                     ┌───────────────────┴───────────────────┐
+                  (True)                                  (False)
+                     ▼                                       ▼
+             [ LOOP BODY EXEC ]                    [ LOOP 'ELSE' BLOCK ]
+                     │                             (Executes only on clean
+              [ HIT BREAK? ]                        loop completion!)
+          ┌──────────┴──────────┐                            │
+        (Yes)                  (No)                          ▼
+          ▼                     │                      [ END OF LOOP ]
+   [ EXIT LOOP ]                │
+ (Skip 'else' block!)           └────────► [ NEXT ITERATION ]
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-iii"></a>
+## 📦 6. Unit III: Sequences, Data Structures, Hash Tables & Sparse Matrices</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.1 Data Structure Characteristic Matrix</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Data Structure</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Syntax</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Mutable?</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Ordered?</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Indexable?</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Allows Duplicates?</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Internal Implementation</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>String (`str`)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`'hello'`, `"text"`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ No</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes (`s[0]`)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Contiguous Unicode array (PEP 393)</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>List (`list`)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`[1, 2, 'a']`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ <strong>Yes</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes (`L[i]`)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Dynamic array of pointers</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Tuple (`tuple`)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`(1, 2, 'a')`, `(x,)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ <strong>No</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes (`T[i]`)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Fixed-size array of pointers</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Dictionary (`dict`)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`{'k': 'v'}`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ <strong>Yes</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ Yes (3.7+)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ By Key</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Keys: ❌ No, Vals: ✅ Yes</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Compact Hash Table with open addressing</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Set (`set`)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`{1, 2, 3}`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">✅ <strong>Yes</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ No</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ No</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ <strong>No</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Hash Table (keys only)</td></tr></tbody></table></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.2 String Slicing Mathematics & PEP 393 Memory Model</h3>
+* General syntax: `sequence[start : stop : step]`
+  * Positive step ($k > 0$): Starts at `start`, steps forward up to `stop - 1`.
+  * Negative step ($k < 0$): Starts at `start`, steps backward down to `stop + 1`.
+  * <strong>String Reversal:</strong> `s[::-1]` creates a reversed copy in $O(n)$ time.
+* <strong>PEP 393 Flexible String Representation:</strong> Python uses 1 byte per character for ASCII/Latin-1 (`1-255`), 2 bytes for UCS-2 (up to `\uFFFF`), and 4 bytes for UCS-4/emojis (up to `\U0010FFFF`), maximizing memory conservation.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.3 List Dynamic Array Overallocation Formula</h3>
+When appending to a list, CPython over-allocates memory slots to ensure amortized $O(1)$ append time complexity.
+$$\text{Allocated Slots} = n + (n \gg 3) + (n < 9 ? 3 : 6)$$
+<em> </em>Resizing progression:* $0, 4, 8, 16, 24, 32, 40, 52, 64, \dots$
+* `list.append(x)` is $O(1)$ amortized; `list.insert(0, x)` and `list.pop(0)` are $O(n)$ because all subsequent elements must be shifted in memory.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.4 Dictionary Internals & Sparse Matrices</h3>
+* <strong>Compact Hash Table Design:</strong> Since Python 3.6/3.7, dictionaries maintain two arrays: a sparse indices hash table and a dense array of `(hash, key, value)`. This preserves insertion order while guaranteeing $O(1)$ average lookup and cutting memory usage by $40\%$.
+* <strong>SipHash Protection:</strong> Python randomizes string hash seeds on process startup to prevent Hash Collision Denial of Service (DoS) attacks.
+* <strong>Sparse Matrix Representation:</strong>
+  <div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>  # Efficient Coordinate Representation (DOK - Dictionary of Keys)
+  sparse_matrix = {
+      (0, 5): 18.5,
+      (142, 99): 4.2,
+      (999, 999): -1.0
+  }
+  val = sparse_matrix.get((row, col), 0.0) # O(1) retrieval
+  </code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-iv"></a>
+## 🔄 7. Unit IV: Functions, Parameter Mechanics, Closures, Decorators & Recursion</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">7.1 "Pass-by-Object-Reference" (Call-by-Sharing) Calling Convention</h3>
+In Python, all arguments are passed by object reference:
+* If an argument is <strong>immutable</strong> (e.g., `int`, `str`, `tuple`), modifying the variable inside the function rebinds the local name to a new object; the caller's value is unaffected.
+* If an argument is <strong>mutable</strong> (e.g., `list`, `dict`), modifying the object in-place (e.g., `lst.append()`) mutates the shared heap object directly visible to the caller!
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">7.2 LEGB Variable Scoping Architecture</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                         LEGB VARIABLE LOOKUP HIERARCHY
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">+-------------------------------------------------------------+
+  |  Built-in Scope (B)                                         |
+  |  Standard Python built-ins: print(), len(), range(), int()  |
+  |                                                             |
+  |  +-------------------------------------------------------+  |
+  |  |  Global / Module Scope (G)                            |  |
+  |  |  Top-level variables declared in the .py module       |  |
+  |  |                                                       |  |
+  |  |  +-------------------------------------------------+  |  |
+  |  |  |  Enclosing / Non-Local Scope (E)                |  |  |
+  |  |  |  Variables in outer enclosing def of nested fn  |  |  |
+  |  |  |                                                 |  |  |
+  |  |  |  +-------------------------------------------+  |  |  |
+  |  |  |  |  Local Scope (L)                          |  |  |  |
+  |  |  |  |  Variables created inside current function|  |  |  |
+  |  |  |  +-------------------------------------------+  |  |  |
+  |  |  +-------------------------------------------------+  |  |
+  |  +-------------------------------------------------------+  |
+  +-------------------------------------------------------------+
+</code></pre></div></p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">7.3 The Mutable Default Argument Bug (Examiner's Trap)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># ❌ DANGEROUS BUG: Default argument [] is evaluated ONCE at function definition!
+def append_to_list(val, target_list=[]):
+    target_list.append(val)
+    return target_list
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">print(append_to_list(1)) # [1]
+print(append_to_list(2)) # [1, 2] (Shared state persisted!)</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"># ✅ 100-PERCENTILE PRO FIX:
+def append_to_list_safe(val, target_list=None):
+    if target_list is None:
+        target_list = []
+    target_list.append(val)
+    return target_list
+</code></pre></div></p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">7.4 Closures & Function Decorators</h3>
+A closure occurs when an inner nested function retains access to variables from its enclosing scope even after the outer function has finished execution (`fn.__closure__`).
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>import functools
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def execution_logger(func):
+    @functools.wraps(func)
+    def wrapper(<em>args, </em>*kwargs):
+        print(f"[LOG] Calling {func.__name__} with args: {args}")
+        result = func(<em>args, </em>*kwargs)
+        print(f"[LOG] {func.__name__} returned: {result}")
+        return result
+    return wrapper</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">@execution_logger
+def add(a, b): return a + b
+</code></pre></div></p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">7.5 Recursion Call Stack Frame Pipeline</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>Recursion Calculation for factorial(4) = 4 <em> 3 </em> 2 * 1 = 24:
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">[ STACK FRAME PUSH ]                          [ STACK UNWINDING / RETURN ]
+  factorial(4) -&gt; waits for factorial(3)        factorial(4) returns 4 * 6  = 24
+    │                                              ▲
+    ▼                                              │
+  factorial(3) -&gt; waits for factorial(2)        factorial(3) returns 3 * 2  = 6
+    │                                              ▲
+    ▼                                              │
+  factorial(2) -&gt; waits for factorial(1)        factorial(2) returns 2 * 1  = 2
+    │                                              ▲
+    ▼                                              │
+  factorial(1) -&gt; BASE CASE REACHED! ─────────► returns 1
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-v"></a>
+## 🏛️ 8. Unit V: Object-Oriented Programming, C3 MRO, Dunder Methods & Memory Optimization</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">8.1 The 4 Pillars of OOP in Python</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+---------------------------------------------------------------------------------------------------+
+|                                 THE 4 PILLARS OF PYTHON OOP                                       |
++---------------------------------------------------------------------------------------------------+
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">+--------------------+     +--------------------+     +--------------------+     +---------------+
+   |   ENCAPSULATION    |     |    ABSTRACTION     |     |    INHERITANCE     |     | POLYMORPHISM  |
+   | Bundling data &amp;    |     | Hiding internal    |     | Reusing base class |     | Single name,  |
+   | methods; private   |     | complex logic;     |     | attributes/methods |     | multiple forms|
+   | name mangling:     |     | using ABCs &amp; clean |     | via super() and    |     | via overriding|
+   | self.__private     |     | public interfaces  |     | MRO linearization  |     | &amp; dunder ops  |
+   +--------------------+     +--------------------+     +--------------------+     +---------------+
+</code></pre></div></p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">8.2 Multiple Inheritance & C3 Linearization Algorithm (MRO)</h3>
+Python resolves method calls across complex multiple inheritance hierarchies using the <strong>C3 Linearization Algorithm</strong>:
+$$L(C) = C + \text{merge}(L(P_1), L(P_2), \dots, P_1 P_2 \dots)$$
+* Where $C$ is the class, $P_i$ are parent classes in declaration order, and `merge()` picks the first head class not present in the tail of any other list.
+* View any class MRO directly with `Class.mro()` or `Class.__mro__`.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">8.3 Name Mangling & Private Attributes</h3>
+Prefixing an instance attribute with double underscores (`__attr`) triggers Python's Name Mangling:
+* `self.__balance` $\to$ Transformed internally to `self._Account__balance`.
+* Prevents accidental name collisions in child subclasses.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">8.4 `__slots__` Memory Optimization</h3>
+By default, Python stores instance attributes in a dynamic dictionary `instance.__dict__`, consuming roughly $150\text{ bytes}$ per object. Declaring `__slots__ = ('name', 'age')` replaces the dictionary with a fixed-size array of pointers, reducing per-object memory overhead to $\approx 48\text{ bytes}$ and accelerating attribute access.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">8.5 Comprehensive Dunder (Magic) Methods Reference</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Magic Method</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Triggers When...</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Purpose / Example</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__new__(cls, ...)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Object creation</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Allocates memory for a new object before `__init__`. Used in Singletons.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__init__(self, ...)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Instance is instantiated</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Constructor: initializes object state and fields.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__str__(self)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`str(obj)`, `print(obj)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Returns human-readable string representation.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__repr__(self)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`repr(obj)`, interactive shell</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Returns unambiguous developer-facing code representation.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__len__(self)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`len(obj)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Returns collection length (must return non-negative int).</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__add__(self, other)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`obj1 + obj2`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Overloads addition operator `+`.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__eq__(self, other)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`obj1 == obj2`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Overloads value equality operator `==`.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__getitem__(self, k)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`obj[k]`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Enables bracket indexing / dictionary lookup.</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`__enter__`, `__exit__`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`with obj:`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Implements Context Manager protocol for resource management.</td></tr></tbody></table></div>
+---
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-vi"></a>
+## 📁 9. Unit VI: File I/O Internals, Serialization (Pickling), Exceptions & Regular Expressions</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">9.1 File Handling Architecture & Context Managers</h3>
+Using `with open(filename, mode) as f:` implements Python's Context Manager protocol:
+1. Calls `f.__enter__()`, returning the file stream object.
+2. Executes the enclosed code block.
+3. Automatically triggers `f.__exit__()`, guaranteeing file descriptor closure even upon uncaught exceptions or runtime crashes.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">9.2 Object Pickling & Security Exploit Hazards</h3>
+* <strong>Pickling (`pickle.dump()`)</strong>: Serializes in-memory Python object graphs into a binary byte stream.
+* <strong>Unpickling (`pickle.load()`)</strong>: Reconstructs binary byte stream into Python objects.
+* <strong>⚠️ Security Warning:</strong> Never unpickle data from untrusted sources! Malicious payloads can override `__reduce__()` to execute arbitrary remote shell commands (`os.system("rm -rf /")`) during deserialization. Use `json` for untrusted network payloads.
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">9.3 Exception Handling Lifecycle Flowchart</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                             EXCEPTION HANDLING FLOWCHART
+                                         │
+                                  [ try: BLOCK ]
+                          (Execute risky code statements)
+                                         │
+                        Did an Exception occur during exec?
+                                         │
+                     ┌───────────────────┴───────────────────┐
+                   (Yes)                                    (No)
+                     ▼                                       ▼
+            [ except SpecificError: ]                 [ else: BLOCK ]
+            (Handle matching exception)         (Runs ONLY if NO error occurred!)
+                     │                                       │
+                     └───────────────────┬───────────────────┘
+                                         ▼
+                                 [ finally: BLOCK ]
+                       (ALWAYS executes, guaranteed cleanup!)
+</code></pre></div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">9.4 Regular Expression Meta-Characters Reference Table</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Regex Token</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Meaning & Matches</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Example Pattern & Target Match</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`^`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Start of string</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`^Hello` matches `"Hello World"`, not `"Say Hello"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`$`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">End of string</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`World$` matches `"Hello World"`, not `"World Cup"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\d`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any decimal digit `[0-9]`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\d{3}` matches `"123"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\D`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any non-digit character</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\D+` matches `"Python"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\w`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any alphanumeric character + `_`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\w+` matches `"var_name123"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\s`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any whitespace (` `, `\t`, `\n`)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\s+` splits words across spaces</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`.`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Any character except newline</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`a.b` matches `"a1b"`, `"acb"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`<em>`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0 or more repetitions (Greedy)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`ab</em>` matches `"a"`, `"ab"`, `"abbb"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`+`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">1 or more repetitions (Greedy)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`ab+` matches `"ab"`, `"abbb"` (NOT `"a"`)</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`?`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">0 or 1 repetition (Optional)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`colou?r` matches `"color"` and `"colour"`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`<em>?`, `+?`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Lazy / Non-greedy matching</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`<.</em>?>` matches `<b>` in `<b>text</b>`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`(?=...)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Positive Lookahead</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`\d+(?=px)` matches `100` in `100px`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`[a-z]`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Character set range</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`[0-9a-fA-F]` matches hex digits</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`(P)`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Capture Group</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">`(\w+)@(\w+\.com)` captures username and domain</td></tr></tbody></table></div>
+---
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="practicals"></a>
+## 🧰 10. Complete 15 University Laboratory Practicals (Full Code, Explanations & Outputs)</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 1: Arithmetic Operations (+, -, *, /, //, %)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 1: Perform all basic arithmetic operations
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">print(f"\n--- Arithmetic Operations between {num1} and {num2} ---")
+print(f"Addition (+)        : {num1} + {num2} = {num1 + num2}")
+print(f"Subtraction (-)     : {num1} - {num2} = {num1 - num2}")
+print(f"Multiplication (<em>)  : {num1} </em> {num2} = {num1 * num2}")
+if num2 != 0:
+    print(f"True Division (/)   : {num1} / {num2} = {num1 / num2}")
+    print(f"Floor Division (//) : {num1} // {num2} = {num1 // num2}")
+    print(f"Modulus (%)         : {num1} % {num2} = {num1 % num2}")
+    print(f"Exponentiation (<strong>) : {num1} </strong> {num2} = {num1 <em></em> num2}")
+else:
+    print("[ERROR] Division by zero is undefined!")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 2: Perfect Number Checker</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 2: Check whether a number is Perfect or not
+n = int(input("Enter positive integer: "))
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if n &lt;= 0:
+    print("Please enter a positive integer.")
+else:
+    divisor_sum = 0
+    for i in range(1, n // 2 + 1):
+        if n % i == 0:
+            divisor_sum += i</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if divisor_sum == n:
+        print(f"✅ {n} is a PERFECT NUMBER (Sum of proper divisors = {divisor_sum}).")
+    else:
+        print(f"❌ {n} is NOT a Perfect Number (Sum of proper divisors = {divisor_sum} != {n}).")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 3: Armstrong Number Checker</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 3: Check whether a number is Armstrong or not
+num = int(input("Enter integer to check: "))
+num_str = str(abs(num))
+num_digits = len(num_str)
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">armstrong_sum = sum(int(digit) <em></em> num_digits for digit in num_str)</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if armstrong_sum == num:
+    print(f"✅ {num} is an ARMSTRONG NUMBER.")
+else:
+    print(f"❌ {num} is NOT an Armstrong Number (Computed sum = {armstrong_sum}).")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 4: Iterative Factorial of a Number</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 4: Compute factorial using an iterative loop
+n = int(input("Enter non-negative integer: "))
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if n &lt; 0:
+    print("[ERROR] Factorial is not defined for negative numbers.")
+elif n in (0, 1):
+    print(f"{n}! = 1")
+else:
+    fact = 1
+    for i in range(2, n + 1):
+        fact *= i
+    print(f"✅ {n}! = {fact}")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 5: Fibonacci Series Generator</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 5: Generate N terms of Fibonacci Series
+n_terms = int(input("Enter number of terms: "))
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if n_terms &lt;= 0:
+    print("Please enter a positive integer.")
+elif n_terms == 1:
+    print("Fibonacci Series: [0]")
+else:
+    fib = [0, 1]
+    for _ in range(2, n_terms):
+        fib.append(fib[-1] + fib[-2])
+    print(f"Fibonacci Series ({n_terms} terms): {fib}")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 6: Palindrome String Checker (Using Loops)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 6: Check if string is a Palindrome using loop
+raw_str = input("Enter string: ")
+clean_str = raw_str.lower().replace(" ", "")
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">is_palindrome = True
+left = 0
+right = len(clean_str) - 1</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">while left &lt; right:
+    if clean_str[left] != clean_str[right]:
+        is_palindrome = False
+        break
+    left += 1
+    right -= 1</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if is_palindrome:
+    print(f"✅ '{raw_str}' is a PALINDROME.")
+else:
+    print(f"❌ '{raw_str}' is NOT a palindrome.")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 7: Recursive Factorial of a Natural Number</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 7: Recursive calculation of factorial
+def factorial_recursive(n):
+    if n &lt; 0:
+        raise ValueError("Factorial undefined for negative integers.")
+    if n in (0, 1): # Base Case
+        return 1
+    return n * factorial_recursive(n - 1) # Recursive Step
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">num = int(input("Enter natural number: "))
+print(f"✅ Recursive Factorial: {num}! = {factorial_recursive(num)}")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 8: Read a File Line-by-Line and Print</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 8: Read file line by line with formatting
+filename = "sample_data.txt"
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(filename, "w", encoding="utf-8") as f:
+    f.write("Line 1: Python is dynamically typed.\nLine 2: Indentation defines block scope.\nLine 3: Everything in Python is an object.\n")</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">print(f"--- Reading '{filename}' line by line ---")
+with open(filename, "r", encoding="utf-8") as file:
+    for line_num, line in enumerate(file, 1):
+        print(f"[{line_num}] {line.rstrip()}")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 9: Remove Lines Containing 'a' and Write to Another File</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 9: Filter out lines containing 'a' or 'A'
+input_file = "source_text.txt"
+output_file = "filtered_text.txt"
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(input_file, "w", encoding="utf-8") as f:
+    f.write("Python is great\nC++ is fast\nRuby on Rails\nRust is safe\nGo is concurrent\n")</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(input_file, "r", encoding="utf-8") as fin, open(output_file, "w", encoding="utf-8") as fout:
+    for line in fin:
+        if 'a' not in line.lower():
+            fout.write(line)</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">print(f"✅ Filtered lines written to '{output_file}'.")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 10: Count Vowels, Consonants, Uppercase & Lowercase in File</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 10: Character frequency analysis in a text file
+filename = "source_text.txt"
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">vowels = set("aeiouAEIOU")
+vowel_count = consonant_count = upper_count = lower_count = 0</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(filename, "r", encoding="utf-8") as f:
+    text = f.read()
+    for ch in text:
+        if ch.isupper():
+            upper_count += 1
+        elif ch.islower():
+            lower_count += 1</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if ch.isalpha():
+            if ch in vowels:
+                vowel_count += 1
+            else:
+                consonant_count += 1</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">print(f"--- Character Analysis for '{filename}' ---")
+print(f"Vowels Count     : {vowel_count}")
+print(f"Consonants Count : {consonant_count}")
+print(f"Uppercase Count  : {upper_count}")
+print(f"Lowercase Count  : {lower_count}")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 11: Binary File with Name & Roll No (Search via Pickling)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 11: Binary student database search using pickle
+import pickle
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">records_file = "students.dat"</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"># 1. Write student records to binary file
+students = [
+    {"roll": 101, "name": "Saikat Koner", "branch": "CSE"},
+    {"roll": 102, "name": "Aman Sharma", "branch": "ECE"},
+    {"roll": 103, "name": "Priya Verma", "branch": "IT"}
+]</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(records_file, "wb") as f:
+    pickle.dump(students, f)
+print("Student records serialized to binary file.")</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"># 2. Search for a given Roll Number
+search_roll = int(input("Enter Roll Number to search: "))
+found = False</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(records_file, "rb") as f:
+    loaded_students = pickle.load(f)
+    for s in loaded_students:
+        if s["roll"] == search_roll:
+            print(f"✅ Student Found: Name: {s['name']} | Branch: {s['branch']}")
+            found = True
+            break</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if not found:
+    print(f"❌ Student with Roll No {search_roll} NOT found.")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 12: Random Number Generator (Dice Simulation 1-6)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 12: Simulate 6-sided dice rolls
+import random
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def roll_dice(num_rolls=5):
+    print(f"--- Simulating {num_rolls} Dice Rolls (1 to 6) ---")
+    for i in range(1, num_rolls + 1):
+        outcome = random.randint(1, 6)
+        print(f"Roll #{i} -&gt; Outcome: 🎲 {outcome}")</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">roll_dice(6)
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 13: Stack Implementation Using List Data Structure</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 13: Stack implementation (LIFO) using Python List
+class Stack:
+    def __init__(self):
+        self._items = []
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def push(self, item):
+        self._items.append(item)
+        print(f"Pushed: {item}")</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def pop(self):
+        if self.is_empty():
+            print("[ERROR] Stack Underflow! Cannot pop from empty stack.")
+            return None
+        return self._items.pop()</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def peek(self):
+        if self.is_empty():
+            return None
+        return self._items[-1]</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def is_empty(self):
+        return len(self._items) == 0</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def size(self):
+        return len(self._items)</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">def display(self):
+        print("Stack (Top -&gt; Bottom):", self._items[::-1])</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"># Demonstration
+s = Stack()
+s.push(10)
+s.push(20)
+s.push(30)
+s.display()
+print("Top element (peek):", s.peek())
+print("Popped element:", s.pop())
+s.display()
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 14: Phishing Email Analysis (Find Most Common Words)</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 14: Analyze phishing emails and find most common words
+import re
+from collections import Counter
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">sample_emails = (
+    "URGENT: Your account has been suspended! Please verify your password immediately.\n"
+    "Click here to claim your lottery prize of $1,000,000. Urgent bank account update required.\n"
+    "Security alert: Your bank account password expired. Click the link to update your login account.\n"
+)</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">words = re.findall(r'\b[a-zA-Z]{3,}\b', sample_emails.lower())
+stop_words = {"your", "has", "been", "the", "and", "here"}
+filtered_words = [w for w in words if w not in stop_words]</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">word_counts = Counter(filtered_words)
+print("--- Top 5 Suspicious Words in Email Sample ---")
+for word, count in word_counts.most_common(5):
+    print(f"⚠️ Word: '{word}' -&gt; Frequency: {count}")
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Practical 15: Read Text File and Display Each Word Separated by '#'</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code># Practical 15: Display each word separated by '#'
+test_file = "passage.txt"
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(test_file, "w", encoding="utf-8") as f:
+    f.write("Python is an elegant and powerful programming language.\nIt emphasizes code readability.\n")</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">with open(test_file, "r", encoding="utf-8") as f:
+    for line in f:
+        words = line.strip().split()
+        if words:
+            print("#".join(words))
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="worked-problems"></a>
+## 🧮 11. Step-by-Step Worked Problems & Memory Logic Traces</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 1: Trace of Mutable Default Arguments</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>def add_item(item, basket=[]):
+    basket.append(item)
+    return basket
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">b1 = add_item("apple")
+b2 = add_item("banana")
+b3 = add_item("orange", [])
+b4 = add_item("grape")
+</code></pre></div>
+* <strong>Step-by-Step Trace:</strong>
+  1. `b1 = add_item("apple")`: `basket` uses the shared default list `[]`. `"apple"` is appended. `basket = ["apple"]`.
+  2. `b2 = add_item("banana")`: `basket` is the SAME shared object. `"banana"` is appended. `basket = ["apple", "banana"]`.
+  3. `b3 = add_item("orange", [])`: An explicit new list `[]` was passed! `basket` binds to the new list. Returns `["orange"]`. Default list remains `["apple", "banana"]`.
+  4. `b4 = add_item("grape")`: `basket` uses default list again! `"grape"` is appended. Returns `["apple", "banana", "grape"]`.
+* <strong>Final Values:</strong> `b1 == b2 == b4 == ["apple", "banana", "grape"]`, `b3 == ["orange"]`.</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 2: Slicing Index Calculations</h3>
+Given `s = "PYTHON108"`:
+1. `s[1:6]`: Indices 1 up to 5 $\to$ `'YTHON'`
+2. `s[::-1]`: Step -1 $\to$ `'801NOHTYP'`
+3. `s[6:1:-2]`: Starts at index 6 (`'1'`), down to >1 with step 2 $\to$ `'1'`, `'H'`, `'T'` $\to$ `'1HT'`
+4. `s[-4:-1]`: Starts at index -4 (`'N'`), up to -2 (`'0'`) $\to$ `'N10'`
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 3: Shallow Copy vs Deep Copy Memory Trace</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>import copy
+a = [[1, 2], [3, 4]]
+b = copy.copy(a)       # Shallow Copy
+c = copy.deepcopy(a)   # Deep Copy
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">a[0][0] = 999
+</code></pre></div>
+* <strong>Trace:</strong>
+  * `b` copies the outer list container, but its elements point to the same inner sublists. Thus, `b[0][0]` becomes `999`!
+  * `c` recursively clones all inner nested objects. Thus, `c[0][0]` remains `1`.</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">Problem 4: C3 Linearization MRO Resolution Trace</h3>
+Given hierarchy:
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>class O: pass
+class A(O): pass
+class B(O): pass
+class C(A, B): pass
+</code></pre></div>
+* $L(O) = [O]$
+* $L(A) = [A, O]$
+* $L(B) = [B, O]$
+* $L(C) = C + \text{merge}(L(A), L(B), AB) = C + \text{merge}([A, O], [B, O], [A, B])$
+  1. Pick $A$ (not in tails): $C, A + \text{merge}([O], [B, O], [B])$
+  2. Pick $B$ (not in tails): $C, A, B + \text{merge}([O], [O])$
+  3. Pick $O$: $[C, A, B, O]$
+* <strong>Final MRO:</strong> `[C, A, B, O, object]`.
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="viva-voce"></a>
+## 🎯 12. Top 75 High-Frequency Exam & Master Viva Voce Questions</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">1. <strong>Q: Is Python interpreted or compiled?</strong>
+   <em>A:</em> Both. Source code (`.py`) is compiled to bytecode (`.pyc`), which is executed by the Python Virtual Machine (PVM).
+2. <strong>Q: What is PEP 8?</strong>
+   <em>A:</em> The official Python style guide (4-space indentation, `snake_case` functions, `CamelCase` classes).
+3. <strong>Q: What is the difference between `is` and `==`?</strong>
+   <em>A:</em> `==` checks value equality (content); `is` checks memory identity (`id(a) == id(b)`).
+4. <strong>Q: Why are strings immutable in Python?</strong>
+   <em>A:</em> For memory optimization (string interning), thread safety, and security when strings are used as hash keys in dictionaries and sets.
+5. <strong>Q: What is the LEGB rule?</strong>
+   <em>A:</em> The variable scope lookup hierarchy: <strong>L</strong>ocal $\to$ <strong>E</strong>nclosing $\to$ <strong>G</strong>lobal $\to$ <strong>B</strong>uilt-in.
+6. <strong>Q: Differentiate between `append()` and `extend()` in lists.</strong>
+   <em>A:</em> `append(x)` adds `x` as a single element; `extend(iterable)` iterates and appends each element individually.
+7. <strong>Q: What is a lambda function?</strong>
+   <em>A:</em> An anonymous, single-expression inline function defined with `lambda args: expression`.
+8. <strong>Q: Differentiate between shallow copy and deep copy.</strong>
+   <em>A:</em> Shallow copy (`copy.copy()`) creates a new outer collection referencing the original child items; deep copy (`copy.deepcopy()`) recursively clones all nested objects.
+9. <strong>Q: How does dictionary key lookup achieve $O(1)$ time complexity?</strong>
+   <em>A:</em> Python uses an internal Hash Table with open addressing. The key is hashed via `hash(key)` to compute an instant bucket index.
+10. <strong>Q: Why can a list not be used as a dictionary key?</strong>
+    <em>A:</em> Lists are mutable and unhashable (they lack a fixed `__hash__()` implementation).
+11. <strong>Q: What is the purpose of `<em>args` and `</strong>kwargs`?</em>*
+    <em>A:</em> `<em>args` packs arbitrary positional arguments into a `tuple`; `</em>*kwargs` packs arbitrary keyword arguments into a `dict`.
+12. <strong>Q: What is the purpose of `__init__` in Python classes?</strong>
+    <em>A:</em> It is the instance constructor/initializer called automatically upon object instantiation.
+13. <strong>Q: What is `self` in Python class methods?</strong>
+    <em>A:</em> An explicit reference to the current instance of the class through which attributes and methods are accessed.
+14. <strong>Q: Explain Name Mangling in Python.</strong>
+    <em>A:</em> Prefixing attributes with double underscore `__var` transforms them to `_ClassName__var` to prevent accidental namespace collisions in subclasses.
+15. <strong>Q: What is Method Resolution Order (MRO)?</strong>
+    <em>A:</em> The order in which Python searches base classes in multiple inheritance, resolved via the <strong>C3 Linearization Algorithm</strong> (`Class.mro()`).
+16. <strong>Q: What does the `super()` function do?</strong>
+    <em>A:</em> Returns a proxy object delegating method calls to parent/sibling classes according to MRO.
+17. <strong>Q: What happens when the `else` block is used with a `for` or `while` loop?</strong>
+    <em>A:</em> The `else` block executes only if the loop completes normally without encountering a `break` statement.
+18. <strong>Q: What is a generator and how does `yield` work?</strong>
+    <em>A:</em> A generator yields lazy values on demand, preserving function execution state across iterations with $O(1)$ memory usage.
+19. <strong>Q: What is the difference between `read()`, `readline()`, and `readlines()`?</strong>
+    <em>A:</em> `read()` returns the entire file as a single string; `readline()` reads one line; `readlines()` returns a list of all lines.
+20. <strong>Q: Why should you always use `with open(...) as f:` for file handling?</strong>
+    <em>A:</em> It implements Python's Context Manager protocol (`__enter__` / `__exit__`), guaranteeing file closure even if an unhandled exception occurs.
+21. <strong>Q: What is Pickling and Unpickling?</strong>
+    <em>A:</em> Pickling (`pickle.dump()`) serializes Python objects into a binary byte stream; Unpickling (`pickle.load()`) deserializes bytes back into Python objects.
+22. <strong>Q: What is the difference between `pass`, `continue`, and `break`?</strong>
+    <em>A:</em> `pass` is a null statement; `continue` skips the rest of the current iteration; `break` terminates the loop immediately.
+23. <strong>Q: What is the default recursion limit in Python?</strong>
+    <em>A:</em> Typically 1000 frames; checked with `sys.getrecursionlimit()` and modified using `sys.setrecursionlimit(n)`.
+24. <strong>Q: What is a singleton tuple?</strong>
+    <em>A:</em> A tuple with a single element, written with a trailing comma: `t = (5,)`.
+25. <strong>Q: What is the difference between `remove()`, `pop()`, and `del` for lists?</strong>
+    <em>A:</em> `remove(val)` removes the first matching value; `pop(idx)` removes and returns the element at index; `del lst[idx]` deletes the item directly.
+26. <strong>Q: What is list comprehension?</strong>
+    <em>A:</em> A concise syntax `[expr for item in seq if cond]` executed at C-speed in CPython.
+27. <strong>Q: What is the output of `print(0.1 + 0.2 == 0.3)`?</strong>
+    <em>A:</em> `False`, due to IEEE 754 binary floating-point representation rounding.
+28. <strong>Q: What are Dunder / Magic methods?</strong>
+    <em>A:</em> Double-underscore methods (e.g., `__str__`, `__add__`) that integrate custom classes with Python operators.
+29. <strong>Q: Differentiate between `__str__` and `__repr__`.</strong>
+    <em>A:</em> `__str__` is for end-user readability; `__repr__` is for developer debugging.
+30. <strong>Q: What is duck typing in Python?</strong>
+    <em>A:</em> "If it walks like a duck and quacks like a duck, it's a duck." Checking for methods/attributes dynamically at runtime.
+31. <strong>Q: What does the `nonlocal` keyword do?</strong>
+    <em>A:</em> Rebinds variables in the nearest enclosing (non-global) scope.
+32. <strong>Q: Difference between `re.match()` and `re.search()`?</strong>
+    <em>A:</em> `re.match()` checks only at the start of a string; `re.search()` scans the entire string.
+33. <strong>Q: What does `re.findall()` return?</strong>
+    <em>A:</em> A list of all non-overlapping regex pattern matches in the text.
+34. <strong>Q: How do you raise a custom exception?</strong>
+    <em>A:</em> `class MyError(Exception): pass`, then `raise MyError("Message")`.
+35. <strong>Q: What is the `finally` block used for?</strong>
+    <em>A:</em> A block that always executes for cleanup regardless of errors.
+36. <strong>Q: What is the result of `2 </strong> 3 <strong> 2`?</strong>
+    <em>A:</em> `512` (evaluated right-to-left: $3^2 = 9$, then $2^9 = 512$).
+37. <strong>Q: What is an Armstrong Number?</strong>
+    <em>A:</em> A number equal to the sum of its digits each raised to the power of the total number of digits ($153 = 1^3 + 5^3 + 3^3$).
+38. <strong>Q: What is a Perfect Number?</strong>
+    <em>A:</em> A positive integer equal to the sum of all its proper divisors excluding itself ($6 = 1 + 2 + 3$, $28 = 1 + 2 + 4 + 7 + 14$).
+39. <strong>Q: How does a stack operate and how is it implemented using a list?</strong>
+    <em>A:</em> LIFO order; implemented using `list.append()` for push and `list.pop()` for pop ($O(1)$ amortized).
+40. <strong>Q: How do you open a file for read/write without truncation?</strong>
+    <em>A:</em> Use mode `'r+'` (`'w+'` truncates the file immediately upon opening).
+41. <strong>Q: What is `sys.argv`?</strong>
+    <em>A:</em> A list containing command-line arguments passed to the Python script.
+42. <strong>Q: What is the difference between a module and a package?</strong>
+    <em>A:</em> A module is a single `.py` file; a package is a directory of modules containing `__init__.py`.
+43. <strong>Q: What is string interning?</strong>
+    <em>A:</em> An optimization where Python caches immutable string objects to reuse memory addresses.
+44. <strong>Q: What does `seek(0)` do on a file object?</strong>
+    <em>A:</em> Repositions the file read/write pointer back to the beginning of the file.
+45. <strong>Q: What is a Sparse Matrix and how is it represented using a dictionary?</strong>
+    <em>A:</em> A matrix with mostly zeroes, stored efficiently as coordinate tuple keys `{(row, col): val}`.
+46. <strong>Q: What is method overriding in OOP?</strong>
+    <em>A:</em> When a subclass provides its own implementation of a method defined in its parent class.
+47. <strong>Q: Can Python classes have multiple constructors?</strong>
+    <em>A:</em> Not natively; achieved with default arguments (`def __init__(self, a=None)`) or class methods (`@classmethod def from_str(cls, s)`).
+48. <strong>Q: What is the purpose of `zip()`?</strong>
+    <em>A:</em> Combines elements from multiple iterables into tuples until the shortest iterable ends.
+49. <strong>Q: What is the boolean value of `[]`, `{}`, `""`, and `0`?</strong>
+    <em>A:</em> All are falsy and evaluate to `False`.
+50. <strong>Q: What is the difference between `raw_input()` and `input()`?</strong>
+    <em>A:</em> In Python 3, `raw_input()` was removed; `input()` always returns user input as a string (`str`).
+51. <strong>Q: What is the Global Interpreter Lock (GIL) and why does it exist?</strong>
+    <em>A:</em> A mutex in CPython that restricts bytecode execution to one native thread at a time, ensuring thread-safe reference count management.
+52. <strong>Q: How does Python perform Garbage Collection?</strong>
+    <em>A:</em> Primary: Reference counting (`ob_refcnt == 0` triggers instant deallocation). Secondary: Cyclic Generational GC across 3 generations to detect reference cycles.
+53. <strong>Q: What is the difference between `__new__` and `__init__`?</strong>
+    <em>A:</em> `__new__` is a static method that allocates memory and returns a new instance; `__init__` receives that instance as `self` to initialize its attributes.
+54. <strong>Q: What are `__slots__` and why are they used?</strong>
+    <em>A:</em> Defines a static tuple of attribute names, eliminating `instance.__dict__` to save memory and accelerate attribute access.
+55. <strong>Q: What is a closure in Python?</strong>
+    <em>A:</em> A nested function that remembers and accesses variables from its lexical enclosing scope even after the outer function has returned.
+56. <strong>Q: What is a decorator and how is `@functools.wraps` used?</strong>
+    <em>A:</em> A higher-order function that extends the behavior of another function. `@functools.wraps` preserves original function metadata (`__name__`, `__doc__`).
+57. <strong>Q: Explain Python's "Pass-by-Object-Reference" mechanism.</strong>
+    <em>A:</em> Reassigning inside a function rebinds the local name pointer; mutating a mutable object alters the shared heap object directly.
+58. <strong>Q: Why is pickling untrusted data dangerous?</strong>
+    <em>A:</em> Deserialization via `pickle.load()` can execute arbitrary malicious code if the payload overrides `__reduce__()`.
+59. <strong>Q: How does CPython optimize small integers?</strong>
+    <em>A:</em> Pre-allocates a singleton array for integers in range `[-5, 256]` in memory at startup.
+60. <strong>Q: What is the difference between lazy and greedy regular expressions?</strong>
+    <em>A:</em> Greedy (`<em>`, `+`) matches as much text as possible; Lazy (`</em>?`, `+?`) matches the minimum text required.
+61. <strong>Q: What is exception chaining with `raise ... from`?</strong>
+    <em>A:</em> Explicitly associates a newly raised exception with the original root-cause exception (`__cause__`).
+62. <strong>Q: How does `collections.defaultdict` differ from a standard `dict`?</strong>
+    <em>A:</em> Calling a non-existent key automatically creates and returns a default value using the supplied factory function.
+63. <strong>Q: What is a generator expression vs a list comprehension?</strong>
+    <em>A:</em> Generator expressions `(x for x in seq)` return a memory-efficient lazy iterator ($O(1)$ memory); list comprehensions `[x for x in seq]` allocate the full list in memory ($O(n)$ memory).
+64. <strong>Q: What is the signature of `__exit__` in a Context Manager?</strong>
+    <em>A:</em> `def __exit__(self, exc_type, exc_val, exc_tb):` returning `True` suppresses the exception.
+65. <strong>Q: What does the `@property` decorator do?</strong>
+    <em>A:</em> Transforms a method into a getter attribute, allowing access via `obj.attr` while enabling custom getter/setter validation logic.
+66. <strong>Q: What is the difference between `iter()` and `next()`?</strong>
+    <em>A:</em> `iter(obj)` calls `obj.__iter__()` to return an iterator; `next(it)` calls `it.__next__()` to yield the next item or raise `StopIteration`.
+67. <strong>Q: What is Abstract Base Class (ABC) in Python?</strong>
+    <em>A:</em> A class inheriting from `abc.ABC` containing `@abstractmethod` decorators that enforces interface implementation on derived subclasses.
+68. <strong>Q: What is the difference between `sort()` and `sorted()`?</strong>
+    <em>A:</em> `list.sort()` sorts the list in-place and returns `None`; `sorted(iterable)` returns a new sorted list leaving the original iterable unchanged.
+69. <strong>Q: How does Python handle arbitrary-precision integers?</strong>
+    <em>A:</em> Using variable-length arrays of 30-bit digits (Bignum representation in CPython), constrained only by available RAM.
+70. <strong>Q: What is the purpose of `enumerate()`?</strong>
+    <em>A:</em> Yields pairs of `(index, value)` while iterating over a sequence, avoiding manual counter tracking.
+71. <strong>Q: What is Method Resolution Order C3 Linearization rule?</strong>
+    <em>A:</em> Ensures child classes precede parent classes and preserves base class declaration order without duplicate inheritance conflicts.
+72. <strong>Q: What is `sys.getrefcount(obj)`?</strong>
+    <em>A:</em> Returns the current reference count of an object (always 1 higher because passing it to the function creates a temporary reference).
+73. <strong>Q: What does `any()` and `all()` do?</strong>
+    <em>A:</em> `any()` returns `True` if at least one element is truthy; `all()` returns `True` only if every element is truthy.
+74. <strong>Q: How do you prevent regex catastrophic backtracking?</strong>
+    <em>A:</em> Avoid nested quantifiers (e.g., `(a+)+`), use atomic grouping/possessive quantifiers where available, and make expressions specific.
+75. <strong>Q: What is the difference between `deepcopy` and `copy` regarding self-referencing cyclic objects?</strong>
+    <em>A:</em> `deepcopy` maintains an internal memo dictionary mapping original object IDs to cloned copies, preventing infinite recursion loops in circular graphs.</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="exam-strategy"></a>
+## 🏆 13. 100-Percentile 4-Tier Exam Scoring Strategy</p>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+---------------------------------------------------------------------------------------------------+
+|                        100-PERCENTILE 4-TIER INT108 EXAM EXECUTION ROADMAP                        |
++---------------------------------------------------------------------------------------------------+
+                                                  |
+        ┌─────────────────────────────────────────┼─────────────────────────────────────────┐
+        ▼                                         ▼                                         ▼
+[ TIER 1: HIGH-WEIGHTAGE CORE ]         [ TIER 2: ADVANCED STRUCTURES ]           [ TIER 3: OOP, FILES &amp; REGEX ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">PVM bytecode compilation model        • Slicing tricks s[start:stop:step]       • OOP 4 Pillars &amp; Name Mangling</li>
+  <li style="margin-bottom:0.35rem;">Operators &amp; PEMDAS right-to-left math • Shallow copy vs Deep copy memory trace  • Dunder methods (__str__, __add__)</li>
+  <li style="margin-bottom:0.35rem;">Loop 'else' execution invariants      • Dict hash tables &amp; Sparse Matrices      • Context manager with open()</li>
+  <li style="margin-bottom:0.35rem;">All 15 practical algorithms (Factorial,• Mutable default argument trap          • pickle.dump / pickle.load</li>
+</ul>
+  Fibonacci, Armstrong, Perfect, Stack) • Recursive call stack trace trees        • try-except-else-finally lifecycle
+        │                                         │                                         │
+        └─────────────────────────────────────────┼─────────────────────────────────────────┘
+                                                  ▼
+                                 [ TIER 4: PERFECT EXAM PRESENTATION ]
+        1. Always write complete, PEP 8 compliant, syntactically clean Python code with indentation.
+        2. Draw ASCII memory pointer diagrams for variable bindings, list references, and copy differences.
+        3. For every recursive problem, show the STACK UNWINDING tree clearly.
+        4. In lab viva, highlight exact time complexities: List indexing O(1), Dict lookup O(1), Search O(n).
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---
+<em>All files compiled and synchronized across `D:\`, `D:\e drive everything\`, `ClaudeWorkspace`, and `Downloads`.</em></p>
+            </div>
+        </div>
+
         <!-- TAB: PRACTICALS -->
         <div id="tab-practicals" class="tab-content" style="display:none;">
             <div class="card">

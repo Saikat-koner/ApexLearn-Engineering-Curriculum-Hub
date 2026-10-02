@@ -422,6 +422,305 @@
             </div>
         </div>
 
+                <!-- TAB: UNIT 1 & 2 -->
+        <div id="tab-unit12" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🌐 Unit I & II: HTML5, Semantic Elements & Forms</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Units 1 & 2</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">1.1 Client-Server HTTP Request-Response & Browser Rendering Pipeline</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>[ CLIENT (Web Browser) ]                                              [ SERVER (Web Host / CDN) ]
+       │                                                                           │
+       │ 1. DNS Lookup (Resolves example.com -&gt; 192.0.2.1)                         │
+       ├──────────────────────────────────────────────────────────────────────────►│
+       │                                                                           │
+       │ 2. TCP 3-Way Handshake (SYN -&gt; SYN-ACK -&gt; ACK) + TLS Handshake            │
+       ├──────────────────────────────────────────────────────────────────────────►│
+       │                                                                           │
+       │ 3. HTTP GET Request (Headers, Cookies, User-Agent)                        │
+       ├──────────────────────────────────────────────────────────────────────────►│
+       │                                                                           │
+       │ 4. HTTP 200 OK Response (HTML Stream with Content-Type: text/html)        │
+       │◄──────────────────────────────────────────────────────────────────────────┤
+       │                                                                           │
+       ▼
+[ CRITICAL RENDERING PATH (Inside Browser Engine) ]
+HTML Parsing ──► DOM Tree (Document Object Model)
+                      │
+                      ├────────► RENDER TREE ──► LAYOUT (Reflow) ──► PAINT (Rasterize)
+                      │          (Computes exact  (Calculates x,y   (Draws pixels on
+CSS Parsing  ──► CSSOM Tree      geometry/styles) dimensions)        screen)
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">1.2 Essential HTML5 Document Skeleton & Meta Tags</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;!-- Character encoding for worldwide UTF-8 symbols --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;!-- Responsive Viewport tag: essential for mobile scaling --&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content="CSE326 Full-Stack Master Web Application"&gt;
+    &lt;title&gt;CSE326: Master Web Application&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;&lt;h1&gt;Welcome to Modern Web Development&lt;/h1&gt;&lt;/header&gt;
+    &lt;main&gt;...&lt;/main&gt;
+    &lt;script src="app.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-ii"></a>
+## 📝 UNIT II: Semantic HTML, Accessibility & Advanced Forms</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">2.1 Modern Semantic HTML5 Page Architecture</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+-----------------------------------------------------------------------------------+
+| &lt;header&gt; (Site branding, Logo, Main Title)                                       |
+|  &lt;nav&gt; (Global Navigation Links: Home | Projects | Documentation | Contact)      |
++-----------------------------------------------------------------------------------+
+| &lt;main&gt; (Primary unique page content)                                              |
+|  +-----------------------------------------------------+  +--------------------+  |
+|  | &lt;section&gt; (Thematic grouping of related content)   |  | &lt;aside&gt;            |  |
+|  |  +-----------------------------------------------+  |  | (Sidebar, Related  |  |
+|  |  | &lt;article&gt; (Self-contained, reusable entity:   |  |  |  links, Ads, Author|  |
+|  |  |  Blog post, Product card, Comment item)       |  |  |  bio)              |  |
+|  |  +-----------------------------------------------+  |  |                    |  |
+|  +-----------------------------------------------------+  +--------------------+  |
++-----------------------------------------------------------------------------------+
+| &lt;footer&gt; (Copyright, Legal notices, Privacy policy, Social links)                |
++-----------------------------------------------------------------------------------+
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">2.2 Advanced HTML5 Form with Strict Native Regex Validation</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>&lt;form action="/api/register" method="POST" class="registration-form" novalidate&gt;
+    &lt;!-- Text input with min/max length --&gt;
+    &lt;label for="username"&gt;Username:&lt;/label&gt;
+    &lt;input type="text" id="username" name="username" required minlength="3" maxlength="20" placeholder="e.g. saikat108"&gt;
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">&lt;!-- Email input with strict regex pattern --&gt;
+    &lt;label for="email"&gt;Institutional Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"&gt;</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">&lt;!-- Password with complexity requirement --&gt;
+    &lt;label for="password"&gt;Password (Min 8 chars, 1 number, 1 special):&lt;/label&gt;
+    &lt;input type="password" id="password" name="password" required minlength="8"&gt;</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">&lt;!-- Numeric Range &amp; Number Inputs --&gt;
+    &lt;label for="experience"&gt;Years of Experience (0-50):&lt;/label&gt;
+    &lt;input type="number" id="experience" name="experience" min="0" max="50" value="1"&gt;</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">&lt;button type="submit"&gt;Complete Registration&lt;/button&gt;
+&lt;/form&gt;
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-iii"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT 3 -->
+        <div id="tab-unit3" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🎨 Unit III: CSS3 Mastery, Box Model, Flexbox & Grid</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Unit 3</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">3.1 CSS Specificity Calculation Formula: $(a, b, c, d)$</h3>
+When conflicting CSS rules target the same element, the browser calculates specificity as a 4-part tuple $(a, b, c, d)$:
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                                  SPECIFICITY TIER PYRAMID
+                                             ▲
+                                            / \  a: Inline Styles (style="...") [Weight: 1000]
+                                           /───\ b: ID Selectors (#header) [Weight: 100]
+                                          /─────\ c: Classes (.btn), Attribute ([type="text"]),
+                                         /       \   Pseudo-classes (:hover, :focus) [Weight: 10]
+                                        /─────────\ d: Element tags (h1, div), Pseudo-elements
+                                       /           \   (::before, ::after) [Weight: 1]
+</code></pre></div>
+<h4 style="color:#f8fafc; margin-top:1rem; margin-bottom:0.35rem; font-size:1rem;">Specificity Calculation Examples:</h4>
+* `p` $\rightarrow (0, 0, 0, 1)$ [Score: 1]
+* `.nav .nav-item` $\rightarrow (0, 0, 2, 0)$ [Score: 20]
+* `#header .menu-link:hover` $\rightarrow (0, 1, 2, 0)$ [Score: 120]
+* `<div style="color:red">` $\rightarrow (1, 0, 0, 0)$ [Score: 1000]
+* `!important` overrides ALL cascade calculations (use sparingly for utilities).
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">3.2 CSS Box Model: Standard vs `box-sizing: border-box`</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>+---------------------------------------------------------------+
+| MARGIN (Transparent space outside the border)                 |
+|  +---------------------------------------------------------+  |
+|  | BORDER (Visible boundary around padding and content)    |  |
+|  |  +---------------------------------------------------+  |  |
+|  |  | PADDING (Space between content and border)        |  |  |
+|  |  |  +---------------------------------------------+  |  |  |
+|  |  |  | CONTENT (Actual text, image, or child video)|  |  |  |
+|  |  |  | Width x Height                              |  |  |  |
+|  |  |  +---------------------------------------------+  |  |  |
+|  |  +---------------------------------------------------+  |  |
+|  +---------------------------------------------------------+  |
++---------------------------------------------------------------+
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">content-box (Default): Total Rendered Width = width + padding_left + padding_right + border_left + border_right</li>
+  <li style="margin-bottom:0.35rem;">border-box (Universal Best Practice): Total Rendered Width = width (padding and border are absorbed inside!)</li>
+</ul>
+</code></pre></div>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>/<em> Universal Box-Sizing Reset </em>/
+<em>, </em>::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">3.3 1D Flexbox vs 2D CSS Grid Layout Architecture</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>FLEXBOX: ONE-DIMENSIONAL (Row OR Column Axis)
+         Main Axis (justify-content: flex-start | center | space-between | space-around)
+  ────────────────────────────────────────────────────────────────────────►
+┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
+  ┌───────────────┐        ┌───────────────┐        ┌───────────────┐   ▲
+│ │ Flex Item 1   │        │ Flex Item 2   │        │ Flex Item 3   │   │ Cross Axis
+  └───────────────┘        └───────────────┘        └───────────────┘   │ (align-items:
+└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘   ▼  center | stretch)
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">CSS GRID: TWO-DIMENSIONAL (Rows AND Columns Simultaneously)
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+┌─────────────────────────┬─────────────────────────┬─────────────────────────┐
+│ Grid Cell (Row 1, Col 1)│ Grid Cell (Row 1, Col 2)│ Grid Cell (Row 1, Col 3)│
+├─────────────────────────┼─────────────────────────┼─────────────────────────┤
+│ Grid Cell (Row 2, Col 1)│ Grid Cell (Row 2, Col 2)│ Grid Cell (Row 2, Col 3)│
+└─────────────────────────┴─────────────────────────┴─────────────────────────┘
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-iv"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT 4 -->
+        <div id="tab-unit4" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">⚙️ Unit IV: JavaScript Execution Context, Closures & ES6+</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Unit 4</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.1 JavaScript Engine Execution Context & Call Stack</h3>
+JavaScript is a <strong>single-threaded, synchronous language</strong> that achieves asynchronous non-blocking I/O via the <strong>Event Loop</strong>.
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                           JAVASCRIPT EXECUTION CONTEXT
+                                        │
+         ┌──────────────────────────────┴──────────────────────────────┐
+         ▼                                                             ▼
+[ 1. VARIABLE ENVIRONMENT (Memory Phase) ]            [ 2. THREAD OF EXECUTION (Code Phase) ]
+<ul style="margin: 0.5rem 0 1rem 1.5rem; line-height: 1.6; color: #cbd5e1;">
+  <li style="margin-bottom:0.35rem;">Allocates memory for variables &amp; functions           • Executes code line-by-line synchronously</li>
+  <li style="margin-bottom:0.35rem;">Hoisting: var -&gt; undefined; let/const -&gt; TDZ        • Evaluates expressions, assigns values</li>
+  <li style="margin-bottom:0.35rem;">Functions -&gt; Copied entirely into memory            • Pushes/Pops Execution Contexts on Call Stack</li>
+</ul>
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.2 `var` vs `let` vs `const` Comparison</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Feature</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">`var` (ES5 Legacy)</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">`let` (ES6 Standard)</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">`const` (ES6 Standard)</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Scope</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Function / Global Scope</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Block Scope</strong> `{ ... }`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Block Scope</strong> `{ ... }`</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Hoisting</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Hoisted, initialized to `undefined`</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Hoisted, placed in <strong>Temporal Dead Zone (TDZ)</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Hoisted, placed in <strong>TDZ</strong></td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Re-declaration</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Allowed in same scope</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ Syntax Error</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ Syntax Error</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Re-assignment</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Allowed</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Allowed</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">❌ TypeError (Immutable binding)</td></tr></tbody></table></div>
+---
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">4.3 Higher-Order Functions: `.map()`, `.filter()`, `.reduce()`</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>const students = [
+    { name: "Saikat", score: 98, active: true },
+    { name: "Aman", score: 72, active: false },
+    { name: "Rahul", score: 88, active: true }
+];
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">// 1. FILTER: Returns subset matching predicate
+const activeStudents = students.filter(s =&gt; s.active);</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">// 2. MAP: Transforms elements into new array
+const honorRoll = activeStudents.map(s =&gt; `${s.name} (Grade: ${s.score})`);</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">// 3. REDUCE: Accumulates array into a single value
+const totalScore = students.reduce((acc, curr) =&gt; acc + curr.score, 0);
+const avgScore = totalScore / students.length;
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-v"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT 5 -->
+        <div id="tab-unit5" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">⚡ Unit V: Interactive DOM, Event Bubbling & Async Fetch</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Unit 5</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.1 DOM Event Propagation: Capturing vs Bubbling & Delegation</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>                               DOCUMENT ROOT
+                                     │
+                 1. CAPTURING PHASE  │  3. BUBBLING PHASE (Default in addEventListener)
+                 (Top-down dispatch) │  (Bottom-up propagation)
+                                     ▼  ▲
+                                  &lt;BODY&gt;
+                                     │  │
+                                     ▼  ▲
+                                  &lt;DIV&gt;
+                                     │  │
+                                     ▼  ▲
+                             [ BUTTON (TARGET) ]
+                          2. TARGET PHASE (Event fires)
+</code></pre></div>
+<h4 style="color:#f8fafc; margin-top:1rem; margin-bottom:0.35rem; font-size:1rem;">High-Performance Event Delegation Pattern:</h4>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>// Attach SINGLE listener to parent container instead of 1,000 child buttons
+document.querySelector("#item-list").addEventListener("click", function(event) {
+    if (event.target.matches(".delete-btn")) {
+        const itemId = event.target.dataset.id;
+        deleteItem(itemId);
+    }
+});
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.2 Browser Storage Comparison Matrix</h3>
+<div style="overflow-x:auto; margin:1rem 0;"><table style="width:100%; border-collapse:collapse; font-size:0.88rem;"><thead><tr><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Storage Mechanism</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Capacity</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Expiration</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Data Sent to Server?</th><th style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; background:rgba(14,165,233,0.15); color:#38bdf8; text-align:left;">Primary Use Case</th></tr></thead><tbody><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>`localStorage`</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$\approx 5\text{MB}$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Never</strong> (Persists across restarts)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">No</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Dark mode theme, cached offline data</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>`sessionStorage`</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$\approx 5\text{MB}$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>On Tab Close</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">No</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Single-session multi-step wizard</td></tr><tr><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Cookies</strong></td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">$\approx 4\text{KB}$</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Configurable (`Expires`/`Max-Age`)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;"><strong>Yes</strong> (Every HTTP Request)</td><td style="border:1px solid rgba(255,255,255,0.1); padding:0.6rem 0.75rem; color:#cbd5e1;">Auth tokens, Session IDs (`HttpOnly`)</td></tr></tbody></table></div>
+---
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">5.3 Fetch API with Robust `async/await` & Error Handling</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>async function fetchUserDashboard(userId) {
+    const statusDiv = document.querySelector("#status");
+    try {
+        statusDiv.textContent = "Loading data...";
+        const response = await fetch(`https://api.example.com/users/${userId}`);
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status} ${response.statusText}`);
+        }</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">const data = await response.json();
+        renderUserInterface(data);
+        statusDiv.textContent = "Data loaded successfully!";
+    } catch (error) {
+        console.error("Network / API Error:", error);
+        statusDiv.textContent = `Failed to fetch data: ${error.message}`;
+    }
+}
+</code></pre></div></p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="unit-vi"></a></p>
+            </div>
+        </div>
+
+        <!-- TAB: UNIT 6 -->
+        <div id="tab-unit6" class="tab-content" style="display:none;">
+            <div class="card" style="background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+                    <h2 class="card-title" style="margin: 0; color: #38bdf8; font-size: 1.35rem;">🚀 Unit VI: Web App Performance, Storage & GitHub CI/CD</h2>
+                    <span class="badge" style="background: rgba(14,165,233,0.15); color: #38bdf8; font-size: 0.75rem; padding: 0.3rem 0.6rem; border-radius: 9999px;">Syllabus Unit 6</span>
+                </div>
+<h3 style="color:#38bdf8; margin-top:1.5rem; margin-bottom:0.5rem; font-size:1.15rem;">6.1 GitHub Pages CI/CD Automated Deployment Flowchart</h3>
+<div class="code-block" style="background:#090d16; border:1px solid rgba(255,255,255,0.1); border-radius:0.5rem; padding:1rem; font-family:'JetBrains Mono', monospace; font-size:0.85rem; color:#38bdf8; overflow-x:auto; margin:1rem 0;"><pre style="margin:0;"><code>[ LOCAL DEVELOPMENT WORKSPACE ]
+Edit HTML5 / CSS3 / JavaScript files
+             │
+             │ 1. git add . &amp;&amp; git commit -m "feat: Complete interactive web app"
+             ▼
+[ LOCAL GIT REPOSITORY ]
+Local committed SHA-1 DAG history
+             │
+             │ 2. git push origin main
+             ▼
+[ GITHUB CLOUD REPOSITORY (Remote) ]
+Triggers GitHub Pages Build Engine (Jekyll / Static Container)
+             │
+             │ 3. Automated Static Assets Compilation
+             ▼
+[ GLOBAL CDN EDGE / GITHUB PAGES ]
+Live accessible HTTPS URL: https://username.github.io/repository-name/
+</code></pre></div>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;">---</p>
+<p style="color:#cbd5e1; line-height:1.6; margin-bottom:0.85rem;"><a name="exam-triggers"></a></p>
+            </div>
+        </div>
+
         <!-- TAB: EXAM -->
         <div id="tab-exam" class="tab-content" style="display:none;">
             <div class="card">
