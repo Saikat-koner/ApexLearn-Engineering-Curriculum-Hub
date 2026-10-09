@@ -31,6 +31,7 @@ const translations = {
     view_hub: "📖 View Hub",
     pdf_notes: "📄 PDF Notes",
     md_guide: "📝 Markdown",
+    revision_learning: "🎯 Revision & Learning",
     credits_label: "Credits",
     units_label: "Units",
     videos_label: "Videos",

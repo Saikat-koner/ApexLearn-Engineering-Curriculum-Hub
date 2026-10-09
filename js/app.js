@@ -170,6 +170,7 @@ function renderSubjects() {
     const viewHubText = typeof t === 'function' ? t('view_hub') : '📖 View Hub';
     const pdfNotesText = typeof t === 'function' ? t('pdf_notes') : '📄 PDF Notes';
     const mdGuideText = typeof t === 'function' ? t('md_guide') : '📝 Markdown';
+    const revisionText = typeof t === 'function' && t('revision_learning') ? t('revision_learning') : '🎯 Revision & Learning';
     const creditsLabel = typeof t === 'function' ? t('credits_label') : 'Credits';
     const unitsLabel = typeof t === 'function' ? t('units_label') : 'Units';
     const videosLabel = typeof t === 'function' ? t('videos_label') : 'Videos';
@@ -210,7 +211,7 @@ function renderSubjects() {
         </div>
 
         <div class="card-actions">
-          <button class="btn btn-primary" onclick="openInPortalDashboard('${sub.assets ? sub.assets.dashboard : '#'}', '${sub.title.replace(/'/g, "\'")}', '${sub.code}')">
+          <button class="btn btn-primary" onclick="openInPortalDashboard('${sub.assets ? sub.assets.dashboard : '#'}', '${sub.title.replace(/'/g, "\\'")}', '${sub.code}')">
             ${typeof t === 'function' && t('view_in_portal') ? t('view_in_portal') : '💻 In-Portal View'}
           </button>
           <button class="btn btn-secondary" onclick="openSubjectDrawer('${sub.id}')">
@@ -224,6 +225,9 @@ function renderSubjects() {
           </a>
           <button class="btn btn-secondary btn-sm" onclick="openMarkdownReader('${sub.assets ? sub.assets.guideMd : '#'}', '${sub.code}')">
             ${mdGuideText}
+          </button>
+          <button class="btn btn-primary btn-sm" style="background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); border: none; font-weight: 700; box-shadow: 0 2px 8px rgba(6, 182, 212, 0.25);" onclick="openRevisionLearningModal('${sub.id}')" title="200 MCQs Question Bank, Mock Exams & Revision Suite">
+            ${revisionText}
           </button>
         </div>
       </div>
@@ -278,6 +282,8 @@ function setupKeyboardShortcuts() {
       if (typeof closeFormulaModal === 'function') closeFormulaModal();
       if (typeof closeNotesModal === 'function') closeNotesModal();
       if (typeof closeMarkdownReader === 'function') closeMarkdownReader();
+      if (typeof closeRevisionLearningModal === 'function') closeRevisionLearningModal();
+      if (typeof closeHtmlViewerModal === 'function') closeHtmlViewerModal();
     }
   });
 }
@@ -324,6 +330,9 @@ function renderDrawerTabContent() {
       </a>
       <button class="btn btn-outline" onclick="openMarkdownReader('${sub.assets ? sub.assets.guideMd : '#'}', '${sub.code}')">
         📝 In-Portal Markdown
+      </button>
+      <button class="btn btn-primary" style="background: linear-gradient(135deg, #06b6d4, #3b82f6); border: none; font-weight: 700; box-shadow: 0 2px 8px rgba(6, 182, 212, 0.25);" onclick="openRevisionLearningModal('${sub.id}')">
+        🎯 Revision & Learning
       </button>
     </div>
   `;

@@ -703,12 +703,24 @@ async function openMarkdownReader(mdFilePath, subjectCode) {
 
   let mdText = '';
 
-  // 1. Try instant offline load from window.SUBJECT_MARKDOWNS
-  if (typeof window.SUBJECT_MARKDOWNS !== 'undefined' && window.SUBJECT_MARKDOWNS[codeKey]) {
+  // 1. If a specific custom markdown file path is provided, try fetching it directly
+  if (mdFilePath && (mdFilePath.includes('Midterm') || mdFilePath.includes('200MCQ') || !mdFilePath.includes('Ultimate_Master_Study_Guide'))) {
+    try {
+      const res = await fetch(mdFilePath);
+      if (res.ok) {
+        mdText = await res.text();
+      }
+    } catch (e) {
+      console.log('Fetching markdown from path:', mdFilePath);
+    }
+  }
+
+  // 2. Try instant offline load from window.SUBJECT_MARKDOWNS
+  if (!mdText && typeof window.SUBJECT_MARKDOWNS !== 'undefined' && window.SUBJECT_MARKDOWNS[codeKey]) {
     mdText = window.SUBJECT_MARKDOWNS[codeKey].content;
   }
 
-  // 2. If not found in memory, try fetching
+  // 3. If not found in memory, try fetching
   if (!mdText) {
     try {
       const res = await fetch(mdFilePath);
@@ -1095,4 +1107,195 @@ function resetVideoProgress(subCode) {
       if (sub) openSubjectDrawer(sub.id);
     }
   }
+}
+
+// ==============================================================================
+// 9. REVISION & LEARNING MASTER SUITE ENGINE (200 MCQs, MOCK EXAMS, GUIDES)
+// ==============================================================================
+function openRevisionLearningModal(subjectId) {
+  const sub = typeof allSubjects !== 'undefined' ? allSubjects.find(s => s.id === subjectId || s.code.toLowerCase() === (subjectId || '').toLowerCase()) : null;
+  if (!sub) return;
+
+  const modal = document.getElementById('revisionModal');
+  const titleEl = document.getElementById('revModalTitle');
+  const badgeEl = document.getElementById('revModalBadge');
+  const bodyEl = document.getElementById('revModalBody');
+
+  if (badgeEl) badgeEl.textContent = sub.code;
+  if (titleEl) titleEl.textContent = `${sub.code}: Revision & Learning Master Suite`;
+
+  const rev200Html = sub.assets && sub.assets.revision ? sub.assets.revision : (sub.assets ? sub.assets.dashboard : '#');
+  const revMockHtml = sub.assets && sub.assets.revisionDashboard ? sub.assets.revisionDashboard : (sub.assets ? sub.assets.dashboard : '#');
+  const revPdf = sub.assets && sub.assets.revisionPdf ? sub.assets.revisionPdf : (sub.assets ? sub.assets.guidePdf : '#');
+  const revMd = sub.assets && sub.assets.revisionMd ? sub.assets.revisionMd : (sub.assets ? sub.assets.guideMd : '#');
+  const studyGuideMd = sub.id === 'phy175' ? 'subjects/PHY175_Midterm_Master_Study_Guide_30Marks.md' : revMd;
+
+  let bodyHtml = `
+    <!-- Hero Header Banner -->
+    <div style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(59, 130, 246, 0.1) 100%); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+          <span style="font-size: 1.5rem;">🎯</span>
+          <h4 style="font-size: 1.15rem; font-weight: 800; color: #f8fafc; margin: 0;">${sub.title}</h4>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-secondary); margin: 0;">
+          ${sub.id === 'phy175'
+            ? '🔥 30-Mark Midterm Rapid Mastery (Units 1, 2 & 3) • 200-MCQ Master Question Bank • 3-4 Hr Study Blueprint'
+            : 'Comprehensive course revision suite, formula bank, interactive quizzes, and viva study tools.'}
+        </p>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #34d399; font-weight: 700; margin: 0;">✨ Grade 'O' Target</span>
+        <span class="badge-pill" style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-weight: 700; margin: 0;">⚡ 100-Percentile</span>
+      </div>
+    </div>
+
+    <!-- Quick Stats Metric Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem;">
+      <div style="background: var(--bg-card); padding: 0.85rem; border-radius: 10px; border: 1px solid var(--border); text-align: center;">
+        <div style="font-size: 1.35rem; font-weight: 800; color: #38bdf8;">${sub.id === 'phy175' ? '200 MCQs' : ((sub.units && sub.units.length) || 6) + ' Units'}</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Question Bank</div>
+      </div>
+      <div style="background: var(--bg-card); padding: 0.85rem; border-radius: 10px; border: 1px solid var(--border); text-align: center;">
+        <div style="font-size: 1.35rem; font-weight: 800; color: #34d399;">${sub.id === 'phy175' ? '30 Marks' : '100%'}</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">${sub.id === 'phy175' ? 'Midterm Goal' : 'Syllabus'}</div>
+      </div>
+      <div style="background: var(--bg-card); padding: 0.85rem; border-radius: 10px; border: 1px solid var(--border); text-align: center;">
+        <div style="font-size: 1.35rem; font-weight: 800; color: #fbbf24;">${sub.id === 'phy175' ? '3-4 Hours' : (sub.totalStudyTimeFormatted || '8h+')}</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Study Time</div>
+      </div>
+      <div style="background: var(--bg-card); padding: 0.85rem; border-radius: 10px; border: 1px solid var(--border); text-align: center;">
+        <div style="font-size: 1.35rem; font-weight: 800; color: #f472b6;">${sub.id === 'phy175' ? '26 Pages' : 'PDF Notes'}</div>
+        <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Printable Dossier</div>
+      </div>
+    </div>
+
+    <!-- 4 Main Resource Action Cards Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1rem;">
+
+      <!-- Card 1: 200 MCQs Practice Engine -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.35rem;">🎯</span>
+              <h5 style="font-size: 1.05rem; font-weight: 700; color: #f8fafc; margin: 0;">Interactive 200-MCQ Practice Engine</h5>
+            </div>
+            <span class="badge-pill" style="background: rgba(6, 182, 212, 0.2); color: #06b6d4; margin: 0;">Practice Suite</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+            Syllabus-exhaustive 200 questions spanning Unit 1 (Q1-65), Unit 2 (Q66-135), and Unit 3 (Q136-200). Features instant answers, unit filtering, search, score tracking, and detailed step-by-step rationales.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="btn btn-primary btn-sm" style="flex: 1; background: linear-gradient(135deg, #06b6d4, #3b82f6); border: none; font-weight: 700;" onclick="closeRevisionLearningModal(); openInPortalDashboard('${rev200Html}', '${sub.title.replace(/'/g, "\\'")} - 200 MCQs Revision Engine', '${sub.code}');">
+            💻 Launch In-Portal Simulator
+          </button>
+          <a href="${rev200Html}" target="_blank" class="btn btn-outline btn-sm" title="Open Full Tab">
+            ↗️ Full Tab
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: 30-MCQ Midterm Mock Exam -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.35rem;">⏱️</span>
+              <h5 style="font-size: 1.05rem; font-weight: 700; color: #f8fafc; margin: 0;">30-Mark Midterm Mock Exam</h5>
+            </div>
+            <span class="badge-pill" style="background: rgba(239, 68, 68, 0.2); color: #f87171; margin: 0;">45-Min Timer</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+            Realistic 30-question exam simulator mirroring the official midterm format. Live 45-minute countdown clock, built-in formula cheat sheets, and instant automated grading with performance breakdown.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button class="btn btn-secondary btn-sm" style="flex: 1; font-weight: 700;" onclick="closeRevisionLearningModal(); openInPortalDashboard('${revMockHtml}', '${sub.title.replace(/'/g, "\\'")} - Midterm Mock Exam', '${sub.code}');">
+            🎯 Start Mock Exam (In-Portal)
+          </button>
+          <a href="${revMockHtml}" target="_blank" class="btn btn-outline btn-sm" title="Open Full Tab">
+            ↗️ Full Tab
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: 26-Page Printable Master PDF -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.35rem;">📄</span>
+              <h5 style="font-size: 1.05rem; font-weight: 700; color: #f8fafc; margin: 0;">26-Page Master PDF Study Guide</h5>
+            </div>
+            <span class="badge-pill" style="background: rgba(16, 185, 129, 0.2); color: #34d399; margin: 0;">Print Ready</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+            Publication-quality printable PDF document featuring two-column option grids, highlighted answer boxes, complete step-by-step mathematical rationales, and rapid revision summary notes.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="${revPdf}" download class="btn btn-primary btn-sm" style="flex: 1; background: #10b981; border-color: #10b981; font-weight: 700; text-align: center; display: inline-flex; justify-content: center; align-items: center; gap: 0.4rem;">
+            <span>📥 Download Master PDF</span>
+          </a>
+          <a href="${revPdf}" target="_blank" class="btn btn-outline btn-sm" title="View PDF">
+            👁️ View
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 4: 3-4 Hour Crash Course Study Guide -->
+      <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.35rem;">📝</span>
+              <h5 style="font-size: 1.05rem; font-weight: 700; color: #f8fafc; margin: 0;">3-4 Hour Crash Course Guide</h5>
+            </div>
+            <span class="badge-pill" style="background: rgba(168, 85, 247, 0.2); color: #c084fc; margin: 0;">High-Yield Notes</span>
+          </div>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1rem;">
+            Complete synthesized theory across Units 1, 2, and 3: Drude-Lorentz, Hall effect derivation, BJT & CMOS operation, Fiber Numerical Aperture, Universal Gates, and 4-variable K-Map grouping rules.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary btn-sm" style="flex: 1; font-weight: 700;" onclick="closeRevisionLearningModal(); openMarkdownReader('${studyGuideMd}', '${sub.code}');">
+            📖 Open In-Portal Reader
+          </button>
+          <a href="${studyGuideMd}" download class="btn btn-outline btn-sm" title="Download Markdown (.md)">
+            💾 .md
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quick Tool Shortcuts Row -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 10px; padding: 0.85rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span style="font-size: 1.1rem;">⚡</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">Interactive Revision Toolbelt:</span>
+      </div>
+      <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <button class="btn btn-outline btn-sm" onclick="closeRevisionLearningModal(); openFormulaModal();">
+          ⚡ Formula Bank
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="closeRevisionLearningModal(); openFlashcardModal();">
+          🎴 Viva Flashcards
+        </button>
+        <button class="btn btn-outline btn-sm" onclick="closeRevisionLearningModal(); openPomodoroModal();">
+          ⏱️ Pomodoro Sprint
+        </button>
+      </div>
+    </div>
+  `;
+
+  if (bodyEl) bodyEl.innerHTML = bodyHtml;
+  if (modal) modal.classList.add('active');
+}
+
+function closeRevisionLearningModal() {
+  const modal = document.getElementById('revisionModal');
+  if (modal) modal.classList.remove('active');
 }

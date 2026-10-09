@@ -2956,7 +2956,11 @@ window.DEFAULT_SUBJECTS = [
     "assets": {
       "dashboard": "subjects/PHY175_Ultimate_Master_Study_Dashboard.html",
       "guideMd": "subjects/PHY175_Ultimate_Master_Study_Guide_and_Video_Hub.md",
-      "guidePdf": "subjects/PHY175_Ultimate_Master_Study_Guide_and_Video_Hub.pdf"
+      "guidePdf": "subjects/PHY175_Ultimate_Master_Study_Guide_and_Video_Hub.pdf",
+      "revision": "subjects/PHY175_Midterm_Master_Question_Bank_200MCQs.html",
+      "revisionPdf": "subjects/PHY175_Midterm_Master_Question_Bank_200MCQs_Study_Guide.pdf",
+      "revisionMd": "subjects/PHY175_Midterm_Master_Question_Bank_200MCQs_Study_Guide.md",
+      "revisionDashboard": "subjects/PHY175_Midterm_Interactive_Master_Dashboard.html"
     },
     "totalStudyMinutes": 503,
     "totalStudyTimeFormatted": "8h 23m"
